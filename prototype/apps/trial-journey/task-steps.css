@@ -1,0 +1,64 @@
+/* Same three-step language as the connection guide. */
+#stage-dialog .task-tabs.connection-tabs { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0; padding:0 24px; background:#F6F9FF; border-color:#E0EAF8; }
+#stage-dialog .task-tabs.connection-tabs .task-tab { display:flex; align-items:center; justify-content:center; gap:12px; min-width:0; min-height:68px; padding:14px 10px; border:0; border-bottom:2px solid transparent; border-radius:0; background:transparent; box-shadow:none; color:#698491; text-align:left; line-height:1.5; }
+#stage-dialog .task-tabs.connection-tabs .task-tab:hover { background:#EAF2FF; color:#005FE1; box-shadow:none; }
+#stage-dialog .task-tabs.connection-tabs .task-tab[aria-selected="true"] { color:#005FE1; background:#EDF4FF; border-bottom-color:#005FE1; box-shadow:none; }
+#stage-dialog .task-tabs.connection-tabs .task-step-number { flex:none; display:grid; place-items:center; width:32px; height:32px; border:1px solid #D6E4EB; border-radius:50%; background:white; color:#6B91A4; font:12px 'Segoe UI',sans-serif; }
+#stage-dialog .task-tabs.connection-tabs .task-step-copy { min-width:0; font-size:14px; font-weight:600; }
+#stage-dialog .task-step-copy strong { font:inherit; }
+#stage-dialog .task-step-status { display:block; margin-top:3px; font-size:10px; font-weight:400; }
+#stage-dialog .task-tabs.connection-tabs .task-tab[aria-selected="true"] .task-step-number { color:white; background:#005FE1; border-color:#005FE1; }
+#stage-dialog .task-tabs.connection-tabs .task-tab.is-verified::after { display:none; }
+#stage-dialog .task-tabs.connection-tabs .task-tab.is-verified .task-step-number { background:#E3EFFF; border-color:#99BEF3; color:#005FE1; }
+#stage-dialog .task-tabs.connection-tabs .task-tab.is-verified[aria-selected="true"] .task-step-number { background:#005FE1; color:white; }
+#stage-dialog .task-step-number svg { width:17px; height:17px; }
+#stage-dialog .variant-switch[hidden],#stage-dialog .dialog-confirm[hidden] { display:none; }
+#stage-dialog .verify-task.is-passed:disabled { color:#005FE1; background:#EDF4FF; border-color:#AECBF2; }
+#stage-dialog .dialog-note.is-passed { font-size:14px; font-weight:600; }
+#stage-dialog .verify-task.is-checking { cursor:wait; }
+#stage-dialog .verification-note { min-width:0; }
+@media(max-width:700px) {
+ #stage-dialog .task-tabs.connection-tabs { padding:0 8px; }
+ #stage-dialog .task-tabs.connection-tabs .task-tab { gap:7px; padding:12px 5px; min-height:72px; }
+ #stage-dialog .task-tabs.connection-tabs .task-step-copy { font-size:12px; }
+ #stage-dialog .task-tabs.connection-tabs .task-step-number { width:26px; height:26px; font-size:11px; }
+}
+@media(max-width:440px) {
+ #stage-dialog .task-tabs.connection-tabs .task-tab { align-items:center; gap:5px; }
+ #stage-dialog .task-tabs.connection-tabs .task-step-copy { font-size:11px; }
+ #stage-dialog .task-step-status { font-size:10px; }
+}
+
+/* Outer canvas blends into the hosting portal. */
+:root, body.game-demo, .game-shell { background:transparent; }
+body.game-demo::before { display:none; }
+.resource-actions .identity-status { margin-left:4px; }
+
+/* Compact footer and visible, server-backed connection receipt. */
+.game-signature { margin:0 0 4px; }
+.game-bottom { padding-top:8px; padding-bottom:6px; }
+body.game-demo { padding-bottom:4px; }
+#guide-dialog .verification-prompt p { white-space:pre-wrap; overflow-wrap:anywhere; font-size:13px; line-height:1.8; }
+.connection-code { padding:12px 16px; border:1px solid #BFD7F9; background:#EDF4FF; border-radius:8px; margin:12px 0; }
+.connection-code strong { display:block; color:#005FE1; font:600 16px/1.8 Consolas,monospace; overflow-wrap:anywhere; }
+.connection-code small { color:#6D849C; }
+.connection-receipt { border:1px solid #CBDCF1; border-radius:10px; padding:18px; background:#F8FBFF; margin-top:16px; }
+.connection-receipt.is-received { border-color:#47CC82; background:#F1FFF6; }
+.connection-receipt h4 { margin:0 0 12px; font-size:17px; color:#24466D; }
+.connection-receipt dl { display:grid; grid-template-columns:76px minmax(0,1fr); gap:10px; margin:0; font-size:12px; }
+.connection-receipt dt { color:#6C8196; }.connection-receipt dd { margin:0; color:#24466D; overflow-wrap:anywhere; }
+.connection-receipt-actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+.connection-receipt-error { color:#C8323F; font-size:12px; margin:10px 0 0; }
+
+/* Approved Demo: aligned two-line node descriptions. */
+.stage-description > span { display:block; }
+.stage-summary { min-height:90px; }
+
+/* Keep credential acquisition separate from configuration copying. */
+.guide-platform-entry { margin:16px 0 20px; }
+.guide-platform-entry .connection-primary { display:inline-flex; align-items:center; justify-content:center; gap:12px; min-height:44px; padding:10px 18px; text-decoration:none; font-size:15px; font-weight:600; }
+.guide-platform-entry p { margin:9px 0 0; font-size:13px; line-height:1.7; color:#587587; }
+.credential-paste-note { margin-top:16px; padding:16px; background:#EDF4FF; border:1px solid #B9D2FF; border-radius:12px; color:#36566B; font-size:14px; line-height:1.75; }
+.credential-paste-note strong { color:#005FE1; font-size:16px; }
+.credential-paste-note p { margin:8px 0 0; }
+.credential-paste-note code { color:#005FE1; font-weight:700; background:#FFF; padding:2px 5px; border-radius:4px; }

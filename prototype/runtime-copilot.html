@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>运行期 · Copilot 工作区 · supOS Flash 产品原型</title>
+<link rel="stylesheet" href="assets/flash.css">
+
+<script src="assets/data.js" defer></script>
+<script src="assets/shell.js" defer></script>
+<script src="assets/interact.js" defer></script>
+<script src="assets/page/copilot.js" defer></script>
+</head>
+<body data-mode="login" data-nav="" data-title="运行期 · Copilot 工作区">
+<style>
+  .flash-content { padding:0; height:100vh; display:flex }
+  main.flash-content .cpw { flex:1; min-height:0; height:auto; border:0; border-radius:0 }
+</style>
+  <style>
+  /* 设计期 Copilot 页：内容区改为纵向 flex，工作区撑满剩余高度（消除魔法数与页面滚动） */
+  body[data-title="Copilot"] .flash-content { display:flex; flex-direction:column;
+    height:calc(100vh - var(--flash-header-height)); overflow:hidden; padding-bottom:14px }
+  body[data-title="Copilot"] .flash-content > * { flex:none }
+  body[data-title="Copilot"] .flash-content .cpw { flex:1; min-height:420px; height:auto }
+  .cpw [hidden] { display:none !important }
+  .cpw { display:flex; height:calc(100vh - 235px); min-height:540px; background:#fff;
+    border:1px solid var(--flash-border); border-radius:var(--flash-radius); overflow:hidden }
+  .cpw-side { width:248px; flex:none; border-right:1px solid var(--flash-border); background:#fff;
+    display:flex; flex-direction:column; padding:14px 12px 10px; gap:12px }
+  .cpw-folded .cpw-side { display:none }
+  .cpw-side-head { display:flex; align-items:center; justify-content:space-between; padding:0 2px }
+  .cpw-side-head b { font-size:14px; color:var(--flash-text-strong) }
+  .cpw-fold { border:0; background:none; cursor:pointer; color:var(--flash-text-tertiary); font-size:14px; padding:4px }
+  .cpw-new { display:flex; align-items:center; justify-content:center; gap:8px; width:100%; padding:9px 10px;
+    border:1px solid var(--flash-primary); border-radius:8px; background:#fff; color:var(--flash-primary);
+    font-size:13px; cursor:pointer }
+  .cpw-new:hover { background:var(--flash-primary-soft) }
+  .cpw-search { display:flex; align-items:center; gap:8px; border:1px solid var(--flash-border); border-radius:8px;
+    padding:8px 10px; color:var(--flash-text-tertiary); font-size:13px }
+  .cpw-search input { border:0; outline:0; flex:1; font-size:13px; background:none; color:var(--flash-text) }
+  .cpw-hist-title { font-size:13px; font-weight:600; color:var(--flash-text-strong); margin-top:2px }
+  .cpw-hist { flex:1; overflow:auto; display:grid; gap:2px; align-content:start }
+  .cpw-hist-item { display:flex; align-items:center; gap:8px; padding:8px 8px; border-radius:6px; font-size:13px;
+    color:var(--flash-text-secondary); cursor:pointer }
+  .cpw-hist-item:hover { background:var(--flash-bg-page) }
+  .cpw-hist-item.is-active { background:var(--flash-primary-soft); color:var(--flash-primary) }
+  .cpw-hist-item .h-title { flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap }
+  .cpw-hist-item .h-more { opacity:0; border:0; background:none; cursor:pointer; color:var(--flash-text-tertiary); padding:0 4px }
+  .cpw-hist-item:hover .h-more { opacity:1 }
+  .cpw-side-foot { border-top:1px solid var(--flash-border); padding-top:8px }
+  .cpw-set { display:flex; align-items:center; gap:8px; border:0; background:none; cursor:pointer;
+    color:var(--flash-text-secondary); font-size:13px; padding:6px 8px; border-radius:6px }
+  .cpw-set:hover { background:var(--flash-bg-page) }
+  .cpw-main { flex:1; min-width:0; display:flex; flex-direction:column; position:relative; overflow:hidden;
+    background:linear-gradient(180deg,#f7faff 0%,#eef4ff 100%) }
+  .cpw-conv-head { display:flex; align-items:center; gap:10px; padding:12px 22px 0 }
+  .cpw-conv-head b { font-size:14px; color:var(--flash-text-strong); overflow:hidden; text-overflow:ellipsis;
+    white-space:nowrap }
+  .cpw-chat-wrap { flex:1; overflow:auto; padding:16px 22px 8px }
+  .cpw-hero { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:10px; padding:16px 20px; overflow:auto }
+  .cpw-hero-img { width:min(300px, 42vh); height:min(300px, 42vh); object-fit:contain; border-radius:20px }
+  .cpw-slogan { font-size:clamp(24px, 3.2vw, 36px); font-weight:700; letter-spacing:3px;
+    background:linear-gradient(92deg,#2b6de8 10%,#5aa0ff 90%); -webkit-background-clip:text;
+    background-clip:text; color:transparent }
+  .cpw-sub { text-align:center; color:var(--flash-text-secondary); font-size:14px; line-height:2 }
+  .cpw-link { color:var(--flash-primary); font-size:13px; text-decoration:underline; text-underline-offset:3px }
+  .cpw-input-card { margin:0 auto 22px; width:min(760px, calc(100% - 48px)); flex:none;
+    background:#fff; border:1px solid var(--flash-border); border-radius:14px;
+    box-shadow:0 8px 28px rgba(21,74,201,.10); padding:14px 16px 12px }
+  .cpw-input-card textarea { width:100%; border:0; outline:0; resize:none; min-height:52px;
+    font-size:14px; font-family:inherit; color:var(--flash-text); background:none }
+  .cpw-input-row { display:flex; align-items:center; gap:6px; margin-top:6px; flex-wrap:wrap }
+  .cpw-chip { display:inline-flex; align-items:center; gap:5px; border:0; background:none; cursor:pointer;
+    color:var(--flash-text-secondary); font-size:13px; padding:6px 8px; border-radius:6px; white-space:nowrap; flex:none }
+  .cpw-chip:hover { background:var(--flash-bg-page); color:var(--flash-primary) }
+  .cpw-spacer { flex:1 }
+  .cpw-send { width:30px; height:30px; flex:none; border-radius:50%; border:0; background:var(--flash-primary);
+    color:#fff; font-size:14px; cursor:pointer }
+  .cpw-send:hover { background:var(--flash-primary-deep, var(--flash-primary)) }
+</style>
+  <div class="cpw" data-cpw>
+    <aside class="cpw-side">
+      <div class="cpw-side-head"><b>supOS Copilot</b><button class="cpw-fold" data-op="fold" title="收起侧栏">⧨</button></div>
+      <button class="cpw-new" data-op="new-session">🗨 新对话</button>
+      <div class="cpw-search"><span>⌕</span><input placeholder="搜索对话" data-cp-search></div>
+      <div class="cpw-hist-title">对话历史</div>
+      <div class="cpw-hist" data-sessions></div>
+      <div class="cpw-side-foot"><button class="cpw-set" data-op="settings"><span>⚙</span>设置</button></div>
+    </aside>
+    <main class="cpw-main">
+      <div class="cpw-conv-head" data-cp-convhead hidden><b data-cp-title></b><span data-cp-status></span></div>
+      <div class="cpw-chat-wrap" data-cp-chatwrap hidden><div class="chat" data-cp-body></div></div>
+      <div class="cpw-hero" data-cp-hero>
+        <img class="cpw-hero-img" src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=3D%20render%20of%20a%20glowing%20translucent%20blue%20holographic%20human%20brain%20floating%20above%20a%20round%20glass%20podium%2C%20four%20small%20rounded-square%20tech%20icons%20orbiting%20around%2C%20soft%20light%20blue%20gradient%20background%2C%20clean%20futuristic%20AI%20assistant%20concept%2C%20soft%20studio%20lighting%2C%20high%20detail&image_size=square_hd" alt="supOS Copilot">
+        <div class="cpw-slogan">对话即指令，智能即协同</div>
+        <div class="cpw-sub">一个入口，调度所有智能体<br>设备、生产、报表、流程——开口即达</div>
+        <a class="cpw-link" href="#" data-op="learn-more">了解产品功能</a>
+      </div>
+      <div class="cpw-input-card">
+        <textarea data-cp-text placeholder="请输入您的问题，例如：帮我分析一下产线数据..."></textarea>
+        <div class="cpw-input-row">
+          <button class="cpw-chip" data-op="attach" title="附件">📎</button>
+          <button class="cpw-chip" data-op="agent-select"><span data-agent-label>prod-ops-agent</span> ▾</button>
+          <button class="cpw-chip" data-op="flash-mode">⚡ 闪速</button>
+          <span class="cpw-spacer"></span>
+          <button class="cpw-chip" data-op="model-select"><span data-model-label>DeepSeek-V4.1-Flash</span> ▾</button>
+          <button class="cpw-send" data-op="send" title="发送">↑</button>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

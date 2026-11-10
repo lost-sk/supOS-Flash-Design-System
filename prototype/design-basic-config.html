@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>基础配置 · supOS Flash 产品原型</title>
+<link rel="stylesheet" href="assets/flash.css">
+
+<script src="assets/data.js" defer></script>
+<script src="assets/shell.js" defer></script>
+<script src="assets/interact.js" defer></script>
+<script src="assets/page/basicconfig.js" defer></script>
+</head>
+<body data-mode="design" data-nav="design-basic-config.html" data-title="基础配置">
+<div class="tabbar" data-component="TabBar"><span class="tab">基础配置<span class="close">×</span></span></div><div class="sys-notice" data-component="SysNotice"><img src="assets/brand/smnIcon-CBGfisYv.png" alt=""><span>系统维护通知：平台将于本周日 22:00–23:00 进行例行维护，届时部分服务短暂不可用。</span><a class="more" href="#">查看详情 ›</a></div><div class="crumb"><span>设计期</span><span>系统设置</span><span>基础配置</span></div><div class="page-head"><div><h1>基础配置</h1><p>登录页与顶部导航视觉、favicon、菜单结构与安全策略（二级交互：上传实时预览 / 菜单抽屉 / 黑白名单 / 密码策略 / 会话超时）</p></div><div class="btn-row"></div></div>
+  <div data-tabgrp>
+    <div class="tabs"><a href="#login" data-tab="login" class="is-active">登录页设置</a><a href="#navbar" data-tab="navbar" class="">顶部导航栏设置</a><a href="#favicon" data-tab="favicon" class="">favicon设置</a><a href="#menu" data-tab="menu" class="">菜单配置</a><a href="#security" data-tab="security" class="">安全策略</a></div>
+    <div data-section="login" >
+  <div class="pane-head"><b>系统登录页配置<span data-tip="请上传小于 5M 的ICO、JPG、GIF、SVG、JPEG或PNG文件。推荐尺寸 logo：宽度等于280px / 背景：1920px * 1080px / 标语：宽度等于530px" style="cursor:help;color:var(--flash-primary);border:1px solid var(--flash-primary);border-radius:50%;width:14px;height:14px;display:inline-grid;place-items:center;font-size:10px;vertical-align:-2px;margin-left:4px">?</span></b></div>
+  <div class="split main-aside">
+    <div class="card" data-login-card>
+      <div class="field" style="align-items:flex-start" >
+    <label style="width:120px;flex:none;padding-top:7px"><span class="">LOGO</span></label>
+    <div class="f-ctrl" style="flex:1;max-width:none">
+      <div class="uploader" data-upload="logo" style="padding:18px"><span class="up-ico">＋</span><span>点击或拖拽上传</span></div>
+      
+      
+    </div>
+  </div>
+      <div class="field" style="align-items:flex-start" >
+    <label style="width:120px;flex:none;padding-top:7px"><span class="">背景</span></label>
+    <div class="f-ctrl" style="flex:1;max-width:none">
+      <div class="uploader" data-upload="bg" style="padding:18px"><span class="up-ico">＋</span><span>点击或拖拽上传</span></div>
+      
+      
+    </div>
+  </div>
+      <div class="field" style="align-items:flex-start" >
+    <label style="width:120px;flex:none;padding-top:7px"><span class="">标语</span></label>
+    <div class="f-ctrl" style="flex:1;max-width:none">
+      <div class="uploader" data-upload="slogan" style="padding:18px"><span class="up-ico">＋</span><span>点击或拖拽上传</span></div>
+      
+      
+    </div>
+  </div>
+      <div class="field" style="align-items:flex-start" >
+    <label style="width:120px;flex:none;padding-top:7px"><span class="">版权标记</span></label>
+    <div class="f-ctrl" style="flex:1;max-width:none">
+      <div style="display:flex;align-items:center;gap:8px">
+        <input maxlength="60" data-copy-input placeholder="请输入版权标记" style="flex:1">
+        <span class="muted" data-copy-count>0/60</span></div>
+      
+      
+    </div>
+  </div>
+      <div class="btn-row" style="margin-top:8px">
+        <button class="btn primary" data-op="login-save">保存</button>
+        <button class="btn" data-op="login-reset">恢复默认</button>
+      </div>
+    </div>
+    <div><section class="card" data-component="FlashCard"><div class="card-head"><h3>实时预览</h3></div>
+  <div data-login-preview style="position:relative;height:230px;border:1px solid var(--flash-border);border-radius:var(--flash-radius-lg);overflow:hidden;background:linear-gradient(135deg,var(--flash-primary-soft),var(--flash-bg-subtle))">
+    <div data-pv="logo" style="position:absolute;top:12px;left:14px;width:96px;height:26px;border:1px dashed var(--flash-border-strong);border-radius:4px;display:grid;place-items:center;font-size:10px;color:var(--flash-text-tertiary);background:var(--flash-bg-subtle)">LOGO</div>
+    <div style="position:absolute;top:16%;left:66%;width:27%;min-width:150px;padding:14px;background:var(--flash-bg-container);border:1px solid var(--flash-border);border-radius:var(--flash-radius)">
+      <div style="font-size:11px;color:var(--flash-text-strong);margin-bottom:10px">用户登录</div>
+      <div style="height:24px;border:1px solid var(--flash-border);border-radius:3px;margin-bottom:8px;background:var(--flash-bg-subtle)"></div>
+      <div style="height:24px;border:1px solid var(--flash-border);border-radius:3px;margin-bottom:12px;background:var(--flash-bg-subtle)"></div>
+      <div style="height:24px;border-radius:3px;background:var(--flash-primary)"></div>
+    </div>
+    <div data-pv="slogan" style="position:absolute;bottom:36px;left:14px;width:190px;height:22px;border:1px dashed var(--flash-border-strong);border-radius:4px;display:grid;place-items:center;font-size:10px;color:var(--flash-text-tertiary);background:var(--flash-bg-subtle)">标语</div>
+    <div style="position:absolute;bottom:10px;width:100%;text-align:center;font-size:10px;color:var(--flash-text-tertiary)"><span data-pv="copyright">© 版权标记</span></div>
+  </div></section></div>
+  </div></div>
+    <div data-section="navbar" hidden>
+  <div class="card" style="max-width:720px" data-nav-card>
+    <div class="field" style="align-items:flex-start" >
+    <label style="width:120px;flex:none;padding-top:7px"><span class="req">LOGO</span></label>
+    <div class="f-ctrl" style="flex:1;max-width:none">
+      <input type="text" hidden data-upload-val data-req="1" data-err="请上传LOGO!"><div class="uploader" data-upload="navlogo" style="padding:18px"><span class="up-ico">＋</span><span>点击或拖拽上传</span></div>
+      <div class="f-err">请上传LOGO!</div>
+      <div class="f-extra">推荐尺寸 84*28px</div>
+    </div>
+  </div>
+    <div class="btn-row" style="margin-top:8px">
+      <button class="btn primary" data-op="nav-save">保存</button>
+      <button class="btn" data-op="nav-reset">恢复默认</button>
+    </div>
+  </div></div>
+    <div data-section="favicon" hidden>
+  <div class="card" style="max-width:720px" data-favicon-card>
+    <div class="field" style="align-items:flex-start" >
+    <label style="width:120px;flex:none;padding-top:7px"><span class="req">favicon 图标</span></label>
+    <div class="f-ctrl" style="flex:1;max-width:none">
+      <input type="text" hidden data-upload-val data-req="1" data-err="请上传favicon 图标!"><div class="uploader" data-upload="favicon" style="padding:18px"><span class="up-ico">＋</span><span>点击或拖拽上传</span></div>
+      <div class="f-err">请上传favicon 图标!</div>
+      
+    </div>
+  </div>
+    <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">系统标题</span></label>
+    <div class="f-ctrl"><input maxlength="50" value="supOS X 工厂操作系统" value="" placeholder=""></div>
+    
+    <div class="f-err"></div>
+  </div>
+    <div class="btn-row" style="margin-top:8px">
+      <button class="btn primary" data-op="favicon-save">保存</button>
+    </div>
+  </div></div>
+    <div data-section="menu" hidden>
+  <div class="split tree-main">
+    <section class="card" data-component="FlashCard"><div class="card-head"><h3>菜单树</h3></div><div class="tree" data-menu-tree>
+  <div class="tree-row is-active">全部菜单</div>
+  <div class="tree-children">
+    <div class="tree-row"><span class="dot on"></span>数据平台</div>
+    <div class="tree-children">
+      <div class="tree-row"><span class="dot on"></span>数据源注册</div>
+      <div class="tree-row"><span class="dot on"></span>数据接入服务</div>
+    </div>
+    <div class="tree-row"><span class="dot on"></span>AI 与工具</div>
+    <div class="tree-children">
+      <div class="tree-row"><span class="dot on"></span>Copilot</div>
+      <div class="tree-row"><span class="dot on"></span>知识库</div>
+    </div>
+    <div class="tree-row"><span class="dot on"></span>APP 管理</div>
+    <div class="tree-children">
+      <div class="tree-row"><span class="dot on"></span>APP 运行管理</div>
+    </div>
+    <div class="tree-row"><span class="dot off"></span>报表中心</div>
+    <div class="tree-row"><span class="dot on"></span>系统设置</div>
+    <div class="tree-children">
+      <div class="tree-row"><span class="dot on"></span>基础配置</div>
+      <div class="tree-row"><span class="dot on"></span>企业运营配置</div>
+    </div>
+  </div>
+</div><div class="note ">菜单树支持拖拽排序（源码提示：「无法将菜单移动至根节点平级或第一项！」）。</div></section>
+    <div>
+      <div class="toolbar" data-component="Toolbar" style="flex-wrap:wrap">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--flash-text-tertiary)">菜单名称
+  <input style="width:160px;height:28px" placeholder="菜单名称"></span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--flash-text-tertiary)">自定义名称
+  <input style="width:160px;height:28px" placeholder="自定义名称"></span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--flash-text-tertiary)">状态
+  <select style="width:120px;height:28px"><option>请选择</option><option>启用</option><option>停用</option></select></span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--flash-text-tertiary)">URL
+  <input style="width:160px;height:28px" placeholder="URL"></span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--flash-text-tertiary)">更新人
+  <input style="width:160px;height:28px" placeholder="更新人"></span></div>
+  <span class="spacer"></span>
+  <div class="btn-row" style="gap:8px"><button class="btn primary" data-op="menu-add">＋ 新增</button><button class="btn" data-op="menu-enable">启用</button><button class="btn" data-op="menu-disable">停用</button></div>
+  <span class="count">共 7 条 · 示例</span></div>
+      <div data-menu-table>
+        <div class="table-wrap"><table class="flash-table" data-component="FlashTable"><thead><tr><th></th><th>序号</th><th>菜单编号</th><th>菜单名称</th><th>状态</th><th>打开方式</th><th>菜单来源</th><th>URL</th><th>菜单栏显隐</th><th>所属终端</th><th>更新人</th><th>更新时间</th><th>操作</th></tr></thead><tbody><tr><td><input type="checkbox" aria-label="选择数据源注册"></td><td>1</td><td><span class="mono">SYS_DATASOURCE</span></td><td>数据源注册</td><td><span data-stcell><span class="dot-status" style="color:var(--flash-status-running)">启用</span></span></td><td>当前窗口</td><td>系统自带</td><td><span class="mono">/design-datasource.html</span></td><td>显示</td><td>PC端、移动端</td><td>shaokun</td><td>2026-11-02 14:22</td><td><span class="link-ops"><a href="#" data-op="m-edit" data-name="数据源注册">编辑</a><a href="#" data-op="m-copy" data-name="数据源注册">复制</a><a href="#" data-op="m-toggle" data-toggle-link data-name="数据源注册">停用</a></span></td></tr><tr><td><input type="checkbox" aria-label="选择数据接入服务"></td><td>2</td><td><span class="mono">SYS_CONNECT</span></td><td>数据接入服务</td><td><span data-stcell><span class="dot-status" style="color:var(--flash-status-running)">启用</span></span></td><td>当前窗口</td><td>系统自带</td><td><span class="mono">/design-data-connect.html</span></td><td>显示</td><td>PC端</td><td>shaokun</td><td>2026-11-03 09:10</td><td><span class="link-ops"><a href="#" data-op="m-edit" data-name="数据接入服务">编辑</a><a href="#" data-op="m-copy" data-name="数据接入服务">复制</a><a href="#" data-op="m-toggle" data-toggle-link data-name="数据接入服务">停用</a></span></td></tr><tr><td><input type="checkbox" aria-label="选择Copilot"></td><td>3</td><td><span class="mono">AI_COPILOT</span></td><td>Copilot</td><td><span data-stcell><span class="dot-status" style="color:var(--flash-status-running)">启用</span></span></td><td>当前窗口</td><td>综合开发工具</td><td><span class="mono">/design-copilot.html</span></td><td>显示</td><td>PC端</td><td>zhangwei</td><td>2026-10-25 11:02</td><td><span class="link-ops"><a href="#" data-op="m-edit" data-name="Copilot">编辑</a><a href="#" data-op="m-copy" data-name="Copilot">复制</a><a href="#" data-op="m-toggle" data-toggle-link data-name="Copilot">停用</a></span></td></tr><tr><td><input type="checkbox" aria-label="选择APP 运行管理"></td><td>4</td><td><span class="mono">APP_RUNTIME</span></td><td>APP 运行管理</td><td><span data-stcell><span class="dot-status" style="color:var(--flash-status-running)">启用</span></span></td><td>新建窗口</td><td>app运行管理</td><td><span class="mono">/design-apps.html</span></td><td>显示</td><td>PC端、移动端</td><td>admin</td><td>2026-10-01 08:00</td><td><span class="link-ops"><a href="#" data-op="m-edit" data-name="APP 运行管理">编辑</a><a href="#" data-op="m-copy" data-name="APP 运行管理">复制</a><a href="#" data-op="m-toggle" data-toggle-link data-name="APP 运行管理">停用</a></span></td></tr><tr><td><input type="checkbox" aria-label="选择报表中心"></td><td>5</td><td><span class="mono">RPT_CENTER</span></td><td>报表中心</td><td><span data-stcell><span class="dot-status" style="color:var(--flash-error)">停用</span></span></td><td>当前窗口</td><td>报表开发工具</td><td><span class="mono">/report.html</span></td><td>隐藏</td><td>PC端</td><td>admin</td><td>2026-09-12 10:00</td><td><span class="link-ops"><a href="#" data-op="m-edit" data-name="报表中心">编辑</a><a href="#" data-op="m-copy" data-name="报表中心">复制</a><a href="#" data-op="m-toggle" data-toggle-link data-name="报表中心">启用</a></span></td></tr><tr><td><input type="checkbox" aria-label="选择基础配置"></td><td>6</td><td><span class="mono">SYS_BASIC</span></td><td>基础配置</td><td><span data-stcell><span class="dot-status" style="color:var(--flash-status-running)">启用</span></span></td><td>当前窗口</td><td>系统自带</td><td><span class="mono">/design-basic-config.html</span></td><td>显示</td><td>PC端</td><td>admin</td><td>2026-11-06 16:40</td><td><span class="link-ops"><a href="#" data-op="m-edit" data-name="基础配置">编辑</a><a href="#" data-op="m-copy" data-name="基础配置">复制</a><a href="#" data-op="m-toggle" data-toggle-link data-name="基础配置">停用</a></span></td></tr><tr><td><input type="checkbox" aria-label="选择企业运营配置"></td><td>7</td><td><span class="mono">SYS_ENTER</span></td><td>企业运营配置</td><td><span data-stcell><span class="dot-status" style="color:var(--flash-status-running)">启用</span></span></td><td>当前窗口</td><td>菜单新增</td><td><span class="mono">/design-enterprise-config.html</span></td><td>显示</td><td>PC端</td><td>admin</td><td>2026-11-06 16:41</td><td><span class="link-ops"><a href="#" data-op="m-edit" data-name="企业运营配置">编辑</a><a href="#" data-op="m-copy" data-name="企业运营配置">复制</a><a href="#" data-op="m-toggle" data-toggle-link data-name="企业运营配置">停用</a></span></td></tr></tbody></table></div>
+      </div>
+      <div class="note warn">「数据字典」子菜单在线上存在，但其前端源码不在 supbase 工作区（仅 systemcode 后端 API：模块→编码→编码值），故本页未还原文典 UI。</div>
+    </div>
+  </div></div>
+    <div data-section="security" hidden>
+  <div data-tabgrp>
+    <div class="tabs"><a href="#sec-xss" data-tab="sec-xss" class="is-active">应用防护</a><a href="#sec-bl" data-tab="sec-bl" class="">访问黑白名单</a><a href="#sec-pwd" data-tab="sec-pwd" class="">密码策略</a><a href="#sec-sso" data-tab="sec-sso" class="">会话超时</a></div>
+    <div data-section="sec-xss" >
+  <div class="card" style="max-width:760px">
+    <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">允许以下域名跨域访问</span></label>
+    <div class="f-ctrl"><input  value="" placeholder=""></div>
+    
+    <div class="f-err"></div>
+  </div>
+    <div class="field" style="align-items:flex-start" >
+    <label style="width:120px;flex:none;padding-top:7px"><span class="">子域共享cookie</span></label>
+    <div class="f-ctrl" style="flex:1;max-width:none">
+      <label class="switch"><input type="checkbox"><i></i></label>
+      
+      
+    </div>
+  </div>
+    <div class="field" style="align-items:flex-start" >
+    <label style="width:120px;flex:none;padding-top:7px"><span class="">路径泄露防护</span></label>
+    <div class="f-ctrl" style="flex:1;max-width:none">
+      <label class="switch"><input type="checkbox" checked><i></i></label>
+      
+      
+    </div>
+  </div>
+    <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">敏感信息脱敏处理</span></label>
+    <div class="f-ctrl"><select ><option selected>完全脱敏</option><option >关闭</option></select></div>
+    
+    <div class="f-err"></div>
+  </div>
+    <div class="btn-row" style="margin-top:8px"><button class="btn primary" data-op="xss-save">确定</button></div>
+  </div></div>
+    <div data-section="sec-bl" hidden>
+  <div class="card">
+    <div class="field" style="align-items:flex-start" >
+    <label style="width:120px;flex:none;padding-top:7px"><span class="">设置模式</span></label>
+    <div class="f-ctrl" style="flex:1;max-width:none">
+      <div style="display:flex;gap:16px;padding-top:6px"><label style="width:auto"><input type="radio" name="bl-mode" value="white" checked> 白名单</label><label style="width:auto"><input type="radio" name="bl-mode" value="black"> 黑名单</label></div>
+      
+      
+    </div>
+  </div>
+    <div class="note warn">黑名单或白名单只能设置其中一个。设置后如果要切换设置模式，只能清除已维护数据、才能切换</div>
+    <div class="note ">白名单：只有名单内 IP 能访问 supOS；首次添加自动加入当前终端 IP。</div>
+    <div class="toolbar" data-component="Toolbar" style="flex-wrap:wrap">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"></div>
+  <span class="spacer"></span>
+  <div class="btn-row" style="gap:8px"><button class="btn primary" data-op="ip-add" data-ip-add>新增白名单IP</button><button class="btn" data-op="ip-batch-del">删除</button></div>
+  <span class="count">共 3 条 · 示例</span></div>
+    <div data-ip-table>
+      <div class="table-wrap"><table class="flash-table" data-component="FlashTable"><thead><tr><th></th><th>序号</th><th>访问IP</th><th>加入时间</th><th>操作</th></tr></thead><tbody></tbody></table></div>
+    </div>
+  </div></div>
+    <div data-section="sec-pwd" hidden>
+  <div class="card" style="max-width:860px" data-pwd-card>
+    <div class="field" style="align-items:flex-start" >
+    <label style="width:120px;flex:none;padding-top:7px"><span class="">密码必须包含</span></label>
+    <div class="f-ctrl" style="flex:1;max-width:none">
+      <div style="display:flex;gap:16px;flex-wrap:wrap;padding-top:6px"><label style="width:auto"><input type="checkbox" checked> 大小写字母</label><label style="width:auto"><input type="checkbox" checked> 数字</label><label style="width:auto"><input type="checkbox" > 特殊字符</label></div><div class="f-extra">特殊字符仅支持!@#$%^&*();'?.,</div>
+      
+      
+    </div>
+  </div>
+    <div class="field" style="align-items:flex-start" data-len-field>
+    <label style="width:120px;flex:none;padding-top:7px"><span class="">密码长度</span></label>
+    <div class="f-ctrl" style="flex:1;max-width:none">
+      <div style="display:flex;align-items:center;gap:8px;padding-top:4px">
+      <input type="number" value="8" min="8" max="32" data-pwd-min style="width:90px"><span class="muted">~</span>
+      <input type="number" value="32" min="8" max="32" data-pwd-max style="width:90px"></div><div class="f-err">最小值不能大于最大值</div>
+      
+      
+    </div>
+  </div>
+    <div class="field" style="align-items:flex-start" >
+    <label style="width:120px;flex:none;padding-top:7px"><span class="">首次登录修改密码</span></label>
+    <div class="f-ctrl" style="flex:1;max-width:none">
+      <label class="switch"><input type="checkbox" checked><i></i></label>
+      
+      
+    </div>
+  </div>
+    <div class="field" style="align-items:flex-start" >
+    <label style="width:120px;flex:none;padding-top:7px"><span class="">密码使用期限</span></label>
+    <div class="f-ctrl" style="flex:1;max-width:none">
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><label class="switch"><input type="checkbox" checked><i></i></label><span class="muted">密码更新周期</span><input type="number" value="90" min="1" style="width:90px"><span class="muted">天</span></div>
+      
+      
+    </div>
+  </div>
+    <div class="field" style="align-items:flex-start" >
+    <label style="width:120px;flex:none;padding-top:7px"><span class="">密码锁定</span></label>
+    <div class="f-ctrl" style="flex:1;max-width:none">
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><label class="switch"><input type="checkbox" checked><i></i></label><span class="muted">密码错误次数</span><input type="number" value="5" min="1" style="width:80px"><span class="muted">次</span><span class="muted">锁定时间</span><input type="number" value="30" min="1" style="width:80px"><span class="muted">分钟</span><label style="width:auto"><input type="checkbox"> 永久</label></div>
+      
+      
+    </div>
+  </div>
+    <div class="field" style="align-items:flex-start" >
+    <label style="width:120px;flex:none;padding-top:7px"><span class="">验证码</span></label>
+    <div class="f-ctrl" style="flex:1;max-width:none">
+      <label class="switch"><input type="checkbox" checked><i></i></label>
+      
+      
+    </div>
+  </div>
+    <div class="btn-row" style="margin-top:8px">
+      <button class="btn primary" data-op="pwd-save">确定</button>
+      <button class="btn" data-op="pwd-reset">恢复默认</button>
+    </div>
+  </div></div>
+    <div data-section="sec-sso" hidden>
+  <div class="card" style="max-width:760px" data-sso-card>
+    <div class="field" style="align-items:flex-start" >
+    <label style="width:120px;flex:none;padding-top:7px"><span class="">移动端登录过期时间</span></label>
+    <div class="f-ctrl" style="flex:1;max-width:none">
+      <div style="display:flex;align-items:center;gap:8px"><input type="number" value="1440" min="1" style="width:110px"><select style="width:90px"><option >分钟</option><option >小时</option><option >天</option></select></div>
+      
+      
+    </div>
+  </div>
+    <div class="field" style="align-items:flex-start" >
+    <label style="width:120px;flex:none;padding-top:7px"><span class="">网页端登录过期时间</span></label>
+    <div class="f-ctrl" style="flex:1;max-width:none">
+      <div style="display:flex;align-items:center;gap:8px"><input type="number" value="8" min="1" style="width:110px"><select style="width:90px"><option >分钟</option><option selected>小时</option><option >天</option></select></div>
+      
+      
+    </div>
+  </div>
+    <div class="field" style="align-items:flex-start" data-sso-field>
+    <label style="width:120px;flex:none;padding-top:7px"><span class="req">唯一登录</span></label>
+    <div class="f-ctrl" style="flex:1;max-width:none">
+      <div style="display:flex;gap:16px;flex-wrap:wrap;padding-top:6px"><label style="width:auto"><input type="radio" name="sso" > 多端分别唯一登录</label><label style="width:auto"><input type="radio" name="sso" > 多端共同唯一登录</label></div><div class="f-err">请选择唯一登录！</div>
+      
+      
+    </div>
+  </div>
+    <div class="btn-row" style="margin-top:8px">
+      <button class="btn primary" data-op="sso-save">确定</button>
+      <button class="btn" data-op="sso-reset">恢复默认</button>
+    </div>
+  </div></div>
+  </div></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "title": "示例应用产品原型",
+  "account": "admin",
+  "withDesign": false,
+  "app": {
+    "name": "示例应用",
+    "slug": "demo",
+    "menus": [
+      "总览",
+      "业务台账",
+      "运行看板",
+      "报表"
+    ],
+    "route": {
+      "param": "view"
+    },
+    "note": "示例应用 · 离线占位数据"
+  }
+}

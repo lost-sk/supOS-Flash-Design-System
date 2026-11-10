@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>数据接入服务 · supOS Flash 产品原型</title>
+<link rel="stylesheet" href="assets/flash.css">
+
+<script src="assets/data.js" defer></script>
+<script src="assets/shell.js" defer></script>
+<script src="assets/interact.js" defer></script>
+<script src="assets/page/dataconnect.js" defer></script>
+</head>
+<body data-mode="design" data-nav="design-data-connect.html" data-title="数据接入服务">
+<div class="tabbar" data-component="TabBar"><span class="tab">数据接入服务<span class="close">×</span></span></div><div class="sys-notice" data-component="SysNotice"><img src="assets/brand/smnIcon-CBGfisYv.png" alt=""><span>系统维护通知：平台将于本周日 22:00–23:00 进行例行维护，届时部分服务短暂不可用。</span><a class="more" href="#">查看详情 ›</a></div><div class="crumb"><span>设计期</span><span>数据平台</span><span>连接服务</span><span>数据接入服务</span></div><div class="page-head"><div><h1>数据接入服务</h1><p>Node-RED customApp（os_data_connection）；主体为数据源注册中 IIoT 采集设备节点的可实证表单（UUID 复制 / 部署来源 / 通讯加密密钥）</p></div><div class="btn-row"></div></div>
+  <div class="note ">数据接入服务页面本身为 Node-RED customApp，界面源码不在工作区，以下为数据源注册中 IIoT 采集设备节点的可实证表单</div>
+  <div class="mono muted" style="margin:-6px 0 12px 2px">customApp：appId nodered · 链接 /#/os/customApp/os_data_connection</div>
+  <div class="split tree-main">
+    <section class="card" data-component="FlashCard"><div class="card-head"><h3>子节点</h3></div><div class="tree" data-component="DataconnectSider">
+      <div class="tree-row is-active">IIoT采集设备</div>
+      <div class="tree-children"><div class="tree-row" data-op="pick" data-name="IoT网关"><span class="dot" style="background:var(--flash-collect-doing)"></span>IoT网关</div><div class="tree-row" data-op="pick" data-name="REST API采集器"><span class="dot" style="background:var(--flash-collect-doing)"></span>REST API采集器</div><div class="tree-row" data-op="pick" data-name="WebSocket采集器"><span class="dot" style="background:var(--flash-collect-doing)"></span>WebSocket采集器</div><div class="tree-row" data-op="pick" data-name="模拟采集器"><span class="dot" style="background:var(--flash-collect-doing)"></span>模拟采集器</div><div class="tree-row" data-op="pick" data-name="视频采集器"><span class="dot" style="background:var(--flash-collect-doing)"></span>视频采集器</div><div class="tree-row" data-op="pick" data-name="时序库连接器"><span class="dot" style="background:var(--flash-collect-doing)"></span>时序库连接器</div><div class="tree-row" data-op="pick" data-name="MQTT 网关"><span class="dot" style="background:var(--flash-collect-doing)"></span>MQTT 网关</div></div>
+    </div></section>
+    <div>
+      <div class="toolbar" data-component="Toolbar" style="flex-wrap:wrap">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--flash-text-tertiary)">节点名称
+  <input style="width:160px;height:28px" placeholder="节点名称"></span></div>
+  <span class="spacer"></span>
+  <div class="btn-row" style="gap:8px"><button class="btn primary" data-op="deploy">部署</button><button class="btn">刷新</button></div>
+  <span class="count">共 7 条 · 示例</span></div>
+      <div class="grid cols-2">
+  <section class="card" data-component="FlashCard">
+    <div class="card-head"><h3>Node-Red 表单</h3><span class="sub mono">IIoT/NodeRED.tsx · 可实证</span></div>
+    <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">描述</span></label>
+    <div class="f-ctrl"><input  value="Node-RED数据流接入" placeholder=""></div>
+    
+    <div class="f-err"></div>
+  </div>
+    <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">UUID标识</span></label>
+    <div class="f-ctrl"><div style="display:flex;gap:8px;align-items:center"><input disabled="" class="mono" style="background:var(--flash-bg-page)" value="6f2a91c0.3e84bd17" placeholder=""><button class="btn sm" data-op="copy" data-copy="6f2a91c0.3e84bd17" data-msg="UUID 已复制">复制</button></div></div>
+    
+    <div class="f-err"></div>
+  </div>
+    <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">部署来源</span></label>
+    <div class="f-ctrl"><label style="display:inline-flex;align-items:center;gap:5px;margin-right:16px;font-size:12px;color:var(--flash-text-secondary);cursor:pointer"><input type="radio" name="dep-src" value="内置" checked>内置</label><label style="display:inline-flex;align-items:center;gap:5px;margin-right:16px;font-size:12px;color:var(--flash-text-secondary);cursor:pointer"><input type="radio" name="dep-src" value="外置" >外置</label></div>
+    
+    <div class="f-err"></div>
+  </div>
+    <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">时间戳来源</span></label>
+    <div class="f-ctrl"><label style="display:inline-flex;align-items:center;gap:5px;margin-right:16px;font-size:12px;color:var(--flash-text-secondary);cursor:pointer"><input type="radio" name="ts-src-node" value="服务器时间" checked>服务器时间</label><label style="display:inline-flex;align-items:center;gap:5px;margin-right:16px;font-size:12px;color:var(--flash-text-secondary);cursor:pointer"><input type="radio" name="ts-src-node" value="采集设备时间" >采集设备时间</label></div>
+    
+    <div class="f-err"></div>
+  </div>
+    <div data-dep-ip hidden><div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">设备 IP</span></label>
+    <div class="f-ctrl"><input  value="" placeholder="冗余 IP 以'|'分割"></div>
+    
+    <div class="f-err"></div>
+  </div></div>
+    <div class="btn-row" style="margin-top:14px;justify-content:flex-end"><button class="btn" data-op="form-cancel">取 消</button><button class="btn primary" data-op="form-ok">确 定</button></div>
+  </section>
+  <section class="card" data-component="FlashCard">
+    <div class="card-head"><h3>时序数据采集器表单</h3><span class="sub mono">SupCollector.tsx · 可实证</span></div>
+    <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">描述</span></label>
+    <div class="f-ctrl"><input  value="平台官方提供的时序数据采集器" placeholder=""></div>
+    
+    <div class="f-err"></div>
+  </div>
+    <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">UUID标识</span></label>
+    <div class="f-ctrl"><div style="display:flex;gap:8px;align-items:center"><input disabled="" class="mono" style="background:var(--flash-bg-page)" value="e5a37f28-91bc-4d6e-a2c7-58f0d3b19c44" placeholder=""><button class="btn sm" data-op="copy" data-copy="e5a37f28-91bc-4d6e-a2c7-58f0d3b19c44" data-msg="UUID 已复制">复制</button></div></div>
+    
+    <div class="f-err"></div>
+  </div>
+    <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">时间戳来源</span></label>
+    <div class="f-ctrl"><label style="display:inline-flex;align-items:center;gap:5px;margin-right:16px;font-size:12px;color:var(--flash-text-secondary);cursor:pointer"><input type="radio" name="ts-src-col" value="服务器时间" checked>服务器时间</label><label style="display:inline-flex;align-items:center;gap:5px;margin-right:16px;font-size:12px;color:var(--flash-text-secondary);cursor:pointer"><input type="radio" name="ts-src-col" value="采集设备时间" >采集设备时间</label></div>
+    
+    <div class="f-err"></div>
+  </div>
+    <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">通讯加密</span></label>
+    <div class="f-ctrl"><label class="switch"><input type="checkbox" data-sw-enc checked><i></i></label></div>
+    
+    <div class="f-err"></div>
+  </div>
+    <div data-sec-key><div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">密钥</span></label>
+    <div class="f-ctrl"><div style="display:flex;gap:8px;align-items:center"><input readonly="" class="mono" style="background:var(--flash-bg-page)" value="3d19a8c2f7e64b509ac1d6e84f02b7a3" placeholder=""><button class="btn sm" data-op="gen-key">生成</button><button class="btn sm" data-op="copy" data-keycopy="1">复制</button></div></div>
+    
+    <div class="f-err"></div>
+  </div></div>
+    <div class="btn-row" style="margin-top:14px;justify-content:flex-end"><button class="btn" data-op="form-cancel">取 消</button><button class="btn primary" data-op="form-ok">确 定</button></div>
+  </section></div>
+      <div class="note ">子节点共 7 类：IoT网关、REST API采集器、WebSocket采集器、模拟采集器、视频采集器、时序库连接器、MQTT 网关；其节点表单未在工作区实证，暂不还原。</div>
+    </div>
+  </div>
+</body>
+</html>

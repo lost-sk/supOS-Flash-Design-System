@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>大模型网关 · supOS Flash 产品原型</title>
+<link rel="stylesheet" href="assets/flash.css">
+
+<script src="assets/data.js" defer></script>
+<script src="assets/shell.js" defer></script>
+<script src="assets/interact.js" defer></script>
+<script src="assets/page/llmgateway.js" defer></script>
+</head>
+<body data-mode="design" data-nav="design-llm-gateway.html" data-title="大模型网关">
+<div class="tabbar" data-component="TabBar"><span class="tab">大模型网关<span class="close">×</span></span></div><div class="sys-notice" data-component="SysNotice"><img src="assets/brand/smnIcon-CBGfisYv.png" alt=""><span>系统维护通知：平台将于本周日 22:00–23:00 进行例行维护，届时部分服务短暂不可用。</span><a class="more" href="#">查看详情 ›</a></div><div class="crumb"><span>设计期</span><span>AI 与工具</span><span>大模型网关</span></div><div class="page-head"><div><h1>大模型网关</h1><p>统一接入对话 / 向量 / 重排等模型能力（二级交互：渠道管理 / 调用日志 / 设置）</p></div><div class="btn-row"></div></div>
+  <div class="note ">本页文案取自官方手册《大模型网关》（前端 tsx 源码不在工作区，文档实证）。</div>
+  <div class="tabs"><a href="#lg-models" data-tab="lg-models" class="is-active">模型</a><a href="#lg-channels" data-tab="lg-channels" class="">渠道</a><a href="#lg-logs" data-tab="lg-logs" class="">调用日志</a><a href="#lg-settings" data-tab="lg-settings" class="">设置</a></div>
+  <div data-section="lg-models" >
+    <div class="toolbar" data-component="Toolbar" style="flex-wrap:wrap">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--flash-text-tertiary)">模型名称
+  <input style="width:160px;height:28px" placeholder="模型名称"></span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--flash-text-tertiary)">能力标签
+  <select data-cap-filter style="width:150px;height:28px"><option>全部能力</option><option>对话</option><option>向量 1024 维</option><option>重排序</option><option>VLM</option></select></span></div>
+  <span class="spacer"></span>
+  <div class="btn-row" style="gap:8px"><button class="btn sm" data-op="search">搜索</button><button class="btn sm" data-op="reset">重置</button></div>
+  <span class="count">共 4 条 · 示例</span></div>
+    <div class="table-wrap"><table class="flash-table" data-component="FlashTable"><thead><tr><th>模型</th><th>能力标签</th><th>上下文</th><th>渠道数</th><th>可用状态</th><th>详情</th></tr></thead><tbody><tr><td><span class="mono">deepseek-v3</span> <a href="#" data-op="copy-model" data-name="deepseek-v3" title="复制模型名称">⧉</a></td><td><span class="tag info">对话</span></td><td>64K</td><td>2</td><td><span class="tag ok">完全可用</span></td><td><a href="#" data-op="model-detail" data-name="deepseek-v3">详情</a></td></tr><tr><td><span class="mono">qwen3-embedding-0.6b</span> <a href="#" data-op="copy-model" data-name="qwen3-embedding-0.6b" title="复制模型名称">⧉</a></td><td><span class="tag info">向量 1024 维</span></td><td>32K</td><td>1</td><td><span class="tag ok">完全可用</span></td><td><a href="#" data-op="model-detail" data-name="qwen3-embedding-0.6b">详情</a></td></tr><tr><td><span class="mono">gte-multilingual-reranker-base</span> <a href="#" data-op="copy-model" data-name="gte-multilingual-reranker-base" title="复制模型名称">⧉</a></td><td><span class="tag info">重排序</span></td><td>—</td><td>1</td><td><span class="tag warn">部分可用</span></td><td><a href="#" data-op="model-detail" data-name="gte-multilingual-reranker-base">详情</a></td></tr><tr><td><span class="mono">qwen2.5-vl-7b</span> <a href="#" data-op="copy-model" data-name="qwen2.5-vl-7b" title="复制模型名称">⧉</a></td><td><span class="tag info">VLM</span></td><td>32K</td><td>1</td><td><span class="tag err">不可用</span></td><td><a href="#" data-op="model-detail" data-name="qwen2.5-vl-7b">详情</a></td></tr></tbody></table></div></div>
+  <div data-section="lg-channels" hidden>
+    <div class="toolbar" data-component="Toolbar" style="flex-wrap:wrap">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--flash-text-tertiary)">渠道名称
+  <input style="width:160px;height:28px" placeholder="渠道名称"></span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--flash-text-tertiary)">能力标签
+  <select data-cap-filter style="width:150px;height:28px"><option>全部能力</option><option>对话</option><option>向量 1024 维</option><option>重排序</option><option>VLM</option></select></span></div>
+  <span class="spacer"></span>
+  <div class="btn-row" style="gap:8px"><button class="btn sm" data-op="search">搜索</button><button class="btn sm" data-op="reset">重置</button><button class="btn sm primary" data-op="new-channel">＋ 新建渠道</button></div>
+  <span class="count">共 3 条 · 示例</span></div>
+    <div class="table-wrap"><table class="flash-table" data-component="FlashTable"><thead><tr><th>渠道名称</th><th>模型</th><th>响应时间</th><th>状态</th><th>单模型测速</th><th>批量测速</th><th>操作</th></tr></thead><tbody><tr><td><span title="平台内置">🛡</span> 平台内置模型服务</td><td><span class="tag ">deepseek-v3</span> <span class="tag ">qwen3-embedding-0.6b</span> <span class="tag ">gte-multilingual-reranker-base</span> <span class="tag ">qwen2.5-vl-7b</span> <span class="tag ">qwen3-32b</span> <span class="muted">+2</span></td><td>320 ms</td><td><span style="display:inline-flex;align-items:center;gap:8px"><label class="switch"><input type="checkbox" data-ch-switch checked><i></i></label><span data-ch-state class="dot-status">启用</span></span></td><td><button class="btn sm" data-op="speed-one">单模型测速</button></td><td><button class="btn sm" data-op="speed-batch">批量测速</button></td><td><span class="link-ops"><a href="#" data-op="ch-edit" data-ch="ch1">编辑</a><a href="#" class="danger" data-op="ch-del" data-ch="ch1">删除</a></span></td></tr><tr><td>精达车间专用渠道</td><td><span class="tag ">deepseek-v3</span> <span class="tag ">qwen3-embedding-0.6b</span> <span class="tag ">qwen3-32b</span></td><td>280 ms</td><td><span style="display:inline-flex;align-items:center;gap:8px"><label class="switch"><input type="checkbox" data-ch-switch checked><i></i></label><span data-ch-state class="dot-status">启用</span></span></td><td><button class="btn sm" data-op="speed-one">单模型测速</button></td><td><button class="btn sm" data-op="speed-batch">批量测速</button></td><td><span class="link-ops"><a href="#" data-op="ch-edit" data-ch="ch2">编辑</a><a href="#" class="danger" data-op="ch-del" data-ch="ch2">删除</a></span></td></tr><tr><td>备用推理渠道</td><td><span class="tag ">deepseek-r1-distill-qwen-32b</span></td><td>—</td><td><span style="display:inline-flex;align-items:center;gap:8px"><label class="switch"><input type="checkbox" data-ch-switch ><i></i></label><span data-ch-state class="dot-status">自动禁用</span></span></td><td><button class="btn sm" data-op="speed-one">单模型测速</button></td><td><button class="btn sm" data-op="speed-batch">批量测速</button></td><td><span class="link-ops"><a href="#" data-op="ch-edit" data-ch="ch3">编辑</a><a href="#" class="danger" data-op="ch-del" data-ch="ch3">删除</a></span></td></tr></tbody></table></div></div>
+  <div data-section="lg-logs" hidden>
+    <div class="segmented" data-log-mode style="margin-bottom:10px">
+      <a class="is-active" data-log-tab="全部">全部</a><a data-log-tab="消费">消费</a><a data-log-tab="管理">管理</a><a data-log-tab="系统">系统</a>
+    </div>
+    <div class="toolbar" data-component="Toolbar" style="flex-wrap:wrap">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--flash-text-tertiary)">起始时间 <input type="date" style="height:28px"></span>
+       <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--flash-text-tertiary)">结束时间 <input type="date" style="height:28px"></span>
+       <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--flash-text-tertiary)">渠道 ID
+  <input style="width:160px;height:28px" placeholder="渠道 ID"></span></div>
+  <span class="spacer"></span>
+  <div class="btn-row" style="gap:8px"><button class="btn sm" data-op="search">搜索</button><button class="btn sm" data-op="reset">重置</button></div>
+  <span class="count">共 4 条 · 示例</span></div>
+    <div class="table-wrap"><table class="flash-table" data-component="FlashTable"><thead><tr><th>时间</th><th>渠道</th><th>令牌</th><th>类型和模型</th><th>来源 IP</th></tr></thead><tbody data-log-body><tr><td><td class="mono">2026-11-10 09:41:02</td></td><td><td>平台内置模型服务</td></td><td><td class="mono">app-demo-001</td></td><td><td data-log-type="消费"><span class="tag info">消费</span> <span class="mono">deepseek-v3</span></td></td><td><td class="mono">10.12.4.15</td></td></tr><tr><td><td class="mono">2026-11-10 09:38:44</td></td><td><td>平台内置模型服务</td></td><td><td class="mono">app-demo-001</td></td><td><td data-log-type="消费"><span class="tag info">消费</span> <span class="mono">qwen3-embedding-0.6b</span></td></td><td><td class="mono">10.12.4.15</td></td></tr><tr><td><td class="mono">2026-11-10 09:30:11</td></td><td><td>精达车间专用渠道</td></td><td><td class="mono">app-jinda-007</td></td><td><td data-log-type="管理"><span class="tag warn">管理</span> <span class="mono">获取模型列表</span></td></td><td><td class="mono">172.21.6.2</td></td></tr><tr><td><td class="mono">2026-11-10 08:00:00</td></td><td><td>平台内置模型服务</td></td><td><td class="mono">system</td></td><td><td data-log-type="系统"><span class="tag ">系统</span> <span class="mono">渠道健康检查</span></td></td><td><td class="mono">127.0.0.1</td></td></tr></tbody></table></div></div>
+  <div data-section="lg-settings" hidden>
+  <div class="card" style="max-width:640px">
+    <div class="card-head"><h3>日志设置</h3></div>
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+      <label class="switch"><input type="checkbox" checked><i></i></label><span style="font-size:13px">启用日志消费</span>
+      <span style="flex:1"></span>
+      <button class="btn sm primary" data-op="save-log">保存日志设置</button>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <span style="font-size:12px;color:var(--flash-text-secondary)">日志清理时间</span>
+      <input type="number" value="30" min="1" style="width:110px;height:28px">
+      <button class="btn sm" data-op="clean-log">清理历史日志</button>
+    </div>
+  </div>
+  <div class="card" style="max-width:640px">
+    <div class="card-head"><h3>监控设置</h3></div>
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><label class="switch"><input type="checkbox" checked><i></i></label><span style="font-size:13px">失败时自动禁用通道</span></div>
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><label class="switch"><input type="checkbox" checked><i></i></label><span style="font-size:13px">成功时自动启用通道</span></div>
+    <div style="display:flex;justify-content:flex-end"><button class="btn sm primary" data-op="save-monitor">保存监控设置</button></div>
+  </div></div>
+</body>
+</html>

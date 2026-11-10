@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>知识库 · supOS Flash 产品原型</title>
+<link rel="stylesheet" href="assets/flash.css">
+
+<script src="assets/data.js" defer></script>
+<script src="assets/shell.js" defer></script>
+<script src="assets/interact.js" defer></script>
+<script src="assets/page/knowledge.js" defer></script>
+</head>
+<body data-mode="design" data-nav="design-knowledge.html" data-title="知识库">
+<div class="tabbar" data-component="TabBar"><span class="tab">知识库<span class="close">×</span></span></div><div class="sys-notice" data-component="SysNotice"><img src="assets/brand/smnIcon-CBGfisYv.png" alt=""><span>系统维护通知：平台将于本周日 22:00–23:00 进行例行维护，届时部分服务短暂不可用。</span><a class="more" href="#">查看详情 ›</a></div><div class="crumb"><span>设计期</span><span>AI 与工具</span><span>知识库</span></div><div class="page-head"><div><h1>知识库</h1><p>知识库与文档检索（二级交互：文档列表 / 上传 / AI 模型 / 检索测试）</p></div><div class="btn-row"></div></div>
+  <div class="toolbar" data-component="Toolbar" style="flex-wrap:wrap">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span style="font-size:13px;font-weight:500;color:var(--flash-text-strong)">知识库</span>
+     <span class="muted">2 个知识库</span>
+     <input style="width:200px;height:28px" placeholder="搜索知识库" data-kb-search></div>
+  <span class="spacer"></span>
+  <div class="btn-row" style="gap:8px"><button class="btn primary" data-op="new-kb">＋ 新建知识库</button></div>
+  <span class="count">共 2 条 · 示例</span></div>
+
+  <div data-view="kb-list">
+    <div class="grid cols-2" data-kb-grid>
+  <section class="card" style="cursor:pointer;margin:0" data-op="open-kb" data-kb="cnc" data-kb-search="CNC 维修手册 CNC 机床报警代码、故障排查与维修 SOP 文档集">
+    <div style="display:flex;gap:12px;align-items:flex-start">
+      <span style="flex:none;width:40px;height:40px;border-radius:10px;background:var(--flash-primary-soft);color:var(--flash-primary);display:grid;place-items:center;font-weight:600">C</span>
+      <div style="flex:1;min-width:0">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><b style="color:var(--flash-text-strong)">CNC 维修手册</b><span class="tag info">平台内置</span></div>
+        <div class="muted" style="margin-top:4px">CNC 机床报警代码、故障排查与维修 SOP 文档集</div>
+        <div class="muted" style="margin-top:8px">更新于 今天 09:12</div>
+      </div>
+      <button class="btn sm" data-op="kb-menu" data-kb="cnc" data-kbname="CNC 维修手册" title="更多操作">•••</button>
+    </div>
+  </section>
+  <section class="card" style="cursor:pointer;margin:0" data-op="open-kb" data-kb="point" data-kb-search="设备点检知识库 设备点检标准、巡检路线与点检记录问答">
+    <div style="display:flex;gap:12px;align-items:flex-start">
+      <span style="flex:none;width:40px;height:40px;border-radius:10px;background:var(--flash-primary-soft);color:var(--flash-primary);display:grid;place-items:center;font-weight:600">设</span>
+      <div style="flex:1;min-width:0">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><b style="color:var(--flash-text-strong)">设备点检知识库</b><span class="tag info">平台内置</span></div>
+        <div class="muted" style="margin-top:4px">设备点检标准、巡检路线与点检记录问答</div>
+        <div class="muted" style="margin-top:8px">更新于 昨天 16:40</div>
+      </div>
+      <button class="btn sm" data-op="kb-menu" data-kb="point" data-kbname="设备点检知识库" title="更多操作">•••</button>
+    </div>
+  </section></div>
+    <div class="empty" data-kb-empty hidden><div class="empty-mark">▤</div><span>还没有知识库</span></div>
+  </div>
+
+  <div data-view="doc-list" hidden>
+    <div class="pane-head">
+      <div style="display:flex;align-items:center;gap:8px">
+        <button class="btn sm" data-op="back-kb">← 返回</button>
+        <b data-doc-kb>CNC 维修手册</b><span class="muted">文档列表</span>
+      </div>
+      <div class="btn-row" style="align-items:center">
+        <button class="btn sm" data-op="retrieval">检索测试</button>
+        <a href="#" class="muted" data-op="my-processing">我的处理</a>
+        <button class="btn sm primary" data-op="upload">上传文件</button>
+      </div>
+    </div>
+    <div class="table-wrap"><table class="flash-table" data-component="FlashTable"><thead><tr><th>文档名称</th><th>状态</th><th>大小</th><th>文档分类</th><th>上传时间</th><th>操作</th></tr></thead><tbody data-doc-body><tr><td>CNC 机床报警代码手册 <span class="tag info">v1</span></td><td><span class="tag ok">可检索</span></td><td>2.4 MB</td><td>维修手册</td><td>2026-11-01 10:20</td><td><span class="link-ops"><a href="#" data-op="doc-view" data-name="CNC 机床报警代码手册">查看</a><a href="#" data-op="upload-ver" data-name="CNC 机床报警代码手册">上传新版本</a><a href="#" class="danger" data-op="doc-del" data-name="CNC 机床报警代码手册">删除</a></span></td></tr><tr><td>FANUC 系统维修手册 <span class="tag info">v1</span></td><td><span class="tag info">处理中</span></td><td>5.1 MB</td><td>操作手册</td><td>2026-11-10 09:05</td><td><span class="link-ops"><a href="#" data-op="doc-view" data-name="FANUC 系统维修手册">查看</a><a href="#" data-op="upload-ver" data-name="FANUC 系统维修手册">上传新版本</a><a href="#" class="danger" data-op="doc-del" data-name="FANUC 系统维修手册">删除</a></span></td></tr><tr><td>主轴故障排查 SOP <span class="tag info">v1</span></td><td><span class="tag err">处理失败</span></td><td>1.2 MB</td><td>维修手册</td><td>2026-11-09 18:40</td><td><span class="link-ops"><a href="#" data-op="doc-view" data-name="主轴故障排查 SOP">查看</a><a href="#" data-op="upload-ver" data-name="主轴故障排查 SOP">上传新版本</a><a href="#" class="danger" data-op="doc-del" data-name="主轴故障排查 SOP">删除</a></span></td></tr><tr><td>设备点检记录表 <span class="tag info">v1</span></td><td><span class="tag warn">等待处理</span></td><td>340 KB</td><td>点检表单</td><td>2026-11-10 08:12</td><td><span class="link-ops"><a href="#" data-op="doc-view" data-name="设备点检记录表">查看</a><a href="#" data-op="upload-ver" data-name="设备点检记录表">上传新版本</a><a href="#" class="danger" data-op="doc-del" data-name="设备点检记录表">删除</a></span></td></tr></tbody></table></div>
+  </div>
+
+  <div data-view="retrieval" hidden>
+    <div class="pane-head">
+      <div style="display:flex;align-items:center;gap:8px">
+        <button class="btn sm" data-op="back-docs">← 返回</button><b>检索测试</b>
+      </div>
+      <span class="muted">知识库检索 · 示例</span>
+    </div>
+    <div class="card">
+      <div style="display:flex;gap:10px;align-items:flex-end">
+        <textarea style="flex:1" maxlength="2000" data-retr-q placeholder="输入自然语言问题，例如：主轴过载怎么处理"></textarea>
+        <button class="btn primary" data-op="retr-search">检索</button>
+      </div>
+    </div>
+    <div class="muted" data-retr-meta hidden style="margin:10px 2px 0">本次 混合检索 · 向量/全文权重 0.7/0.3 · RRF k=60 · 精排 gte-multilingual-reranker-base</div>
+    <div data-retr-cards hidden style="margin-top:10px;display:grid;gap:10px">
+      
+  <div class="card" style="margin:0">
+    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+      <b style="color:var(--flash-text-strong)">CNC 机床报警代码手册</b>
+      <span class="tag info">v1</span><span class="tag info">正文命中</span><span class="tag ">3.2 主轴过载报警</span><span class="tag ">维修流程</span>
+      <span style="flex:1"></span>
+      <span class="link-ops"><a href="#" data-op="doc-view" data-name="CNC 机床报警代码手册">查看原文</a></span>
+    </div>
+    <p class="muted" style="margin:8px 0 0;line-height:1.8">…当主轴电机过载时，系统将触发 ALM-401 报警。应先检查负载条件与切削参数，随后检查主轴放大器与编码器线缆连接，必要时执行主轴负载重启流程…</p>
+  </div>
+      
+  <div class="card" style="margin:0">
+    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+      <b style="color:var(--flash-text-strong)">FANUC 系统维修手册</b>
+      <span class="tag info">v1</span><span class="tag info">正文命中</span><span class="tag ">4.1 主轴放大器</span>
+      <span style="flex:1"></span>
+      <span class="link-ops"><a href="#" data-op="doc-view" data-name="FANUC 系统维修手册">查看原文</a></span>
+    </div>
+    <p class="muted" style="margin:8px 0 0;line-height:1.8">…主轴过载多由加工参数超出机床额定负载引起。建议降低进给速度或切深，若报警持续，按第 4.1 节检查放大器散热与再生放电单元…</p>
+  </div>
+    </div>
+    <div class="empty" data-retr-empty><div class="empty-mark">⌕</div><span>没有可用的检索依据</span></div>
+  </div>
+</body>
+</html>

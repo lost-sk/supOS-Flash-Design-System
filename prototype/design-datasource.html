@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>数据源注册 · supOS Flash 产品原型</title>
+<link rel="stylesheet" href="assets/flash.css">
+
+<script src="assets/data.js" defer></script>
+<script src="assets/shell.js" defer></script>
+<script src="assets/interact.js" defer></script>
+<script src="assets/page/datasource.js" defer></script>
+</head>
+<body data-mode="design" data-nav="design-datasource.html" data-title="数据源注册">
+<div class="tabbar" data-component="TabBar"><span class="tab">数据源注册<span class="close">×</span></span></div><div class="sys-notice" data-component="SysNotice"><img src="assets/brand/smnIcon-CBGfisYv.png" alt=""><span>系统维护通知：平台将于本周日 22:00–23:00 进行例行维护，届时部分服务短暂不可用。</span><a class="more" href="#">查看详情 ›</a></div><div class="crumb"><span>设计期</span><span>数据平台</span><span>连接服务</span><span>数据源注册</span></div><div class="page-head"><div><h1>数据源注册</h1><p>登记外部库与采集源，供建模、联邦查询和应用消费（二级交互：注册向导 / 配置弹窗 / 元数据采集抽屉）</p></div><div class="btn-row"><button class="btn primary" data-op="add">＋ 新增</button></div></div>
+  <div class="split sider-main">
+    <section class="card" data-component="FlashCard"><div class="card-head"><h3>数据源分类</h3></div>
+      <div class="segmented" data-sider-mode><a class="is-active">业务分类</a><a>数据源分类</a></div>
+      <div style="display:flex;align-items:center;gap:6px;margin:10px 0 8px">
+        <input style="flex:1;height:28px" placeholder="输入目录名称搜索">
+        <button class="btn sm" data-op="add-cat" title="新增业务分类">＋</button>
+      </div>
+      <div class="tree" data-component="DatasourceSider">
+        <div class="tree-row is-active">全部<span class="sub" style="margin-left:auto">7</span></div>
+        <div class="tree-row">IIoT采集设备<span class="sub" style="margin-left:auto">2</span></div>
+        <div class="tree-row">数据库<span class="sub" style="margin-left:auto">1</span></div>
+        <div class="tree-row">业务系统<span class="sub" style="margin-left:auto">2</span></div>
+        <div class="tree-row">存储服务<span class="sub" style="margin-left:auto">2</span></div>
+        <div class="fm-divider" style="height:1px;background:var(--flash-border);margin:6px 0"></div>
+        <div class="tree-row">未连通的数据源<span class="sub" style="margin-left:auto">1</span></div>
+      </div></section>
+    <div>
+      <div class="toolbar" data-component="Toolbar" style="flex-wrap:wrap">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--flash-text-tertiary)">数据源名称
+  <input style="width:160px;height:28px" placeholder="数据源名称"></span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--flash-text-tertiary)">连通状态
+  <select style="width:160px;height:28px"><option>请选择连通状态</option><option>已连接</option><option>失败</option></select><input hidden style="width:160px;height:28px" placeholder="请选择连通状态"></span></div>
+  <span class="spacer"></span>
+  <div class="btn-row" style="gap:8px"><button class="btn primary" data-op="add">＋ 新增</button><button class="btn">刷新</button><button class="btn" data-op="test">测试连通性</button><button class="btn" data-op="batch-del" title="批量删除">🗑</button></div>
+  <span class="count">共 7 条 · 示例</span></div>
+      <div class="table-wrap"><table class="flash-table" data-component="FlashTable"><thead><tr><th></th><th>别名</th><th>显示名称</th><th>描述</th><th>业务分类</th><th>数据源类型</th><th>连接地址</th><th>连接状态</th><th>创建来源</th><th>更新人</th><th>更新时间</th><th>操作</th></tr></thead><tbody><tr><td></td><td>jinda_mes</td><td>精达设备台账库</td><td>设备台账与维修记录</td><td>业务系统</td><td>MySQL</td><td>106.55.100.236:3306</td><td><span class="tag ok">已连接</span></td><td>手动新增</td><td>shaokun</td><td>2026-11-02 14:22</td><td><span class="link-ops"><a href="#" data-op="edit" data-name="精达设备台账库">编辑</a><a href="#" data-op="copy" data-name="精达设备台账库">复制</a><a href="#" data-op="more" data-name="精达设备台账库">更多</a><a href="#" class="danger" data-op="del" data-name="精达设备台账库">删除</a></span></td></tr><tr><td></td><td>kingdee_order</td><td>金蝶生产工单</td><td>金蝶 K3 生产工单接口</td><td>业务系统</td><td>REST API</td><td>kingdee.example.local</td><td><span class="tag ok">已连接</span></td><td>手动新增</td><td>shaokun</td><td>2026-11-03 09:10</td><td><span class="link-ops"><a href="#" data-op="edit" data-name="金蝶生产工单">编辑</a><a href="#" data-op="copy" data-name="金蝶生产工单">复制</a><a href="#" data-op="more" data-name="金蝶生产工单">更多</a><a href="#" class="danger" data-op="del" data-name="金蝶生产工单">删除</a></span></td></tr><tr><td></td><td>jingda_opcua</td><td>JINGDA_OPCUA</td><td>CNC 车间 OPC UA 采集</td><td>IIoT采集设备</td><td>OPC UA</td><td>opc.tcp://172.21.6.2:53880</td><td><span class="tag ok">已连接</span></td><td>手动新增</td><td>shaokun</td><td>2026-10-23 16:40</td><td><span class="link-ops"><a href="#" data-op="edit" data-name="JINGDA_OPCUA">编辑</a><a href="#" data-op="copy" data-name="JINGDA_OPCUA">复制</a><a href="#" data-op="more" data-name="JINGDA_OPCUA">更多</a><a href="#" class="danger" data-op="del" data-name="JINGDA_OPCUA">删除</a></span></td></tr><tr><td></td><td>zhusuji_pg</td><td>注塑机实时库</td><td>注塑车间工艺参数</td><td>数据库</td><td>PostgreSQL</td><td>10.12.4.8:5432</td><td><span class="tag ok">已连接</span></td><td>手动新增</td><td>zhangwei</td><td>2026-10-25 11:02</td><td><span class="link-ops"><a href="#" data-op="edit" data-name="注塑机实时库">编辑</a><a href="#" data-op="copy" data-name="注塑机实时库">复制</a><a href="#" data-op="more" data-name="注塑机实时库">更多</a><a href="#" class="danger" data-op="del" data-name="注塑机实时库">删除</a></span></td></tr><tr><td></td><td>ts_history</td><td>时序历史库</td><td>平台时序历史数据</td><td>存储服务</td><td>TimescaleDB</td><td>10.12.4.9:5432</td><td><span class="tag ok">已连接</span></td><td>系统初始化</td><td>admin</td><td>2026-09-30 08:00</td><td><span class="link-ops"><a href="#" data-op="edit" data-name="时序历史库">编辑</a><a href="#" data-op="copy" data-name="时序历史库">复制</a><a href="#" data-op="more" data-name="时序历史库">更多</a><a href="#" class="danger" data-op="del" data-name="时序历史库">删除</a></span></td></tr><tr><td></td><td>modbus_spare</td><td>备用采集源</td><td>Modbus 备用链路</td><td>IIoT采集设备</td><td>Modbus TCP</td><td>172.21.6.9:502</td><td><span class="tag err">失败</span></td><td>手动新增</td><td>shaokun</td><td>2026-10-28 15:31</td><td><span class="link-ops"><a href="#" data-op="edit" data-name="备用采集源">编辑</a><a href="#" data-op="copy" data-name="备用采集源">复制</a><a href="#" data-op="more" data-name="备用采集源">更多</a><a href="#" class="danger" data-op="del" data-name="备用采集源">删除</a></span></td></tr><tr><td></td><td>uns_readonly</td><td>UNS 只读视图</td><td>联邦查询默认数据源</td><td>存储服务</td><td>联邦查询</td><td>uns://platform</td><td><span class="tag err">未连接</span></td><td>系统初始化</td><td>admin</td><td>2026-09-30 08:00</td><td><span class="link-ops"><a href="#" data-op="edit" data-name="UNS 只读视图">编辑</a><a href="#" data-op="copy" data-name="UNS 只读视图">复制</a><a href="#" data-op="more" data-name="UNS 只读视图">更多</a><a href="#" class="danger" data-op="del" data-name="UNS 只读视图">删除</a></span></td></tr></tbody></table></div>
+      <div class="note ">联邦查询只读，无 DDL/DML；UNS 关系表无事务，MES 类业务应选独立 PostgreSQL。元数据采集仅支持关系库与时序库。</div>
+    </div>
+  </div>
+</body>
+</html>

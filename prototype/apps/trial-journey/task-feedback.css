@@ -1,0 +1,17 @@
+/* Task results: one short message, with a stable footer and an explicit close control. */
+#stage-dialog { --validation-error:#C8323F; }
+#stage-dialog .verification-note { flex:1 1 300px; max-width:none; min-width:0; }
+#stage-dialog .verification-note .dialog-note { min-height:24px; max-width:none; font-size:13px; line-height:1.6; }
+#stage-dialog .verification-note .dialog-note.is-failed { color:var(--validation-error); font-size:16px; font-weight:700; }
+#stage-dialog .dialog-close { min-width:44px; min-height:44px; }
+#stage-dialog .dialog-actions { margin-left:auto; }
+@media(max-width:560px) {
+ #stage-dialog .verification-note { flex-basis:100%; }
+}
+
+#connection-success-toast,#validation-result-toast{position:fixed;z-index:10000;top:24px;left:50%;transform:translateX(-50%);padding:15px 30px;border:1px solid #8addad;border-radius:14px;background:#effff5;color:#13733d;box-shadow:0 8px 32px #163d2529;font-size:18px;font-weight:700;pointer-events:none;}
+#connection-success-toast[hidden],#validation-result-toast[hidden]{display:none;}
+
+#validation-result-toast{margin:0;right:auto;bottom:auto;max-width:min(720px,calc(100vw - 48px));text-align:center;white-space:normal;}
+#validation-result-toast::backdrop{background:transparent;pointer-events:none;}
+#validation-result-toast.is-failed{background:#fff3f3;border-color:#f0afb4;color:#C8323F;font-weight:700;font-size:18px;}

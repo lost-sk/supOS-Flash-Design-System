@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>示例应用 · 离线原型</title>
+<style>
+  :root { --blue:#297bff; --text:#323c47; --muted:#8a94a6; --line:#e0e6ee; --soft:#f4f7fc; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:18px 20px 28px; background:#fff; color:var(--text);
+         font:13px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Microsoft YaHei",Arial,sans-serif; }
+  h1 { font-size:19px; font-weight:500; margin:0; }
+  h2 { font-size:14px; font-weight:500; margin:0 0 12px; }
+  .bar { display:flex; align-items:center; gap:12px; padding-bottom:14px; border-bottom:1px solid var(--line); margin-bottom:18px; }
+  .pill { padding:2px 10px; background:var(--soft); color:var(--blue); border-radius:10px; font-size:12px; }
+  .hint { margin-left:auto; color:var(--muted); font-size:12px; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin-bottom:22px; }
+  .card { border:1px solid var(--line); border-radius:4px; padding:14px 16px; background:#fff; }
+  .card .k { color:var(--muted); font-size:12px; }
+  .card .v { font-size:24px; font-weight:500; color:var(--blue); margin-top:6px; line-height:1.2; }
+  .card .f { color:var(--muted); font-size:11px; margin-top:6px; }
+  table { width:100%; border-collapse:collapse; font-size:12px; }
+  th,td { text-align:left; padding:9px 10px; border-bottom:1px solid var(--line); }
+  th { background:var(--soft); font-weight:500; color:var(--muted); }
+  tbody tr:hover { background:#fafcff; }
+  .tag { color:#159968; }
+  footer { margin-top:20px; color:var(--muted); font-size:11px; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <h1 id="app-name">示例应用</h1>
+  <span class="pill" id="view-name">总览</span>
+  <span class="hint">示例数据 · 离线原型</span>
+</div>
+<div class="cards" id="cards"></div>
+<h2>明细</h2>
+<table>
+  <thead><tr id="thead"></tr></thead>
+  <tbody id="tbody"></tbody>
+</table>
+<footer>本页面为可切视图的占位应用，用于在没有真实 app 时保证左侧菜单可点击。所有数字均为示例。</footer>
+<script>
+(function () {
+  var p = new URLSearchParams(location.search);
+  var view = p.get('view') || p.get('v') || '总览';
+  var app = p.get('app-name') || '示例应用';
+  document.getElementById('app-name').textContent = app;
+  document.getElementById('view-name').textContent = view;
+  document.title = app + ' · ' + view;
+
+  var cards = [
+    ['当前视图', view, '由左侧菜单切换'],
+    ['业务对象', '128', '示例'],
+    ['今日新增', '12', '示例'],
+    ['运行状态', '正常', '示例']
+  ];
+  document.getElementById('cards').innerHTML = cards.map(function (c) {
+    return '<div class="card"><div class="k">' + c[0] + '</div><div class="v">' + c[1] + '</div><div class="f">' + c[2] + '</div></div>';
+  }).join('');
+
+  var heads = ['编号', '名称', '所属视图', '状态', '更新时间'];
+  document.getElementById('thead').innerHTML = heads.map(function (h) { return '<th>' + h + '</th>'; }).join('');
+  var rows = [];
+  for (var i = 1; i <= 6; i++) {
+    rows.push(['OBJ-' + (1000 + i), app + ' · 记录 ' + i, view, '<span class="tag">运行中</span>', '2026-11-10 0' + i + ':12']);
+  }
+  document.getElementById('tbody').innerHTML = rows.map(function (r) {
+    return '<tr>' + r.map(function (c) { return '<td>' + c + '</td>'; }).join('') + '</tr>';
+  }).join('');
+})();
+</script>
+</body>
+</html>

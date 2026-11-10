@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>APP 综合设计工具 · supOS Flash 产品原型</title>
+<link rel="stylesheet" href="assets/flash.css">
+
+<script src="assets/data.js" defer></script>
+<script src="assets/shell.js" defer></script>
+<script src="assets/interact.js" defer></script>
+</head>
+<body data-mode="design" data-nav="design-app-design.html" data-title="APP 综合设计工具">
+<div class="tabbar" data-component="TabBar"><span class="tab">APP 综合设计工具<span class="close">×</span></span></div><div class="sys-notice" data-component="SysNotice"><img src="assets/brand/smnIcon-CBGfisYv.png" alt=""><span>系统维护通知：平台将于本周日 22:00–23:00 进行例行维护，届时部分服务短暂不可用。</span><a class="more" href="#">查看详情 ›</a></div><div class="crumb"><span>设计期</span><span>APP 管理</span><span>APP 综合设计工具</span></div><div class="page-head"><div><h1>APP 综合设计工具</h1><p>APP 综合开发 / 报表 / ETL / 元数据 / 连接器等设计工具入口（真实产品中均为 iframe 壳加载 /toolkit 微前端）</p></div><div class="btn-row"></div></div>
+  <div class="section-title"><span>APP 开发与管理工具（源码实证 · BaseIframeWrapper iframe 壳）</span></div>
+  <div class="note ">以下入口在真实产品中均为 iframe 壳加载 /toolkit 微前端；原型中静态展示。卡片右上角为遮罩状态示例（检测中.../安装中.../成功），悬浮操作「删除/更新/安装」为静态演示，安装遮罩依次为「检测中...→安装中...→成功」。</div>
+  <div class="grid cols-3">
+  <div class="card" style="display:block;position:relative">
+    
+    <div style="display:flex;align-items:flex-start;gap:10px">
+      <span class="quick-icon glyph" style="background:var(--flash-primary)">A</span>
+      <div style="min-width:0">
+        <b style="font-size:13px;color:var(--flash-text-strong)">APP综合开发工具</b>
+        <div class="muted" style="margin-top:2px">/toolkit/app-manage · iframe 壳工具</div>
+      </div>
+    </div>
+    <div class="link-ops" style="margin-top:10px;padding-top:8px;border-top:1px dashed var(--flash-border)">
+      <a data-tool-op style="cursor:pointer">删除</a><a data-tool-op style="cursor:pointer">更新</a><a data-tool-op style="cursor:pointer">安装</a>
+    </div>
+    
+  </div>
+  <div class="card" style="display:block;position:relative">
+    <span class="tag info" style="position:absolute;top:12px;right:12px;z-index:2">新窗打开</span>
+    <div style="display:flex;align-items:flex-start;gap:10px">
+      <span class="quick-icon glyph" style="background:var(--flash-primary)">报</span>
+      <div style="min-width:0">
+        <b style="font-size:13px;color:var(--flash-text-strong)">报表开发工具</b>
+        <div class="muted" style="margin-top:2px">报表设计 · 新窗打开</div>
+      </div>
+    </div>
+    <div class="link-ops" style="margin-top:10px;padding-top:8px;border-top:1px dashed var(--flash-border)">
+      <a data-tool-op style="cursor:pointer">删除</a><a data-tool-op style="cursor:pointer">更新</a><a data-tool-op style="cursor:pointer">安装</a>
+    </div>
+    
+  </div>
+  <div class="card" style="display:block;position:relative">
+    <span class="tag info" style="position:absolute;top:12px;right:12px;z-index:2">检测中...</span>
+    <div style="display:flex;align-items:flex-start;gap:10px">
+      <span class="quick-icon glyph" style="background:var(--flash-primary)">数</span>
+      <div style="min-width:0">
+        <b style="font-size:13px;color:var(--flash-text-strong)">数据集成交换工具 ETL</b>
+        <div class="muted" style="margin-top:2px">ETL 数据集成交换 · iframe 壳工具</div>
+      </div>
+    </div>
+    <div class="link-ops" style="margin-top:10px;padding-top:8px;border-top:1px dashed var(--flash-border)">
+      <a data-tool-op style="cursor:pointer">删除</a><a data-tool-op style="cursor:pointer">更新</a><a data-tool-op style="cursor:pointer">安装</a>
+    </div>
+    
+  </div>
+  <div class="card" style="display:block;position:relative">
+    <span class="tag info" style="position:absolute;top:12px;right:12px;z-index:2">安装中...</span>
+    <div style="display:flex;align-items:flex-start;gap:10px">
+      <span class="quick-icon glyph" style="background:var(--flash-primary)">元</span>
+      <div style="min-width:0">
+        <b style="font-size:13px;color:var(--flash-text-strong)">元数据管理</b>
+        <div class="muted" style="margin-top:2px">元数据模型登记 · iframe 壳工具</div>
+      </div>
+    </div>
+    <div class="link-ops" style="margin-top:10px;padding-top:8px;border-top:1px dashed var(--flash-border)">
+      <a data-tool-op style="cursor:pointer">删除</a><a data-tool-op style="cursor:pointer">更新</a><a data-tool-op style="cursor:pointer">安装</a>
+    </div>
+    
+  </div>
+  <div class="card" style="display:block;position:relative">
+    <span class="tag ok" style="position:absolute;top:12px;right:12px;z-index:2">成功</span>
+    <div style="display:flex;align-items:flex-start;gap:10px">
+      <span class="quick-icon glyph" style="background:var(--flash-primary)">系</span>
+      <div style="min-width:0">
+        <b style="font-size:13px;color:var(--flash-text-strong)">系统连接器管理</b>
+        <div class="muted" style="margin-top:2px">连接器与凭证 · iframe 壳工具</div>
+      </div>
+    </div>
+    <div class="link-ops" style="margin-top:10px;padding-top:8px;border-top:1px dashed var(--flash-border)">
+      <a data-tool-op style="cursor:pointer">删除</a><a data-tool-op style="cursor:pointer">更新</a><a data-tool-op style="cursor:pointer">安装</a>
+    </div>
+    
+  </div>
+  <div class="card" style="display:block;position:relative">
+    
+    <div style="display:flex;align-items:flex-start;gap:10px">
+      <span class="quick-icon glyph" style="background:var(--flash-primary)">工</span>
+      <div style="min-width:0">
+        <b style="font-size:13px;color:var(--flash-text-strong)"><a href="design-factory-model.html">工厂模型</a></b>
+        <div class="muted" style="margin-top:2px">/os/static/uns · UNS 目录树与位号</div>
+      </div>
+    </div>
+    <div class="link-ops" style="margin-top:10px;padding-top:8px;border-top:1px dashed var(--flash-border)">
+      <a data-tool-op style="cursor:pointer">删除</a><a data-tool-op style="cursor:pointer">更新</a><a data-tool-op style="cursor:pointer">安装</a>
+    </div>
+    
+  </div>
+  <div class="card" style="display:block;position:relative">
+    
+    <div style="display:flex;align-items:flex-start;gap:10px">
+      <span class="quick-icon glyph" style="background:var(--flash-primary)">统</span>
+      <div style="min-width:0">
+        <b style="font-size:13px;color:var(--flash-text-strong)"><a href="design-datasource.html">统一数据源注册管理</a></b>
+        <div class="muted" style="margin-top:2px">外部库与采集源登记</div>
+      </div>
+    </div>
+    <div class="link-ops" style="margin-top:10px;padding-top:8px;border-top:1px dashed var(--flash-border)">
+      <a data-tool-op style="cursor:pointer">删除</a><a data-tool-op style="cursor:pointer">更新</a><a data-tool-op style="cursor:pointer">安装</a>
+    </div>
+    
+  </div>
+  <div class="card" style="display:block;position:relative">
+    
+    <div style="display:flex;align-items:flex-start;gap:10px">
+      <span class="quick-icon glyph" style="background:var(--flash-primary)">工</span>
+      <div style="min-width:0">
+        <b style="font-size:13px;color:var(--flash-text-strong)"><a href="runtime-desktop.html">工作桌面</a></b>
+        <div class="muted" style="margin-top:2px">运行期桌面视图</div>
+      </div>
+    </div>
+    <div class="link-ops" style="margin-top:10px;padding-top:8px;border-top:1px dashed var(--flash-border)">
+      <a data-tool-op style="cursor:pointer">删除</a><a data-tool-op style="cursor:pointer">更新</a><a data-tool-op style="cursor:pointer">安装</a>
+    </div>
+    
+  </div>
+  <div class="card" style="display:block;position:relative">
+    
+    <div style="display:flex;align-items:flex-start;gap:10px">
+      <span class="quick-icon glyph" style="background:var(--flash-primary)">A</span>
+      <div style="min-width:0">
+        <b style="font-size:13px;color:var(--flash-text-strong)"><a href="design-agent.html">Agent运行管理</a></b>
+        <div class="muted" style="margin-top:2px">Agent 目录与运行状态</div>
+      </div>
+    </div>
+    <div class="link-ops" style="margin-top:10px;padding-top:8px;border-top:1px dashed var(--flash-border)">
+      <a data-tool-op style="cursor:pointer">删除</a><a data-tool-op style="cursor:pointer">更新</a><a data-tool-op style="cursor:pointer">安装</a>
+    </div>
+    
+  </div></div>
+  <div class="section-title"><span>六类设计工具入口（线上实测菜单 · 未证实）</span></div>
+  <div class="note ">六类设计工具入口来自线上实测菜单；supbase 源码 data.json 中未见对应注册，标注未证实。</div>
+  <div class="grid cols-3">
+  <div class="card" style="display:block;position:relative">
+    <div style="display:flex;align-items:center;gap:10px">
+      <span class="quick-icon glyph" style="background:var(--flash-text-strong)">报</span>
+      <b style="font-size:13px;color:var(--flash-text-strong)">报表</b>
+    </div>
+    
+  </div>
+  <div class="card" style="display:block;position:relative">
+    <div style="display:flex;align-items:center;gap:10px">
+      <span class="quick-icon glyph" style="background:var(--flash-primary)">工</span>
+      <b style="font-size:13px;color:var(--flash-text-strong)">工艺流程图</b>
+    </div>
+    
+  </div>
+  <div class="card" style="display:block;position:relative">
+    <div style="display:flex;align-items:center;gap:10px">
+      <span class="quick-icon glyph" style="background:var(--flash-success)">首</span>
+      <b style="font-size:13px;color:var(--flash-text-strong)">首页</b>
+    </div>
+    
+  </div>
+  <div class="card" style="display:block;position:relative">
+    <div style="display:flex;align-items:center;gap:10px">
+      <span class="quick-icon glyph" style="background:var(--flash-warning)">3</span>
+      <b style="font-size:13px;color:var(--flash-text-strong)">3D数字孪生</b>
+    </div>
+    <div style="position:absolute;inset:0;z-index:1;border-radius:var(--flash-radius-lg);background:var(--flash-mask);display:flex;align-items:center;justify-content:center;color:var(--flash-text-secondary);font-size:12px;text-align:center;padding:0 14px">该模块未启用，请联系管理员安装</div>
+  </div>
+  <div class="card" style="display:block;position:relative">
+    <div style="display:flex;align-items:center;gap:10px">
+      <span class="quick-icon glyph" style="background:var(--flash-status-pending)">桌</span>
+      <b style="font-size:13px;color:var(--flash-text-strong)">桌面组态</b>
+    </div>
+    
+  </div>
+  <div class="card" style="display:block;position:relative">
+    <div style="display:flex;align-items:center;gap:10px">
+      <span class="quick-icon glyph" style="background:var(--flash-error)">业</span>
+      <b style="font-size:13px;color:var(--flash-text-strong)">业务DIY</b>
+    </div>
+    
+  </div></div>
+  <div class="note warn">无权限提示文案（线上实证）：「您暂无权限访问该功能」「模块暂未授权」；功能未安装：「此功能未安装」。</div>
+
+</body>
+</html>

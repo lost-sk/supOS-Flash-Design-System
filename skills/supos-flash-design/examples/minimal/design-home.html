@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>设计期 · 首页 · supOS Flash 产品原型</title>
+<link rel="stylesheet" href="assets/flash.css">
+<script src="assets/data.js" defer></script>
+<script src="assets/shell.js" defer></script>
+<script src="assets/interact.js" defer></script>
+</head>
+<body data-mode="design" data-nav="design-home.html" data-title="设计期 · 首页">
+<div class="tabbar" data-component="TabBar"><span class="tab">首页<span class="close">×</span></span></div>
+    <div class="sys-notice" data-component="SysNotice"><img src="assets/brand/smnIcon-CBGfisYv.png" alt=""><span>系统维护通知：平台将于本周日 22:00–23:00 进行例行维护，届时部分服务短暂不可用。</span><a class="more" href="#">查看详情 ›</a></div>
+    <div class="page-head"><div><h1>设计期 · 首页</h1><p>平台模块入口与运行概览 · 页面与统计均为<b>示例</b></p></div></div>
+    <section class="card"><div class="card-head"><h3>常用</h3></div><div class="quick-grid"><a class="quick-item" href="#"><span class="quick-icon"><img src="assets/brand/Metadata-BsqjsLQJ.png" alt=""></span><span>数据源注册</span></a><a class="quick-item" href="#"><span class="quick-icon"><img src="assets/brand/NodeRED-DlcyYFLJ.png" alt=""></span><span>数据接入服务</span></a><a class="quick-item" href="#"><span class="quick-icon"><img src="assets/brand/UNS-fEqJOMRo.png" alt=""></span><span>工厂模型</span></a><a class="quick-item" href="#"><span class="quick-icon"><img src="assets/brand/ScriptService-CRIVbvAQ.png" alt=""></span><span>服务与订阅管理</span></a><a class="quick-item" href="#"><span class="quick-icon"><img src="assets/brand/FedQuery-BIqfPygb.png" alt=""></span><span>SQL 联邦查询</span></a><a class="quick-item" href="#"><span class="quick-icon"><img src="assets/brand/OpenAPI-BJkXxu5W.png" alt=""></span><span>OpenAPI 开放</span></a><a class="quick-item" href="#"><span class="quick-icon"><img src="assets/brand/Websocket-Btf2l0-t.png" alt=""></span><span>WebSocket 开放</span></a><a class="quick-item" href="#"><span class="quick-icon"><img src="assets/brand/MQTT-B28yoDQ2.png" alt=""></span><span>MQTT 协议开放</span></a><a class="quick-item" href="#"><span class="quick-icon"><img src="assets/brand/EventSub-CNgnhVgF.png" alt=""></span><span>事件开放</span></a><a class="quick-item" href="#"><span class="quick-icon"><img src="assets/brand/AppMgmt-DuQX471w.png" alt=""></span><span>APP 运行管理</span></a></div></section>
+    <div class="section-title"><span>运行概览</span></div>
+    <div class="grid cols-4">
+      <div class="stat-card stat-purple"><div class="label">数据源总数</div><div class="value">40<small>个</small></div><div class="foot">示例</div></div>
+      <div class="stat-card stat-blue"><div class="label">关系库数据源</div><div class="value">26<small>个</small></div><div class="foot">示例</div></div>
+      <div class="stat-card stat-green"><div class="label">接入采集设备</div><div class="value">8<small>个</small></div><div class="foot">示例</div></div>
+      <div class="stat-card stat-amber"><div class="label">文件夹总数</div><div class="value">425</div><div class="foot">示例</div></div>
+    </div>
+    <div class="note">设计期页面是 <b>supOS Flash 平台自身界面</b>，用于展示应用被配置进平台的语境，不代表本应用的功能。本原型未启用模块页（config 的 withDesign 为 false）。</div>
+</body>
+</html>

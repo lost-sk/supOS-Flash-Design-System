@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent 管理 · supOS Flash 产品原型</title>
+<link rel="stylesheet" href="assets/flash.css">
+
+<script src="assets/data.js" defer></script>
+<script src="assets/shell.js" defer></script>
+<script src="assets/interact.js" defer></script>
+<script src="assets/page/agent.js" defer></script>
+</head>
+<body data-mode="design" data-nav="design-agent.html" data-title="Agent 管理">
+<div class="tabbar" data-component="TabBar"><span class="tab">Agent 管理<span class="close">×</span></span></div><div class="sys-notice" data-component="SysNotice"><img src="assets/brand/smnIcon-CBGfisYv.png" alt=""><span>系统维护通知：平台将于本周日 22:00–23:00 进行例行维护，届时部分服务短暂不可用。</span><a class="more" href="#">查看详情 ›</a></div><div class="crumb"><span>设计期</span><span>Agent 管理</span></div><div class="page-head"><div><h1>Agent 管理</h1><p>Agent 目录与运行状态只读查看，随 APP 自动注册（二级交互：详情抽屉）</p></div><div class="btn-row"></div></div>
+  <div class="note ">Agent 随 APP 自动注册，无手工注册入口（手册与接口实证：GET /os/inter-api/agent-mesh/agents/list）；线上目录实测仅 2 个（AppDesignTool、生产运维助手）。</div>
+  <div class="table-wrap"><table class="flash-table" data-component="FlashTable"><thead><tr><th>名称</th><th>描述</th><th>所属APP</th><th>状态</th><th>在线状态</th><th>操作</th></tr></thead><tbody><tr><td>AppDesignTool</td><td>APP 综合开发工具内置设计 Agent</td><td>APP综合开发工具</td><td><span class="tag info">已安装</span></td><td><span class="dot-status" style="color:var(--flash-success)">在线</span></td><td><a href="#" data-op="detail" data-name="AppDesignTool">详情</a></td></tr><tr><td>生产运维助手</td><td>生产运行期的运维问答、工单与巡检 Agent</td><td>生产运维助手APP</td><td><span class="tag ok">运行中</span></td><td><span class="dot-status" style="color:var(--flash-success)">在线</span></td><td><a href="#" data-op="detail" data-name="生产运维助手">详情</a></td></tr></tbody></table></div>
+
+</body>
+</html>

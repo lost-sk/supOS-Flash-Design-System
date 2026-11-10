@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>知识问答智能体 · 对话原型</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f0f2f5;color:#182b43;font-family:"Microsoft YaHei","PingFang SC",Arial,sans-serif;font-size:13px}button,textarea,input,select{font:inherit}button{cursor:pointer;color:inherit}button:hover{background:#f4f7ff}button:focus-visible,a:focus-visible{outline:2px solid #87aaff;outline-offset:3px}.app{display:flex;height:calc(100dvh - 8px);margin:4px 2px;background:white;border-radius:4px;overflow:hidden}.sidebar{width:240px;flex-shrink:0;border-right:1px solid #d9dce2;display:flex;flex-direction:column;padding:16px 14px 0;transition:width .2s}.brand{display:flex;align-items:center;justify-content:space-between;font-weight:bold;height:28px;margin:0 4px 12px}.icon{width:17px;height:17px;vertical-align:middle}.plain{border:0;background:none;padding:5px}.nav{display:flex;align-items:center;gap:10px;width:100%;height:37px;border:1px solid #dbe1ec;background:white;border-radius:8px;margin-bottom:10px;padding:0 18px}.nav.active{border-color:#9bbcff;color:#0065ff;font-weight:600}.history-title{font-size:13px;margin:35px 0 12px}.histories{overflow:auto;flex:1}.history-item{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:0;border-radius:6px;background:none;padding:10px 0}.history-item span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.settings{border-top:1px solid #e3e3e3;margin:10px -14px 0;padding:12px 14px;color:#777}.main{position:relative;flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;overflow:auto}.welcome{width:100%;display:flex;align-items:center;flex-direction:column;padding-top:max(0px,calc((100dvh - 820px)/4))}.banner{width:1015px;height:549px;object-fit:contain;max-width:none;flex-shrink:0}.hero{width:100%;overflow:hidden;display:flex;justify-content:center}.guide{display:block;color:#397dff;font-size:12px;margin-top:-26px;border:0;border-bottom:1px solid #397dff;background:none;padding:0;position:relative}.composer{width:calc(100% - 64px);max-width:816px;border:1px solid #cad8ff;border-radius:20px;box-shadow:0 2px 8px #245fff1a;background:#fff;padding:12px;margin:25px auto 24px;flex-shrink:0}.composer:focus-within{border-color:#96b4ff}textarea{border:0;outline:0;resize:none;width:100%;height:50px;color:#26364d;background:transparent;line-height:1.6}textarea::placeholder{color:#a1a7b0}.toolbar{display:flex;align-items:center;gap:14px;margin-top:4px;color:#777;font-size:12px}.toolbar button{border:0;background:transparent;padding:3px}.toolbar select{border:0;outline:none;color:#68768b;background:white;font-size:12px;max-width:145px}.spacer{flex:1}.send{border:1px solid #d7e2ff!important;border-radius:50%;height:33px;width:33px;font-size:20px}.send:disabled{opacity:.45;cursor:default}.messages{width:calc(100% - 64px);max-width:816px;padding:50px 0 15px;flex:1;display:flex;flex-direction:column;gap:25px}.message{line-height:1.9;white-space:pre-wrap;overflow-wrap:anywhere}.message.user{align-self:flex-end;background:#edf3ff;border-radius:16px 16px 3px 16px;padding:12px 18px;max-width:80%}.message.assistant{padding:8px 0}.message.assistant:before{content:'✦  知识问答智能体';display:block;color:#397dff;font-weight:600;margin-bottom:7px}.chat-mode .composer{position:sticky;bottom:18px}.file-note{font-size:12px;color:#6586b3;overflow-wrap:anywhere;margin-bottom:6px}.collapsed .sidebar{width:58px;padding:16px 8px}.collapsed .sidebar .hideable,.collapsed .histories,.collapsed .history-title{display:none}.collapsed .brand{justify-content:center;margin:0 0 12px}.collapsed .nav{padding:0;justify-content:center}.collapsed .settings{margin:auto -8px 0;padding:12px 8px}.collapsed .settings button{padding:5px}dialog{border:1px solid #e2e8f2;border-radius:14px;padding:25px;width:min(460px,90vw);box-shadow:0 16px 80px #1a346033;color:#26364d}dialog::backdrop{background:#17243b38}dialog h2{margin:0 0 18px;font-size:18px}dialog p{line-height:1.9;color:#64748b}.dialog-head{display:flex;justify-content:space-between;align-items:start}.search{width:100%;border:1px solid #d7e0ed;border-radius:7px;padding:10px;margin-bottom:10px}.dialog-results button{width:100%;text-align:left;padding:12px;border:0;background:#f5f8ff;border-radius:6px;margin:4px 0}.hint{font-size:12px;color:#8b96a5}.setting-row{display:flex;justify-content:space-between;align-items:center;gap:18px;margin:20px 0}[hidden]{display:none!important}@media(max-width:760px){.sidebar{width:190px}.banner{width:720px;height:390px}.composer,.messages{width:calc(100% - 32px)}.toolbar{gap:8px}.welcome{padding-top:35px}.guide{margin-top:-18px}.toolbar select{max-width:110px}}@media(max-width:520px){.sidebar{width:58px;padding:16px 8px}.sidebar .hideable,.histories,.history-title{display:none}.brand{justify-content:center;margin:0 0 12px}.nav{padding:0;justify-content:center}.settings{margin:auto -8px 0;padding:12px 8px}.banner{width:540px;height:330px}.toolbar{gap:3px;font-size:11px}.toolbar select{max-width:95px}.welcome{padding-top:30px}}
+</style>
+<style>
+/* Local, buildless implementation based on Ant Design Dropdown design. */
+.toolbar .model-trigger{display:inline-flex;align-items:center;gap:8px;border-radius:6px;padding:6px 8px;white-space:nowrap;color:#667085;transition:background .15s,color .15s}.toolbar .model-trigger:hover,.toolbar .model-trigger[aria-expanded="true"]{background:#f0f5ff;color:#1677ff}.model-trigger svg{transition:transform .15s}.model-menu{position:fixed;z-index:30;width:310px;max-width:calc(100vw - 24px);background:white;border:1px solid #f0f0f0;border-radius:8px;padding:6px;box-shadow:0 6px 16px 0 #00000014,0 3px 6px -4px #0000001f,0 9px 28px 8px #0000000d;color:#1f2937;animation:menu-appear .12s ease-out}.model-menu-heading{font-size:12px;color:#98a2b3;padding:8px 10px 10px}.model-option{display:flex;align-items:center;gap:10px;width:100%;padding:11px 10px;margin:2px 0;border:0;border-radius:5px;text-align:left;background:white;transition:background .15s}.model-option:hover,.model-option:focus-visible{background:#f5f5f5}.model-option.selected{background:#e6f4ff}.model-copy{display:flex;flex:1;min-width:0;flex-direction:column;gap:5px}.model-title{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:#26364d}.model-description{font-size:11px;color:#8c96a6}.model-tag{font-size:10px;color:#1677ff;background:#fff;border:1px solid #91caff;border-radius:4px;padding:0 4px;line-height:16px}.model-check{color:#1677ff;visibility:hidden;font-size:16px}.model-option.selected .model-check{visibility:visible}@keyframes menu-appear{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}@media(max-width:520px){.toolbar .model-trigger{font-size:10px;gap:4px;padding:5px 2px}}
+</style>
+<style>
+.toolbar .scope-trigger{display:inline-flex;align-items:center;gap:5px;padding:6px;border-radius:6px;white-space:nowrap;min-width:0;color:#667085}.scope-trigger:hover,.scope-trigger[aria-expanded="true"]{background:#f0f5ff;color:#1677ff}#scope-label{max-width:150px;overflow:hidden;text-overflow:ellipsis}.scope-panel{position:fixed;z-index:35;width:360px;max-width:calc(100vw - 24px);height:420px;max-height:calc(100dvh - 24px);display:flex;flex-direction:column;background:#fff;border:1px solid #e8ecf2;border-radius:10px;box-shadow:0 6px 16px #00000014,0 9px 28px 8px #0000000d;overflow:hidden;animation:menu-appear .12s ease-out}.scope-header{padding:16px 16px 10px;flex-shrink:0}.scope-heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:14px;font-weight:600}.scope-heading button{font-size:16px;color:#98a2b3}.scope-search-wrap{display:flex;align-items:center;gap:7px;border:1px solid #d9dfe8;border-radius:6px;padding:7px 10px;color:#98a2b3}.scope-search-wrap:focus-within{border-color:#4096ff;box-shadow:0 0 0 2px #1677ff15}.scope-search-wrap input{min-width:0;width:100%;border:0;outline:0;font-size:12px;color:#344054}.scope-search-wrap input::placeholder{color:#a3aab7}.scope-tabs{display:flex;gap:18px;margin-top:12px;border-bottom:1px solid #f0f0f0}.scope-tabs button{border:0;background:transparent;padding:0 0 9px;color:#8c96a6;font-size:12px;border-bottom:2px solid transparent}.scope-tabs button[aria-selected="true"]{color:#1677ff;border-bottom-color:#1677ff}.scope-all{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid #f0f0f0;flex-shrink:0;cursor:pointer}.scope-all-copy{display:flex;flex-direction:column;gap:4px}.scope-all-copy small{font-size:11px;color:#98a2b3}.scope-panel input[type="checkbox"]{appearance:auto;width:15px;height:15px;accent-color:#1677ff;flex-shrink:0;cursor:pointer;margin:0}.scope-list{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:4px 6px;scrollbar-width:thin;scrollbar-color:#dce2ea transparent}.scope-row{display:flex;align-items:center;gap:10px;padding:10px;border-radius:6px;min-height:42px;cursor:pointer}.scope-row:hover{background:#f5f7fa}.scope-row:has(input:checked){background:#f5f9ff}.scope-row span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;font-size:12px;color:#344054}.scope-empty{text-align:center;padding:28px 8px;color:#98a2b3;font-size:12px}.scope-footer{flex-shrink:0;display:flex;align-items:center;gap:8px;justify-content:space-between;padding:12px 16px;border-top:1px solid #f0f0f0;background:#fff}.scope-count{color:#8c96a6;font-size:12px}.scope-count.invalid{color:#f04438}.scope-actions{display:flex;gap:8px}.scope-actions button{border:1px solid #d9d9d9;background:#fff;border-radius:6px;padding:5px 13px;font-size:12px}.scope-actions .primary{background:#1677ff;border-color:#1677ff;color:#fff}.scope-actions .primary:hover{background:#4096ff}.scope-actions button:disabled{cursor:not-allowed;background:#f5f5f5;border-color:#d9d9d9;color:#bfbfbf}.message-scope{display:block;border-top:1px solid #dae5f7;margin-top:8px;padding-top:6px;font-size:11px;color:#8a9ab0;white-space:normal}.toolbar #mode{white-space:nowrap;flex-shrink:0}.toolbar #attach,.toolbar .send{flex-shrink:0}@media(max-width:620px){.toolbar{flex-wrap:wrap;gap:5px}.toolbar .spacer{min-width:0}#scope-label{max-width:92px}.toolbar .model-trigger{margin-left:auto}.scope-panel{width:360px}}
+</style>
+<style>
+.toolbar .send{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;padding:0;border:1px solid #e5e9f0!important;border-radius:50%;background:#f5f7fa;color:#bac2cd;opacity:1;transition:background-color .2s ease,color .2s ease,border-color .2s ease,box-shadow .2s ease,transform .2s ease}
+.toolbar .send:not(:disabled){background:#4c8dff;border-color:#4c8dff!important;color:#fff;cursor:pointer}
+.toolbar .send:not(:disabled):hover,.toolbar .send:not(:disabled):focus-visible{background:#1677ff;border-color:#1677ff!important;box-shadow:0 3px 12px #1677ff40;transform:translateY(-1px)}
+.toolbar .send:not(:disabled):active{background:#0958d9;border-color:#0958d9!important;transform:translateY(0) scale(.96);box-shadow:0 1px 4px #1677ff26}
+.toolbar .send:disabled{cursor:default;opacity:1}
+@media(prefers-reduced-motion:reduce){.toolbar .send{transition:none}.toolbar .send:not(:disabled):hover,.toolbar .send:not(:disabled):focus-visible,.toolbar .send:not(:disabled):active{transform:none}}
+</style>
+<style>
+.retrieval-summary{display:flex;align-items:center;gap:4px;width:fit-content;margin:0 0 14px;padding:0;border:0;background:transparent;color:#8c96a6;font-size:13px;line-height:24px;white-space:normal;text-align:left;transition:color .18s}.retrieval-summary:hover{background:transparent;color:#667085}.retrieval-summary .retrieval-number{color:#5486c4}.retrieval-summary:hover .retrieval-number{color:#1677ff}.retrieval-chevron{margin-left:4px;color:#98a2b3;transition:transform .18s}.retrieval-summary:hover .retrieval-chevron{transform:translateX(2px)}.reference-note{font-size:12px;color:#98a2b3;line-height:1.7;margin:0 0 16px}.reference-keywords{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 20px}.reference-keyword{background:#f0f5ff;color:#397dff;border:1px solid #d6e4ff;border-radius:5px;padding:3px 9px;font-size:12px}.reference-section-title{font-size:13px;font-weight:600;margin:14px 0 10px;color:#344054}.reference-list{display:flex;flex-direction:column;gap:8px;max-height:340px;overflow:auto;overscroll-behavior:contain}.reference-item{border:1px solid #e9edf3;border-radius:7px;background:#fff}.reference-item summary{cursor:pointer;padding:11px 12px;list-style:none}.reference-item summary::-webkit-details-marker{display:none}.reference-item summary:hover{background:#f8faff}.reference-item[open] summary{border-bottom:1px solid #edf0f5}.reference-title{display:block;font-size:13px;color:#397dff}.reference-source{display:block;margin-top:5px;font-size:11px;color:#98a2b3}.reference-excerpt{padding:10px 12px;font-size:12px;color:#667085;line-height:1.8}.reference-dialog{width:min(560px,92vw)}
+</style>
+<style>
+.reference-inline-content{padding:16px;margin:0 0 20px;border:1px solid #e8edf5;border-radius:10px;background:#fafcff;white-space:normal;line-height:1.6}.reference-inline-content .reference-section-title:first-of-type{margin-top:0}.reference-inline-content .reference-list{max-height:320px}.reference-inline-content .reference-keywords{margin-bottom:16px}.retrieval-summary[aria-expanded="true"] .retrieval-chevron{transform:rotate(90deg)}
+</style>
+<style>
+.retrieval-inline .retrieval-summary{margin-bottom:2px;font-size:13px;gap:0;color:#8c96a6}.retrieval-inline .retrieval-summary .retrieval-number{color:inherit}.retrieval-inline .retrieval-chevron{margin-left:5px;font-size:17px}.reference-inline-content{padding:0;margin:0 0 18px;border:0;border-radius:0;background:none;line-height:1.7}.reference-plain-keywords{color:#929aa7;font-size:13px;margin:2px 0 8px}.reference-plain-list{margin:0;padding-left:24px;color:#1677ff;font-size:13px}.reference-plain-list li{padding-left:1px;margin:0 0 7px}.reference-plain-link{display:block;max-width:100%;border:0;padding:0;background:none;color:#1677ff;text-align:left;font-size:13px;line-height:1.7;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.reference-plain-link:hover{background:none;color:#4096ff;text-decoration:underline}.reference-plain-excerpt{padding:5px 0 2px;color:#929aa7;white-space:normal;font-size:12px;line-height:1.8}
+</style>
+<style>
+.scope-row{transition:background-color .16s ease}
+.scope-row:hover,.scope-row:has(input:checked):hover{background:#edf0f5}
+.scope-row:focus-within,.scope-row:has(input:checked):focus-within{background:#edf0f5}
+@media(prefers-reduced-motion:reduce){.scope-row{transition:none}}
+</style>
+<style>
+.processing-panel{border:1px solid #e8edf5;border-radius:12px;background:#fafcff;padding:18px 20px;max-width:720px;white-space:normal}.processing-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.processing-heading{display:flex;align-items:center;gap:9px;color:#344054;font-size:14px;font-weight:500}.processing-spinner{display:inline-block;width:15px;height:15px;border:2px solid #dbe8ff;border-top-color:#4386fa;border-radius:50%;animation:processing-spin 1s linear infinite}.processing-badge{font-size:10px;line-height:18px;padding:0 5px;border:1px solid #e2e8f0;border-radius:4px;color:#98a2b3;font-weight:400}.processing-actions{display:flex;gap:10px}.processing-actions button{border:0;background:none;color:#8a98ad;font-size:12px;padding:1px 0}.processing-actions button:hover{color:#1677ff}.processing-subtitle{margin:7px 0 18px;color:#98a2b3;font-size:12px}.processing-steps{display:flex;flex-direction:column;gap:17px}.processing-step{display:flex;align-items:flex-start;gap:10px}.processing-step-icon{width:16px;height:16px;flex-shrink:0;border:2px solid #dbe8ff;border-top-color:#4386fa;border-radius:50%;margin-top:3px;animation:processing-spin 1s linear infinite}.processing-step.done .processing-step-icon{animation:none;border:0;background:#edf3ff;color:#4386fa;text-align:center;font-size:11px;line-height:16px}.processing-step-content{min-width:0;flex:1}.processing-step-label{color:#4b5c73;font-size:13px;line-height:23px}.processing-step-detail{color:#98a2b3;font-size:12px;line-height:22px}.processing-stream{color:#70829a;font-size:12px;line-height:1.9;min-height:22px;overflow-wrap:anywhere}.processing-step:not(.done) .processing-stream:after{content:'';display:inline-block;width:2px;height:12px;background:#689bfa;margin-left:3px;vertical-align:-1px;animation:processing-caret 1s ease infinite}.processing-status{color:#5486c4;font-size:12px;margin-top:18px;padding-top:12px;border-top:1px solid #edf0f5}.processing-footer{font-size:10px;color:#a3adbd;margin-top:6px}.processing-panel.paused .processing-spinner,.processing-panel.paused .processing-step-icon,.processing-panel.paused .processing-stream:after{animation-play-state:paused}.history-item:has(.history-running){color:#397dff}.history-running{display:inline-block;width:6px;height:6px;border-radius:50%;background:#5b95ff;flex-shrink:0}.processing-panel .processing-steps{overflow-anchor:none}@keyframes processing-spin{to{transform:rotate(360deg)}}@keyframes processing-caret{50%{opacity:0}}@media(prefers-reduced-motion:reduce){.processing-spinner,.processing-step-icon,.processing-step:not(.done) .processing-stream:after{animation:none}}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+ <aside class="sidebar" aria-label="会话导航">
+  <div class="brand"><span class="hideable">知识问答智能体</span><button class="plain" id="collapse" aria-label="折叠侧栏"><img class="icon" src="assets/icon-edit-frame-close.svg" alt=""></button></div>
+  <button class="nav active" id="new-chat"><img class="icon" src="assets/icon-edit-add-talk.svg" alt=""><span class="hideable">新对话</span></button>
+  <button class="nav" id="search-chat"><img class="icon" src="assets/icon-edit-search.svg" alt=""><span class="hideable">搜索对话</span></button>
+  <h2 class="history-title">对话历史</h2><div class="histories" id="histories"></div>
+  <div class="settings"><button class="plain" id="settings"><span aria-hidden="true">⚙</span><span class="hideable">　设置</span></button></div>
+ </aside>
+ <main class="main" id="main">
+  <section class="welcome" id="welcome"><div class="hero"><img class="banner" src="assets/knowledge-qa-banner-v2.png" alt="知识问答智能体"></div></section>
+  <section class="messages" id="messages" aria-label="对话内容" aria-live="polite" hidden></section>
+  <form class="composer" id="composer">
+   <div class="file-note" id="file-note" hidden></div>
+   <textarea id="prompt" aria-label="消息" placeholder="请输入您的问题，例如：帮我查找设备操作手册中的维护要求..." rows="2"></textarea>
+   <div class="toolbar"><button type="button" id="attach" aria-label="添加附件" title="添加附件"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" style="display:block"><path d="M12 5v14M5 12h14"/></svg></button><button type="button" id="scope-trigger" class="scope-trigger" aria-haspopup="dialog" aria-expanded="false" aria-controls="scope-panel" title="检索范围：全部知识库"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4M3 7h2M3 12h2M3 17h2"/></svg><span id="scope-label">全部知识库</span><svg width="10" height="10" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button type="button" id="mode" title="切换模式" style="display:inline-flex;align-items:center;gap:5px"><img id="mode-icon" src="assets/zap.svg" width="16" height="16" alt=""><span id="mode-label">闪速</span></button><span class="spacer"></span><button type="button" class="model-trigger" id="model" aria-label="选择模型" aria-haspopup="menu" aria-expanded="false" aria-controls="model-menu"><span id="model-name">DeepSeek-V4-Flash</span><svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m6 4 4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button type="submit" class="send" id="send" aria-label="发送消息" disabled><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5m-7 7 7-7 7 7"/></svg></button></div>
+   <input type="file" id="file" hidden>
+  </form>
+ </main>
+</div>
+<section id="scope-panel" class="scope-panel" role="dialog" aria-modal="false" aria-labelledby="scope-title" hidden>
+ <div class="scope-header"><div class="scope-heading"><span id="scope-title">检索范围</span><button type="button" class="plain" id="scope-close" aria-label="关闭范围选择">×</button></div><div class="scope-search-wrap"><img src="assets/icon-edit-search.svg" width="14" height="14" alt=""><input id="scope-search" type="search" placeholder="搜索知识库" aria-label="搜索知识库" autocomplete="off"></div><div class="scope-tabs" role="tablist" aria-label="知识库筛选"><button type="button" id="scope-tab-all" role="tab" aria-controls="scope-list" aria-selected="true">全部 <span id="scope-total">12</span></button><button type="button" id="scope-tab-selected" role="tab" aria-controls="scope-list" aria-selected="false">已选 <span id="scope-selected-tab">12</span></button></div></div>
+ <label class="scope-all"><input type="checkbox" id="scope-all" checked><span class="scope-all-copy"><span>全部知识库</span><small>自动检索你有权限访问的全部内容</small></span></label>
+ <div class="scope-list" id="scope-list" role="tabpanel" aria-labelledby="scope-tab-all"></div>
+ <footer class="scope-footer"><span class="scope-count" id="scope-count" aria-live="polite">已选 12 个</span><div class="scope-actions"><button type="button" id="scope-cancel">取消</button><button type="button" id="scope-confirm" class="primary">确定</button></div></footer>
+</section>
+<div id="model-menu" class="model-menu" role="menu" aria-label="选择模型" hidden>
+ <div class="model-menu-heading">选择模型</div>
+ <button type="button" class="model-option selected" role="menuitemradio" aria-checked="true" data-model="DeepSeek-V4-Flash"><span class="model-copy"><span class="model-title">DeepSeek-V4-Flash <span class="model-tag">快速</span></span><span class="model-description">快速响应，适合日常知识问答</span></span><span class="model-check" aria-hidden="true">✓</span></button>
+ <button type="button" class="model-option" role="menuitemradio" aria-checked="false" data-model="DeepSeek-V4"><span class="model-copy"><span class="model-title">DeepSeek-V4</span><span class="model-description">深度理解，适合复杂问题分析</span></span><span class="model-check" aria-hidden="true">✓</span></button>
+</div>
+<dialog id="dialog"><div class="dialog-head"><h2 id="dialog-title"></h2><button class="plain" id="close-dialog" aria-label="关闭">✕</button></div><div id="dialog-body"></div></dialog>
+<script>
+const $=id=>document.getElementById(id);
+let chats=[
+ {id:'mock-maintenance',title:'设备日常维护有哪些要求？',scope:{all:false,ids:['kb1','kb11']},messages:[
+  {role:'user',text:'设备日常维护有哪些要求？',scopeText:'已选 2 个知识库',scopeNames:['scp_精达传动设备与生产运营知识库','精达传动知识库']},
+  {role:'assistant',text:'设备日常维护可以按以下几个方面进行检查：\n\n1. 运行状态：检查设备有无异常噪声、振动或温升。\n2. 润滑情况：检查润滑点和油位，按设备要求补充润滑剂。\n3. 清洁与防护：清理设备表面和作业区域，确认防护装置完好。\n4. 电气与连接：检查接线、紧固件及管路有无松动、破损或泄漏。\n5. 维护记录：记录检查结果，发现异常后按流程处理。\n\n以上为模拟问答内容，具体维护项目及周期以设备实际手册为准。'}
+ ]},
+ {id:'mock-mes',title:'MES系统的生产报工流程',scope:{all:false,ids:['kb3']},messages:[
+  {role:'user',text:'MES系统里如何完成生产报工？',scopeText:'机加工MES-SDD文档',scopeNames:['机加工MES-SDD文档']},
+  {role:'assistant',text:'生产报工可以分为四个步骤：\n\n1. 选择工单：打开待执行工单，核对产品、工序和设备。\n2. 填写产出：录入本次完工数量、合格数量与不良数量。\n3. 核对信息：检查操作人员、工时和异常原因。\n4. 提交报工：确认后提交，并在报工记录中查看结果。\n\n这是用于演示的模拟流程，实际操作以系统配置为准。'},
+  {role:'user',text:'不良数量填写错误了怎么办？',scopeText:'机加工MES-SDD文档',scopeNames:['机加工MES-SDD文档']},
+  {role:'assistant',text:'可以先查看该条报工记录的状态。\n\n未提交的记录可在编辑后重新核对；已经提交的记录，通常需要按业务流程申请撤回或更正。建议保留原始原因与修改记录。\n\n以上为模拟回答。'}
+ ]},
+ {id:'mock-alarm',title:'注塑设备告警如何排查？',scope:{all:false,ids:['kb10']},messages:[
+  {role:'user',text:'帮我整理注塑设备告警的排查思路。',scopeText:'恒拓注塑设备告警与处置知识库',scopeNames:['恒拓注塑设备告警与处置知识库']},
+  {role:'assistant',text:'建议先提供告警代码、设备型号和发生时间，以便缩小检索范围。\n\n可以按照“确认告警信息 → 查看发生条件 → 检索对应处置文档 → 由授权人员处理 → 记录结果”的顺序进行排查。\n\n此内容为原型演示，请遵循设备安全规程及现场处置要求。'}
+ ]},
+ {id:'mock-supos',title:'如何在supOS中创建应用？',scope:{all:false,ids:['kb12']},messages:[
+  {role:'user',text:'如何在supOS中创建一个新应用？',scopeText:'supos 操作手册',scopeNames:['supos 操作手册']},
+  {role:'assistant',text:'你可以按以下思路了解应用创建过程：\n\n1. 进入应用管理或设计入口。\n2. 新建应用并填写名称、标识及说明。\n3. 配置所需页面、数据与菜单。\n4. 完成预览与权限设置，再按发布流程上线。\n\n以上为模拟操作说明，具体入口及步骤以实际版本的操作手册为准。'}
+ ]},
+ {id:'mock-summary',title:'数字化转型资料分析（进行中）',scope:{all:true,ids:[]},messages:[
+  {role:'user',text:'帮我总结制造业数字化转型资料中的重点。',scopeText:'全部知识库',scopeNames:['全部知识库']},
+  {role:'assistant',state:'processing',text:''}
+ ]}
+],current=null,attachment='';
+function history(){ $('histories').replaceChildren();chats.forEach(c=>{let b=document.createElement('button');b.className='history-item';let i=document.createElement('img');i.src='assets/icon-edit-time.svg';i.className='icon';i.alt='';let s=document.createElement('span');s.textContent=c.title;b.append(i,s);if(c.messages.some(m=>m.state==='processing')){const dot=document.createElement('span');dot.className='history-running';dot.setAttribute('aria-hidden','true');b.append(dot)}b.onclick=()=>{current=c;render()};$('histories').append(b)}) }
+function render(){stopProcessingDemo();closeScope();updateScopeLabel();let active=!!current;$('welcome').hidden=active;$('messages').hidden=!active;$('main').classList.toggle('chat-mode',active);$('messages').replaceChildren();if(active)current.messages.forEach((m,index)=>{let el=document.createElement('div');el.className='message '+m.role;if(m.state==='processing'){el.append(processingPanel());$('messages').append(el);return}if(m.role==='assistant'){if(!m.retrieval)m.retrieval=createMockRetrieval(current.messages[index-1],current.scope);el.append(retrievalSummary(m.retrieval))}const body=document.createElement('div');body.textContent=m.text;el.append(body);if(m.scopeText){const note=document.createElement('span');note.className='message-scope';note.textContent='检索范围：'+m.scopeText;note.title=m.scopeNames.join('、');el.append(note)}$('messages').append(el)});history();requestAnimationFrame(()=>{$('main').scrollTop=$('main').scrollHeight})}
+
+var processingTimer=null;
+function stopProcessingDemo(){if(processingTimer!==null){clearTimeout(processingTimer);processingTimer=null}}
+function processingPanel(){
+ const panel=document.createElement('section');panel.className='processing-panel';panel.setAttribute('aria-label','Agent 处理过程');
+ const head=document.createElement('div');head.className='processing-head';
+ const heading=document.createElement('span');heading.className='processing-heading';const spinner=document.createElement('span');spinner.className='processing-spinner';spinner.setAttribute('aria-hidden','true');const title=document.createElement('span');title.textContent='正在思考';const badge=document.createElement('span');badge.className='processing-badge';badge.textContent='演示';heading.append(spinner,title,badge);
+ const actions=document.createElement('div');actions.className='processing-actions';const pause=document.createElement('button');pause.type='button';pause.textContent='暂停';const replay=document.createElement('button');replay.type='button';replay.textContent='重播';actions.append(pause,replay);head.append(heading,actions);panel.append(head);
+ const subtitle=document.createElement('div');subtitle.className='processing-subtitle';subtitle.textContent='Agent 正在检索知识库并整理相关资料';panel.append(subtitle);
+ const steps=document.createElement('div');steps.className='processing-steps';steps.setAttribute('role','log');steps.setAttribute('aria-live','polite');panel.append(steps);
+ const status=document.createElement('div');status.className='processing-status';status.setAttribute('role','status');panel.append(status);
+ const footer=document.createElement('div');footer.className='processing-footer';footer.textContent='模拟流式过程 · 未调用真实 Agent 服务';panel.append(footer);
+ const stages=[
+  {label:'分析任务',detail:'识别问题中的主题与目标，准备检索关键词。',output:'已识别主题：制造业数字化转型；目标：提炼重点并整理实施建议。'},
+  {label:'检索知识库',detail:'正在全部 12 个知识库中搜索相关资料…',output:'检索关键词：“制造业数字化转型”“实施规划”；找到 9 篇模拟参考资料。'},
+  {label:'阅读参考资料',detail:'正在阅读标准、案例与实施指南，提取相关内容…',output:'已整理资料中的现状梳理、应用场景和分步实施三个方向。'},
+  {label:'整理回答',detail:'正在核对资料来源，组织摘要与建议…',output:'正在按“现状梳理 → 场景选择 → 分步落地”组织回答，并关联参考来源。'}
+ ];
+ let stage=0,offset=0,waiting=0,paused=false;const rows=[];
+ function addStage(){const row=document.createElement('div');row.className='processing-step';const dot=document.createElement('span');dot.className='processing-step-icon';dot.textContent='';const content=document.createElement('div');content.className='processing-step-content';const label=document.createElement('div');label.className='processing-step-label';label.textContent=stages[stage].label;const detail=document.createElement('div');detail.className='processing-step-detail';detail.textContent=stages[stage].detail;const output=document.createElement('div');output.className='processing-stream';output.setAttribute('aria-live','off');content.append(label,detail,output);row.append(dot,content);steps.append(row);rows.push({row,dot,detail,output});status.textContent='当前正在：'+stages[stage].label;}
+ function tick(){if(!panel.isConnected||paused)return;const entry=rows[stage];if(offset<stages[stage].output.length){offset=Math.min(offset+2,stages[stage].output.length);entry.output.textContent=stages[stage].output.slice(0,offset);processingTimer=setTimeout(tick,65);return}if(stage===stages.length-1){status.textContent='当前正在：整理回答 · 等待输出';return}if(waiting<8){waiting++;processingTimer=setTimeout(tick,150);return}entry.row.classList.add('done');entry.dot.textContent='✓';stage++;offset=0;waiting=0;addStage();processingTimer=setTimeout(tick,180)}
+ function start(){stopProcessingDemo();paused=false;stage=0;offset=0;waiting=0;rows.length=0;steps.replaceChildren();pause.textContent='暂停';title.textContent='正在思考';panel.classList.remove('paused');addStage();processingTimer=setTimeout(tick,250)}
+ pause.onclick=()=>{paused=!paused;panel.classList.toggle('paused',paused);pause.textContent=paused?'继续':'暂停';title.textContent=paused?'演示已暂停':'正在思考';if(paused){stopProcessingDemo();status.textContent='模拟过程已暂停'}else{status.textContent='当前正在：'+stages[stage].label;processingTimer=setTimeout(tick,100)}};
+ replay.onclick=start;start();return panel;
+}
+function modal(title,content){$('dialog-title').textContent=title;$('dialog-body').replaceChildren(content);if(!$('dialog').open)$('dialog').showModal()}
+function createMockRetrieval(user,scope){
+ const question=user?.text||'',names=user?.scopeNames?.length?user.scopeNames:scopeNames(scope||{all:true,ids:[]});
+ const category=question.includes('报工')?['生产报工','报工更正']:question.includes('告警')?['设备告警','故障排查']:question.includes('应用')?['应用创建','应用配置']:question.includes('转型')?['数字化转型','实施规划']:['设备维护','保养要求'];
+ const titles=['操作手册','流程说明','常见问题','检查项目清单','日常管理规范','记录填写指南','异常处理说明','使用注意事项','参考案例'];
+ const sources=names[0]==='全部知识库'?['精达传动知识库','机加工MES-SDD文档','supos 操作手册']:names;
+ return {keywords:category,documents:titles.map((title,i)=>({title:category[i%2]+' · '+title,source:sources[i%sources.length],section:'第 '+(i+1)+' 节',excerpt:'此处展示“'+category[i%2]+'”相关资料的命中片段，用于演示引用来源的查看交互。实际接入后展示检索到的原文、页码及文档链接。'}))};
+}
+var referenceSequence=0;
+function retrievalSummary(data){
+ const button=document.createElement('button');button.type='button';button.className='retrieval-summary';button.setAttribute('aria-label','查看检索详情：搜索 '+data.keywords.length+' 个关键词，参考 '+data.documents.length+' 篇资料');
+ button.append(document.createTextNode('搜索 '));const keywords=document.createElement('span');keywords.className='retrieval-number';keywords.textContent=data.keywords.length+' 个关键词';button.append(keywords,document.createTextNode('，参考 '));const docs=document.createElement('span');docs.className='retrieval-number';docs.textContent=data.documents.length+' 篇资料';const arrow=document.createElement('span');arrow.className='retrieval-chevron';arrow.textContent='›';arrow.setAttribute('aria-hidden','true');button.append(docs,arrow);const wrapper=document.createElement('div');wrapper.className='retrieval-inline';const content=referenceContent(data);content.classList.add('reference-inline-content');content.hidden=true;content.id='references-'+(++referenceSequence);button.setAttribute('aria-expanded','false');button.setAttribute('aria-controls',content.id);button.onclick=()=>{content.hidden=!content.hidden;button.setAttribute('aria-expanded',String(!content.hidden))};wrapper.append(button,content);return wrapper;
+}
+function referenceContent(data){
+ const box=document.createElement('div');
+ const keywords=document.createElement('div');keywords.className='reference-plain-keywords';keywords.textContent=data.keywords.map(word=>'“'+word+'”').join('、');box.append(keywords);
+ const list=document.createElement('ol');list.className='reference-plain-list';
+ data.documents.forEach(doc=>{const item=document.createElement('li'),link=document.createElement('button');link.type='button';link.className='reference-plain-link';link.textContent=doc.title;link.title=doc.source+' · '+doc.section;link.setAttribute('aria-expanded','false');const excerpt=document.createElement('div');excerpt.className='reference-plain-excerpt';excerpt.hidden=true;excerpt.textContent=doc.source+' · '+doc.section+'：'+doc.excerpt;link.onclick=()=>{excerpt.hidden=!excerpt.hidden;link.setAttribute('aria-expanded',String(!excerpt.hidden))};item.append(link,excerpt);list.append(item)});box.append(list);return box;
+}
+function paragraph(text){let p=document.createElement('p');p.textContent=text;return p}
+$('collapse').onclick=()=>{const collapsed=$('app').classList.toggle('collapsed');$('collapse').setAttribute('aria-label',collapsed?'展开侧栏':'折叠侧栏')};
+$('new-chat').onclick=()=>{welcomeScope={all:true,ids:[]};current=null;attachment='';$('prompt').value='';$('file').value='';$('file-note').hidden=true;$('send').disabled=true;render();$('prompt').focus()};
+$('prompt').oninput=()=>{$('send').disabled=!$('prompt').value.trim()};
+$('prompt').onkeydown=e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing){e.preventDefault();if($('prompt').value.trim())$('composer').requestSubmit()}};
+$('composer').onsubmit=e=>{e.preventDefault();let text=$('prompt').value.trim();if(!text)return;if(!current){current={id:String(Date.now()),title:text.slice(0,24),messages:[],scope:cloneScope(welcomeScope)};chats.unshift(current)}current.messages.push({role:'user',text:text+(attachment?'\n附件：'+attachment:''),scope:cloneScope(activeScope()),scopeText:scopeSummary(activeScope()),scopeNames:scopeNames(activeScope())});current.messages.push({role:'assistant',text:'已收到你的问题：“'+text+'”。\n\n你可以继续补充相关资料或上传文件，我们可以围绕知识检索、资料问答与内容整理继续讨论。\n\n（原型演示：当前回复为预设内容，附件仅展示文件名，未进行上传或解析。）'});$('prompt').value='';$('send').disabled=true;attachment='';$('file').value='';$('file-note').hidden=true;render()};
+$('attach').onclick=()=>$('file').click();$('file').onchange=()=>{attachment=$('file').files[0]?.name||'';$('file-note').textContent='附件：'+attachment;$('file-note').hidden=!attachment};
+$('mode').onclick=()=>{const deep=$('mode-label').textContent==='闪速';$('mode-label').textContent=deep?'深度思考':'闪速';$('mode-icon').src=deep?'assets/lightbulb.svg':'assets/zap.svg'};
+$('search-chat').onclick=()=>{let box=document.createElement('div'),input=document.createElement('input'),list=document.createElement('div');input.className='search';input.placeholder='搜索对话标题';input.setAttribute('aria-label','搜索对话标题');list.className='dialog-results';function results(){list.replaceChildren();chats.filter(c=>c.title.includes(input.value.trim())).forEach(c=>{let b=document.createElement('button');b.textContent=c.title;b.onclick=()=>{current=c;render();$('dialog').close()};list.append(b)});if(!list.childElementCount)list.append(paragraph('没有找到相关对话'))}input.oninput=results;box.append(input,list);results();modal('搜索对话',box);input.focus()};
+$('settings').onclick=()=>{let box=document.createElement('div');box.append(paragraph('知识问答智能体原型 · 简体中文'),paragraph('模型、智能体和模式的选择用于界面演示，不会发起网络请求。'));modal('设置',box)};
+$('close-dialog').onclick=()=>$('dialog').close();$('dialog').onclick=e=>{if(e.target===$('dialog')){let r=$('dialog').getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)$('dialog').close()}};
+const modelOptions=[...$('model-menu').querySelectorAll('.model-option')];
+function closeModels(focus=false){$('model-menu').hidden=true;$('model').setAttribute('aria-expanded','false');if(focus)$('model').focus()}
+function positionModels(){const r=$('model').getBoundingClientRect(),menu=$('model-menu');menu.style.left=Math.max(12,Math.min(r.right-menu.offsetWidth,window.innerWidth-menu.offsetWidth-12))+'px';menu.style.top=Math.max(12,r.top-menu.offsetHeight-8)+'px'}
+function openModels(){ closeScope();$('model-menu').hidden=false;$('model').setAttribute('aria-expanded','true');positionModels();(modelOptions.find(b=>b.getAttribute('aria-checked')==='true')||modelOptions[0]).focus() }
+$('model').onclick=()=>{$('model-menu').hidden?openModels():closeModels(true)};
+modelOptions.forEach(option=>{option.onclick=()=>{modelOptions.forEach(b=>{b.classList.toggle('selected',b===option);b.setAttribute('aria-checked',String(b===option))});$('model-name').textContent=option.dataset.model;closeModels(true)}});
+$('model-menu').onkeydown=e=>{const i=modelOptions.indexOf(document.activeElement);if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();modelOptions[(i+(e.key==='ArrowDown'?1:-1)+modelOptions.length)%modelOptions.length].focus()}else if(e.key==='Escape'){e.preventDefault();closeModels(true)}else if(e.key==='Home'||e.key==='End'){e.preventDefault();modelOptions[e.key==='Home'?0:modelOptions.length-1].focus()}else if(e.key==='Tab'){closeModels()}};
+$('model').addEventListener('keydown',e=>{if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();openModels()}});
+document.addEventListener('click',e=>{if(!$('model-menu').contains(e.target)&&!$('model').contains(e.target))closeModels()});
+window.addEventListener('resize',()=>closeModels());$('main').addEventListener('scroll',()=>closeModels());
+
+// Demo catalog: production should load only the user's authorized knowledge bases.
+const knowledgeBases=[
+ {id:'kb1',name:'scp_精达传动设备与生产运营知识库'},
+ {id:'kb2',name:'机械电子股份有限公司'},
+ {id:'kb3',name:'机加工MES-SDD文档'},
+ {id:'kb4',name:'制造业数字化转型相关标准知识库'},
+ {id:'kb5',name:'某客户CNC数字化车间知识库'},
+ {id:'kb6',name:'机加工行业数智转型知识库'},
+ {id:'kb7',name:'矩阵公众号素材'},
+ {id:'kb8',name:'汽配车间'},
+ {id:'kb9',name:'学前AI知识库'},
+ {id:'kb10',name:'恒拓注塑设备告警与处置知识库'},
+ {id:'kb11',name:'精达传动知识库'},
+ {id:'kb12',name:'supos 操作手册'}
+];
+let welcomeScope={all:true,ids:[]},scopeDraft=null,scopeTab='all';
+function cloneScope(scope){return {all:scope.all,ids:[...scope.ids]}}
+function activeScope(){return current?(current.scope||{all:true,ids:[]}):welcomeScope}
+function scopeNames(scope){return scope.all?knowledgeBases.map(k=>k.name):knowledgeBases.filter(k=>scope.ids.includes(k.id)).map(k=>k.name)}
+function scopeSummary(scope){const names=scopeNames(scope);return scope.all?'全部知识库':names.length===1?names[0]:'已选 '+names.length+' 个知识库'}
+function updateScopeLabel(){const scope=activeScope();$('scope-label').textContent=scopeSummary(scope);$('scope-trigger').title='检索范围：'+(scope.all?'全部知识库':scopeNames(scope).join('、'));$('scope-trigger').setAttribute('aria-label','检索范围：'+scopeSummary(scope))}
+function closeScope(focus=false){$('scope-panel').hidden=true;$('scope-trigger').setAttribute('aria-expanded','false');scopeDraft=null;if(focus)$('scope-trigger').focus()}
+function positionScope(){const panel=$('scope-panel'),r=$('scope-trigger').getBoundingClientRect();panel.style.height=Math.min(420,Math.max(180,r.top-20))+'px';panel.style.left=Math.max(12,Math.min(r.left,window.innerWidth-panel.offsetWidth-12))+'px';panel.style.top=Math.max(12,r.top-panel.offsetHeight-8)+'px'}
+function draftIds(){return scopeDraft.all?knowledgeBases.map(k=>k.id):scopeDraft.ids}
+function renderScope(){
+ const ids=draftIds(),query=$('scope-search').value.trim().toLocaleLowerCase();
+ $('scope-total').textContent=knowledgeBases.length;$('scope-selected-tab').textContent=ids.length;
+ $('scope-all').checked=scopeDraft.all;$('scope-all').indeterminate=!scopeDraft.all&&ids.length>0;
+ $('scope-count').textContent=ids.length?'已选 '+ids.length+' 个':'请至少选择一个知识库';$('scope-count').classList.toggle('invalid',!ids.length);$('scope-confirm').disabled=!ids.length;
+ $('scope-tab-all').setAttribute('aria-selected',String(scopeTab==='all'));$('scope-tab-selected').setAttribute('aria-selected',String(scopeTab==='selected'));
+ $('scope-list').setAttribute('aria-labelledby',scopeTab==='all'?'scope-tab-all':'scope-tab-selected');$('scope-list').replaceChildren();
+ const visible=knowledgeBases.filter(k=>(scopeTab==='all'||ids.includes(k.id))&&k.name.toLocaleLowerCase().includes(query));
+ visible.forEach(k=>{const row=document.createElement('label');row.className='scope-row';const checkbox=document.createElement('input');checkbox.type='checkbox';checkbox.checked=ids.includes(k.id);checkbox.setAttribute('aria-label',k.name);const name=document.createElement('span');name.textContent=k.name;name.title=k.name;checkbox.onchange=()=>{const selected=new Set(draftIds());checkbox.checked?selected.add(k.id):selected.delete(k.id);scopeDraft={all:selected.size===knowledgeBases.length,ids:[...selected]};renderScope()};row.append(checkbox,name);$('scope-list').append(row)});
+ if(!visible.length){const empty=document.createElement('div');empty.className='scope-empty';empty.textContent=query?'没有找到匹配的知识库':'尚未选择知识库';$('scope-list').append(empty)}
+}
+function openScope(){closeModels();scopeDraft=cloneScope(activeScope());scopeTab='all';$('scope-search').value='';$('scope-panel').hidden=false;$('scope-trigger').setAttribute('aria-expanded','true');renderScope();positionScope();$('scope-search').focus()}
+$('scope-trigger').onclick=()=>{$('scope-panel').hidden?openScope():closeScope(true)};
+$('scope-search').oninput=()=>renderScope();
+$('scope-all').onchange=()=>{scopeDraft={all:$('scope-all').checked,ids:[]};renderScope()};
+['all','selected'].forEach(tab=>{$('scope-tab-'+tab).onclick=()=>{scopeTab=tab;renderScope();$('scope-list').scrollTop=0};$('scope-tab-'+tab).onkeydown=e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();const next=tab==='all'?'selected':'all';$('scope-tab-'+next).click();$('scope-tab-'+next).focus()}}});
+$('scope-confirm').onclick=()=>{if(!draftIds().length)return;const scope=cloneScope(scopeDraft);if(current)current.scope=scope;else welcomeScope=scope;updateScopeLabel();closeScope(true)};
+$('scope-cancel').onclick=$('scope-close').onclick=()=>closeScope(true);
+$('scope-panel').onkeydown=e=>{if(e.key==='Escape'){e.preventDefault();closeScope(true)}};
+document.addEventListener('click',e=>{if(!$('scope-panel').hidden&&!$('scope-panel').contains(e.target)&&!$('scope-trigger').contains(e.target))closeScope()});
+document.addEventListener('focusin',e=>{if(!$('scope-panel').hidden&&!$('scope-panel').contains(e.target)&&!$('scope-trigger').contains(e.target))closeScope()});
+window.addEventListener('resize',()=>closeScope());$('main').addEventListener('scroll',()=>closeScope());
+render();
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

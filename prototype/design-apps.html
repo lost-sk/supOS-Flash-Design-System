@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>APP 运行管理 · supOS Flash 产品原型</title>
+<link rel="stylesheet" href="assets/flash.css">
+
+<script src="assets/data.js" defer></script>
+<script src="assets/shell.js" defer></script>
+<script src="assets/interact.js" defer></script>
+<script src="assets/page/appsmgmt.js" defer></script>
+</head>
+<body data-mode="design" data-nav="design-apps.html" data-title="APP 运行管理">
+<div class="tabbar" data-component="TabBar"><span class="tab">APP 运行管理<span class="close">×</span></span></div><div class="sys-notice" data-component="SysNotice"><img src="assets/brand/smnIcon-CBGfisYv.png" alt=""><span>系统维护通知：平台将于本周日 22:00–23:00 进行例行维护，届时部分服务短暂不可用。</span><a class="more" href="#">查看详情 ›</a></div><div class="crumb"><span>设计期</span><span>APP 管理</span><span>APP 运行管理</span></div><div class="page-head"><div><h1>APP 运行管理</h1><p>已安装 APP 的启动 / 停止 / 升级 / 卸载与安装队列（二级交互：安装 / 卸载确认 / 升级 / 安装队列）</p></div><div class="btn-row"></div></div>
+  <div class="tabs" data-apptabs><a href="#" data-apptab="agent" data-label="智能体应用" class="is-active">智能体应用<span class="muted" style="margin-left:4px">2</span></a><a href="#" data-apptab="highCode" data-label="高代码开发应用" class="">高代码开发应用<span class="muted" style="margin-left:4px">2</span></a><a href="#" data-apptab="lowCode" data-label="低代码" class="">低代码<span class="muted" style="margin-left:4px">1</span></a><a href="#" data-apptab="light" data-label="轻应用" class="">轻应用<span class="muted" style="margin-left:4px">1</span></a><a href="#" data-apptab="module" data-label="平台扩展应用" class="">平台扩展应用<span class="muted" style="margin-left:4px">2</span></a><a href="#" data-apptab="plugin" data-label="平台扩展插件" class="">平台扩展插件<span class="muted" style="margin-left:4px">0</span></a><a href="#" data-apptab="all" data-label="全部" class="">全部<span class="muted" style="margin-left:4px">8</span></a></div>
+  <div class="toolbar" data-component="Toolbar" style="flex-wrap:wrap">
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+      <input style="width:180px;height:28px" placeholder="输入名称搜索" data-app-search>
+    </div>
+    <span class="spacer"></span>
+    <div class="btn-row" style="gap:8px">
+      <button class="btn primary" data-op="install">安装</button>
+      <span style="display:inline-flex">
+        <button class="btn" data-op="batch-start" disabled style="border-right:0;border-radius:var(--flash-radius) 0 0 var(--flash-radius)">启动</button>
+        <button class="btn" data-op="batch-stop" disabled style="border-radius:0 var(--flash-radius) var(--flash-radius) 0">停止</button>
+      </span>
+      <button class="btn" data-op="batch-uninstall" disabled>卸载</button>
+      <button class="btn" data-op="queue">安装队列</button>
+    </div>
+    <span class="count">共 8 条 · 示例</span>
+  </div>
+  <div class="table-wrap"><table class="flash-table" data-apptable><thead><tr>
+  <th style="width:36px"></th><th>APP名称</th><th>APP别名</th><th>类型</th><th>运行状态</th><th>版本号</th><th>开发者</th><th>资源限制</th><th>到期日期</th><th>安装时间</th><th>更新时间</th><th style="width:200px">操作</th>
+</tr></thead><tbody><tr data-type="agent" data-state="RUNNING" data-name="生产运维助手">
+    <td><input type="checkbox" aria-label="选择生产运维助手"></td>
+    <td><span style="display:inline-flex;align-items:center;gap:8px"><img src="assets/brand/app-logo-default.png" style="width:26px;height:26px;object-fit:contain;border-radius:6px" alt="">生产运维助手</span></td>
+    <td>运维Agent</td>
+    <td><span class="tag info">智能体应用</span></td>
+    <td><span data-stcell><span class="dot-status" style="color:var(--flash-status-running)">运行中</span></span></td>
+    <td>2.1.0</td>
+    <td>蓝卓supOS</td>
+    <td>cpu: 1、内存: 512Mi</td>
+    <td>2027-12-31</td>
+    <td>2026-11-01 10:00</td>
+    <td>2026-11-09 15:20</td>
+    <td data-opscell><span class="link-ops"><a href="#" data-op="cfg">配置</a><a href="#" data-op="row-stop">停止</a><a href="#" data-op="upgrade">升级</a><span class="muted" style="margin-right:8px">卸载</span></span></td>
+  </tr><tr data-type="agent" data-state="UN_RUNNING" data-name="数智BI智能体">
+    <td><input type="checkbox" aria-label="选择数智BI智能体"></td>
+    <td><span style="display:inline-flex;align-items:center;gap:8px"><img src="assets/brand/app-logo-default.png" style="width:26px;height:26px;object-fit:contain;border-radius:6px" alt="">数智BI智能体</span></td>
+    <td>BI问数</td>
+    <td><span class="tag info">智能体应用</span></td>
+    <td><span data-stcell><span class="dot-status" style="color:var(--flash-error)">已停止</span></span></td>
+    <td>1.4.2</td>
+    <td>蓝卓supOS</td>
+    <td>cpu: 1、内存: 512Mi</td>
+    <td>2027-06-30</td>
+    <td>2026-10-12 09:00</td>
+    <td>2026-11-05 11:40</td>
+    <td data-opscell><span class="link-ops"><a href="#" data-op="cfg">配置</a><a href="#" data-op="row-start">启动</a><a href="#" data-op="upgrade">升级</a><a href="#" data-op="row-uninstall">卸载</a></span></td>
+  </tr><tr data-type="highCode" data-state="RUNNING" data-name="汽配车间实时孪生">
+    <td><input type="checkbox" aria-label="选择汽配车间实时孪生"></td>
+    <td><span style="display:inline-flex;align-items:center;gap:8px"><img src="assets/brand/app-logo-default.png" style="width:26px;height:26px;object-fit:contain;border-radius:6px" alt="">汽配车间实时孪生</span></td>
+    <td>孪生大屏</td>
+    <td><span class="tag ">高代码开发应用</span></td>
+    <td><span data-stcell><span class="dot-status" style="color:var(--flash-status-running)">运行中</span></span></td>
+    <td>3.0.1</td>
+    <td>字航科技</td>
+    <td>cpu: 2、内存: 1Gi</td>
+    <td>2027-03-15</td>
+    <td>2026-09-20 14:00</td>
+    <td>2026-11-08 16:00</td>
+    <td data-opscell><span class="link-ops"><a href="#" data-op="cfg">配置</a><a href="#" data-op="row-stop">停止</a><a href="#" data-op="upgrade">升级</a><span class="muted" style="margin-right:8px">卸载</span></span></td>
+  </tr><tr data-type="highCode" data-state="UN_RUNNING" data-name="设备管理系统">
+    <td><input type="checkbox" aria-label="选择设备管理系统"></td>
+    <td><span style="display:inline-flex;align-items:center;gap:8px"><img src="assets/brand/app-logo-default.png" style="width:26px;height:26px;object-fit:contain;border-radius:6px" alt="">设备管理系统</span></td>
+    <td>EMS</td>
+    <td><span class="tag ">高代码开发应用</span></td>
+    <td><span data-stcell><span class="dot-status" style="color:var(--flash-error)">已停止</span></span></td>
+    <td>2.3.5</td>
+    <td>精达集团</td>
+    <td>cpu: 2、内存: 2Gi</td>
+    <td><span style="color:var(--flash-error)">已逾期</span></td>
+    <td>2026-08-15 10:30</td>
+    <td>2026-10-30 09:00</td>
+    <td data-opscell><span class="link-ops"><a href="#" data-op="cfg">配置</a><a href="#" data-op="row-start">启动</a><a href="#" data-op="upgrade">升级</a><a href="#" data-op="row-uninstall">卸载</a></span></td>
+  </tr><tr data-type="lowCode" data-state="RUNNING" data-name="汽配生产报工">
+    <td><input type="checkbox" aria-label="选择汽配生产报工"></td>
+    <td><span style="display:inline-flex;align-items:center;gap:8px"><img src="assets/brand/app-logo-default.png" style="width:26px;height:26px;object-fit:contain;border-radius:6px" alt="">汽配生产报工</span></td>
+    <td>报工</td>
+    <td><span class="tag ">低代码</span></td>
+    <td><span data-stcell><span class="dot-status" style="color:var(--flash-status-running)">运行中</span></span></td>
+    <td>1.2.0</td>
+    <td>蓝卓supOS</td>
+    <td>cpu: 1、内存: 512Mi</td>
+    <td>2027-01-01</td>
+    <td>2026-10-01 08:00</td>
+    <td>2026-11-02 10:00</td>
+    <td data-opscell><span class="link-ops"><a href="#" data-op="cfg">配置</a><a href="#" data-op="row-stop">停止</a><a href="#" data-op="upgrade">升级</a><span class="muted" style="margin-right:8px">卸载</span></span></td>
+  </tr><tr data-type="light" data-state="RUNNING" data-name="水泥窑煅烧与环保智能预警">
+    <td><input type="checkbox" aria-label="选择水泥窑煅烧与环保智能预警"></td>
+    <td><span style="display:inline-flex;align-items:center;gap:8px"><img src="assets/brand/app-logo-default.png" style="width:26px;height:26px;object-fit:contain;border-radius:6px" alt="">水泥窑煅烧与环保智能预警</span></td>
+    <td>窑况预警</td>
+    <td><span class="tag ">轻应用</span></td>
+    <td><span data-stcell><span class="dot-status" style="color:var(--flash-status-running)">运行中</span></span></td>
+    <td>1.0.8</td>
+    <td>蓝卓supOS</td>
+    <td>cpu: 1、内存: 512Mi</td>
+    <td>2026-12-31</td>
+    <td>2026-11-03 09:00</td>
+    <td>2026-11-03 09:00</td>
+    <td data-opscell><span class="link-ops"><a href="#" data-op="cfg">配置</a><a href="#" data-op="row-stop">停止</a><a href="#" data-op="upgrade">升级</a><span class="muted" style="margin-right:8px">卸载</span></span></td>
+  </tr><tr data-type="module" data-state="UN_RUNNING" data-name="ETL 数据集成">
+    <td><input type="checkbox" aria-label="选择ETL 数据集成"></td>
+    <td><span style="display:inline-flex;align-items:center;gap:8px"><img src="assets/brand/app-logo-default.png" style="width:26px;height:26px;object-fit:contain;border-radius:6px" alt="">ETL 数据集成</span></td>
+    <td>ETL</td>
+    <td><span class="tag warn">平台扩展应用</span></td>
+    <td><span data-stcell><span class="dot-status" style="color:var(--flash-error)">已停止</span></span></td>
+    <td>5.2.0</td>
+    <td>蓝卓supOS</td>
+    <td>cpu: 2、内存: 2Gi</td>
+    <td>2098-12-31</td>
+    <td>2026-07-10 10:00</td>
+    <td>2026-09-01 09:00</td>
+    <td data-opscell><span class="link-ops"><a href="#" data-op="cfg">配置</a><a href="#" data-op="row-start">启动</a><a href="#" data-op="upgrade">升级</a><a href="#" data-op="row-uninstall">卸载</a></span></td>
+  </tr><tr data-type="module" data-state="RUNNING" data-name="OPC UA 连接器">
+    <td><input type="checkbox" aria-label="选择OPC UA 连接器"></td>
+    <td><span style="display:inline-flex;align-items:center;gap:8px"><img src="assets/brand/app-logo-default.png" style="width:26px;height:26px;object-fit:contain;border-radius:6px" alt="">OPC UA 连接器</span></td>
+    <td>采集连接器</td>
+    <td><span class="tag warn">平台扩展应用</span></td>
+    <td><span data-stcell><span class="dot-status" style="color:var(--flash-status-running)">运行中</span></span></td>
+    <td>1.7.3</td>
+    <td>蓝卓supOS</td>
+    <td>cpu: 1、内存: 512Mi</td>
+    <td>2098-12-31</td>
+    <td>2026-07-10 10:00</td>
+    <td>2026-09-01 09:00</td>
+    <td data-opscell><span class="link-ops"><a href="#" data-op="cfg">配置</a><a href="#" data-op="row-stop">停止</a><a href="#" data-op="upgrade">升级</a><span class="muted" style="margin-right:8px">卸载</span></span></td>
+  </tr></tbody></table></div>
+  <div class="empty" data-apps-empty hidden><div class="empty-mark">▤</div><span data-apps-empty-text></span></div>
+  <div class="note ">运行状态：RUNNING 运行中 / UN_RUNNING 已停止 / PENDING 启动中；卸载仅对「已停止」的 APP 可用，卸载确认「确认卸载"xxx"这个APP吗？」（可选保留元数据 / 删除元数据），注意: 业务数据库将在30天后自动删除。若APP重新安装，则元数据重新注册。</div>
+
+</body>
+</html>

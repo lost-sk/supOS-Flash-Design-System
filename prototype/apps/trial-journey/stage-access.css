@@ -1,0 +1,37 @@
+/* Locked routes stay readable, but cannot be activated with mouse or keyboard. */
+#journey-stages .level-card.is-locked {
+ --state-accent:#8B96A5; --state-deep:#687585; --state-soft:#B8C0CB;
+ --state-text:#687585; --state-secondary:#778392; --state-tint:#F3F5F7;
+ --state-hover:#F3F5F7; --state-border:#D3D9E1; --state-rail:#E1E5EA;
+ --state-shell:#ECEFF3; --state-base:#CFD6DF; --state-glow:#7582910A;
+ --state-orbit:#CBD2DC;
+}
+#journey-stages .is-locked :is(.map-node,.task-link) { cursor:not-allowed; }
+#journey-stages .is-locked .task-link { background:#F3F5F7; border-color:#E0E4EA; box-shadow:none; }
+#journey-stages .is-locked .task-link .task-icon { background:#E8ECF1; color:#7A8797; border-color:#D3D9E1; }
+#journey-stages .is-locked .task-link:is(:hover,:focus-visible) { background:#F3F5F7; }
+#journey-stages .is-locked :is(.node-orbit,.stage-water,.node-halo,.node-progress-ring,.node-done-tick) { display:none; }
+#journey-stages .is-locked .map-node:is(:hover,:focus-visible) .node-circle { transform:translateY(var(--node-shift,0px)); }
+#journey-stages .is-locked .stage-status-badge { color:#687585; background:#E9EDF2; border-color:#D3D9E1; box-shadow:none; }
+#journey-stages .is-locked .stage-status-badge::after { background:#E9EDF2; border-color:#D3D9E1; }
+.node-access-lock { display:none; position:absolute; inset:0; place-items:center; pointer-events:none; }
+#journey-stages .node-access-lock svg { width:34px; height:34px; stroke:#FFF; stroke-width:1.7; }
+#journey-stages :is(.is-locked,.is-unlocking) .node-access-lock { display:grid; }
+#journey-stages :is(.is-locked,.is-unlocking) .node-face>svg { opacity:0; }
+.stage-unlock-glow { position:absolute; inset:-12px; z-index:6; border:2px solid #5AA4FF; border-radius:50%; opacity:0; pointer-events:none; }
+#journey-stages .is-unlocking .stage-unlock-glow { animation:stage-unlock-ring 1.5s ease-out both; }
+#journey-stages .is-unlocking .node-access-lock { animation:stage-unlock-fade 1.4s ease both; }
+#journey-stages .is-unlocking .lock-shackle { transform-origin:16px 10px; animation:stage-unlock-shackle .6s .1s ease-out both; }
+#journey-stages .is-unlocking .node-face>svg { animation:stage-reveal-icon 1.4s ease both; }
+#journey-stages .level-card.is-unlocking .stage-status-badge { background:#005FE1; border-color:#0050BD; color:#FFF; }
+#journey-stages .level-card.is-unlocking .stage-status-badge::after { background:#005FE1; border-color:#0050BD; }
+#stage-dialog .next-task:disabled { color:#8793A3; border-color:#D8DFE8; background:#F3F5F8; cursor:not-allowed; }
+@keyframes stage-unlock-shackle { to { transform:translate(1px,-2px) rotate(-35deg); } }
+@keyframes stage-unlock-fade { 0%,45% { opacity:1; } 100% { opacity:0; transform:translateY(-7px); } }
+@keyframes stage-reveal-icon { 0%,45% { opacity:0; } 100% { opacity:1; } }
+@keyframes stage-unlock-ring { 0% { opacity:0; transform:scale(.9); } 25% { opacity:.8; } 100% { opacity:0; transform:scale(1.5); } }
+@media(prefers-reduced-motion:reduce) {
+ #journey-stages .is-unlocking :is(.stage-unlock-glow,.node-access-lock,.lock-shackle,.node-face>svg) { animation:none; }
+ #journey-stages .is-unlocking .node-access-lock { display:none; }
+ #journey-stages .is-unlocking .node-face>svg { opacity:1; }
+}

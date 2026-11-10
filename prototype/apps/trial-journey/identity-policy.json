@@ -1,0 +1,17 @@
+{
+  "policy": "portal-identity-v1",
+  "identity_endpoint": "api/me",
+  "visitor_session_required": true,
+  "manual_identity_override": false,
+  "progress_verification": "not_connected",
+  "adapter": "visitor-self-v3",
+  "credential_priority": [
+    "X-Ticket",
+    "suposTicket",
+    "Authorization Bearer"
+  ],
+  "user_management_permission_required": false,
+  "role_independent": true,
+  "unconfirmed_prompt_preview": true,
+  "personalized_copy_requires_identity": true
+}

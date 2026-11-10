@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpenAPI 开放 · supOS Flash 产品原型</title>
+<link rel="stylesheet" href="assets/flash.css">
+
+<script src="assets/data.js" defer></script>
+<script src="assets/shell.js" defer></script>
+<script src="assets/interact.js" defer></script>
+<script src="assets/page/openapi.js" defer></script>
+</head>
+<body data-mode="design" data-nav="design-openapi.html" data-title="OpenAPI 开放">
+<div class="tabbar" data-component="TabBar"><span class="tab">OpenAPI 开放<span class="close">×</span></span></div><div class="sys-notice" data-component="SysNotice"><img src="assets/brand/smnIcon-CBGfisYv.png" alt=""><span>系统维护通知：平台将于本周日 22:00–23:00 进行例行维护，届时部分服务短暂不可用。</span><a class="more" href="#">查看详情 ›</a></div><div class="crumb"><span>设计期</span><span>AI 与工具</span><span>OpenAPI 开放</span></div><div class="page-head"><div><h1>OpenAPI 开放</h1><p>API 目录 / WebSocket / MQTT / MCP / 事件开放 统一开放入口（二级交互：服务用户 / 在线调试 / MCP 详情 / 事件详情）</p></div><div class="btn-row"></div></div>
+  <div class="tabs"><a href="#api" data-tab="api" class="is-active">API 目录</a><a href="#ws" data-tab="ws" class="">WebSocket</a><a href="#mqtt" data-tab="mqtt" class="">MQTT</a><a href="#mcp" data-tab="mcp" class="">MCP</a><a href="#event" data-tab="event" class="">事件开放</a></div>
+  <div data-section="api" >
+  <div class="split tree-main">
+    <section class="card" data-component="FlashCard"><div class="card-head"><h3>接口目录</h3></div>
+      <div class="tree" data-tree>
+        <div class="tree-row is-active" data-dir="全部">全部接口<span class="sub" style="margin-left:auto">6</span></div>
+        <div class="tree-row" data-dir="设备采集">设备采集<span class="sub" style="margin-left:auto">2</span></div>
+        <div class="tree-row" data-dir="生产管理">生产管理<span class="sub" style="margin-left:auto">2</span></div>
+        <div class="tree-row" data-dir="系统接口">系统接口<span class="sub" style="margin-left:auto">2</span></div>
+      </div></section>
+    <div>
+      <div class="toolbar" data-component="Toolbar" style="flex-wrap:wrap">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--flash-text-tertiary)">接口中文名称
+  <input style="width:160px;height:28px" placeholder="接口中文名称"></span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--flash-text-tertiary)">接口地址
+  <input style="width:160px;height:28px" placeholder="接口地址"></span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--flash-text-tertiary)">接口来源
+  <input style="width:160px;height:28px" placeholder="接口来源"></span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--flash-text-tertiary)">状态
+  <select style="width:120px;height:28px"><option>请选择状态</option><option>启用</option><option>禁用</option><option>已卸载</option><option>已废弃</option></select><input hidden style="width:160px;height:28px" placeholder="状态"></span></div>
+  <span class="spacer"></span>
+  <div class="btn-row" style="gap:8px"><button class="btn" data-op="service-user">服务用户</button><button class="btn">刷新</button></div>
+  <span class="count">共 6 条 · 示例</span></div>
+      <div class="table-wrap"><table class="flash-table" data-component="FlashTable"><thead><tr><th>序号</th><th>接口中文名称</th><th>接口地址</th><th>接口描述</th><th>接口类型</th><th>注册方式</th><th>接口来源</th><th>所属目录</th><th>状态</th><th>认证方式</th><th>创建人</th><th>创建时间</th><th>操作</th></tr></thead><tbody><tr><td>1</td><td><span data-apidir="设备采集">设备实时数据查询</span></td><td>/openapi/v1/uns/realtime</td><td>查询指定设备位号的实时值</td><td>REST</td><td>手动注册</td><td>数据服务</td><td>设备采集</td><td><span class="tag ok">启用</span></td><td>认证</td><td>shaokun</td><td>2026-11-02 14:22</td><td><a href="#" data-op="api-detail" data-name="设备实时数据查询">详情</a></td></tr><tr><td>2</td><td><span data-apidir="设备采集">设备历史数据查询</span></td><td>/openapi/v1/uns/history</td><td>按时间区间查询位号历史值</td><td>REST</td><td>手动注册</td><td>数据服务</td><td>设备采集</td><td><span class="tag ok">启用</span></td><td>认证</td><td>shaokun</td><td>2026-11-02 14:25</td><td><a href="#" data-op="api-detail" data-name="设备历史数据查询">详情</a></td></tr><tr><td>3</td><td><span data-apidir="生产管理">生产工单同步</span></td><td>/openapi/v1/mes/order-sync</td><td>MES 工单状态变更推送</td><td>REST</td><td>APP声明</td><td>金蝶 K3</td><td>生产管理</td><td><span class="tag ok">启用</span></td><td>免认证</td><td>zhangwei</td><td>2026-10-28 09:30</td><td><a href="#" data-op="api-detail" data-name="生产工单同步">详情</a></td></tr><tr><td>4</td><td><span data-apidir="生产管理">报表数据导出</span></td><td>/openapi/v1/report/export</td><td>报表数据导出为 Excel</td><td>REST</td><td>手动注册</td><td>报表工具</td><td>生产管理</td><td><span class="tag err">禁用</span></td><td>认证</td><td>admin</td><td>2026-09-30 08:00</td><td><a href="#" data-op="api-detail" data-name="报表数据导出">详情</a></td></tr><tr><td>5</td><td><span data-apidir="系统接口">旧版点位写入</span></td><td>/openapi/v1/uns/write-v1</td><td>旧版位号写入接口</td><td>REST</td><td>系统初始化</td><td>系统</td><td>系统接口</td><td><span class="tag warn">已卸载</span></td><td>认证</td><td>admin</td><td>2026-08-12 10:00</td><td><a href="#" data-op="api-detail" data-name="旧版点位写入">详情</a></td></tr><tr><td>6</td><td><span data-apidir="系统接口">设备告警推送</span></td><td>/openapi/v1/alarm/push</td><td>设备告警事件推送</td><td>REST</td><td>APP声明</td><td>告警服务</td><td>系统接口</td><td><span class="tag ">已废弃</span></td><td>免认证</td><td>admin</td><td>2026-07-01 08:00</td><td><a href="#" data-op="api-detail" data-name="设备告警推送">详情</a></td></tr></tbody></table></div>
+      <div class="note ">状态枚举：启用 / 禁用 / 已卸载 / 已废弃；认证方式：免认证 / 认证；注册方式：APP声明 / 手动注册 / 系统初始化。服务用户名称校验：「请输入服务用户名称」「仅支持数字、字母和特殊符号*()-_.」，服务用户认证类型（APP KEY / AKSK）必选。</div>
+    </div>
+  </div></div>
+  <div data-section="ws" hidden>
+  <div class="grid cols-2" style="margin-bottom:4px">
+    <div class="stat-card " data-component="StatCard"><div class="label">Websocket客户端连接数</div><div class="value">6</div></div>
+    <div class="stat-card " data-component="StatCard"><div class="label">数据订阅总数量（含UNS和IIoT）</div><div class="value">18</div></div>
+  </div>
+  <div class="section-title"><span>Websocket 客户端连接</span></div>
+  <div class="toolbar" data-component="Toolbar" style="flex-wrap:wrap">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--flash-text-tertiary)">
+  <input style="width:160px;height:28px" placeholder="输入订阅来源或客户端IP"></span></div>
+  <span class="spacer"></span>
+  <div class="btn-row" style="gap:8px"><button class="btn">刷新</button></div>
+  <span class="count">共 6 条 · 示例</span></div>
+  <div class="table-wrap"><table class="flash-table" data-component="FlashTable"><thead><tr><th>序号</th><th>订阅来源</th><th>客户端地址</th><th>连接建立时间</th><th>数据订阅量</th><th>最新数据推送时间</th></tr></thead><tbody><tr><td>1</td><td>UNS 订阅</td><td>172.21.6.15:52100</td><td>2026-11-09 08:12</td><td>6</td><td>2026-11-10 09:41</td></tr><tr><td>2</td><td>IIoT 订阅</td><td>172.21.6.22:53110</td><td>2026-11-09 09:30</td><td>5</td><td>2026-11-10 09:40</td></tr><tr><td>3</td><td>OpenAPI 推送</td><td>172.21.6.31:49120</td><td>2026-11-08 15:02</td><td>3</td><td>2026-11-10 09:38</td></tr><tr><td>4</td><td>事件开放</td><td>10.12.4.20:38000</td><td>2026-11-07 11:20</td><td>2</td><td>2026-11-10 09:30</td></tr><tr><td>5</td><td>UNS 订阅</td><td>172.21.6.15:52210</td><td>2026-11-06 08:00</td><td>1</td><td>2026-11-09 18:00</td></tr><tr><td>6</td><td>IIoT 订阅</td><td>172.21.6.40:51200</td><td>2026-11-05 10:00</td><td>1</td><td>2026-11-10 08:55</td></tr></tbody></table></div>
+  <section class="card" data-component="FlashCard"><div class="card-head"><h3>在线调试</h3></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+      <div>
+        <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">连接地址</span></label>
+    <div class="f-ctrl"><span style="display:inline-flex;align-items:center;height:30px;padding:0 8px;border:1px solid var(--flash-border);border-right:0;border-radius:var(--flash-radius) 0 0 var(--flash-radius);background:var(--flash-bg-subtle);color:var(--flash-text-tertiary);font-size:12px">ws://</span><input style="height:30px;border:1px solid var(--flash-border);border-radius:0 var(--flash-radius) var(--flash-radius) 0" data-ws-addr="1" value="10.12.0.10:32580" placeholder=""></div>
+    <div class="f-extra">示例：10.12.0.10:32580</div>
+    <div class="f-err"></div>
+  </div>
+        <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">连接认证</span></label>
+    <div class="f-ctrl"><input readonly="" value="Authorization: Bearer eyJhbGciOiJIUzI1NiJ9..." placeholder=""></div>
+    <div class="f-extra">Authorization，登录后自动携带，只读</div>
+    <div class="f-err"></div>
+  </div>
+        <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">订阅对象</span></label>
+    <div class="f-ctrl"><select ><option >注塑车间/注塑机01/温度</option><option >注塑车间/注塑机01/压力</option><option >空压机房/01/排气压力</option></select></div>
+    
+    <div class="f-err"></div>
+  </div>
+        <div class="btn-row" style="margin-left:128px"><button class="btn primary" data-op="ws-toggle" data-ws-btn>连接</button></div>
+      </div>
+      <div>
+        <div class="pane-head"><b>发送 / 响应</b><span class="tag" data-ws-state>DISCONNECT</span></div>
+        <div class="mono" style="background:var(--flash-bg-subtle);border:1px solid var(--flash-border);border-radius:var(--flash-radius);padding:8px 10px;white-space:pre-wrap">{"action":"subscribe","targets":["注塑车间/注塑机01/温度"]}</div>
+        <div class="muted" style="margin:6px 0 4px">响应</div>
+        <pre class="code-editor" style="min-height:130px" data-ws-resp>// 尚未建立连接，点击「连接」后发送订阅请求</pre>
+      </div>
+    </div></section>
+</div>
+  <div data-section="mqtt" hidden>
+  <div class="grid cols-2" style="margin-bottom:4px">
+    <div class="stat-card " data-component="StatCard"><div class="label">MQTT客户端连接数</div><div class="value">4</div></div>
+    <div class="stat-card " data-component="StatCard"><div class="label">订阅的Topic数量</div><div class="value">9</div></div>
+  </div>
+  <div class="section-title"><span>MQTT 客户端连接</span></div>
+  <div class="toolbar" data-component="Toolbar" style="flex-wrap:wrap">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--flash-text-tertiary)">
+  <input style="width:160px;height:28px" placeholder="请输入客户端ID"></span></div>
+  <span class="spacer"></span>
+  <div class="btn-row" style="gap:8px"><button class="btn">刷新</button></div>
+  <span class="count">共 4 条 · 示例</span></div>
+  <div class="table-wrap"><table class="flash-table" data-component="FlashTable"><thead><tr><th>序号</th><th>客户端ID</th><th>用户名</th><th>IP地址</th><th>连接建立时间</th><th>订阅的Topic数量</th></tr></thead><tbody><tr><td>1</td><td>supos-uns-01</td><td>uns_client</td><td>172.21.6.15</td><td>2026-11-09 08:10</td><td>4</td></tr><tr><td>2</td><td>supos-iiot-02</td><td>iiot_client</td><td>172.21.6.22</td><td>2026-11-09 09:26</td><td>3</td></tr><tr><td>3</td><td>mes-gateway</td><td>mes_user</td><td>10.12.4.8</td><td>2026-11-08 14:00</td><td>1</td></tr><tr><td>4</td><td>etl-bridge</td><td>etl_user</td><td>10.12.4.9</td><td>2026-11-07 16:40</td><td>1</td></tr></tbody></table></div>
+  <section class="card" data-component="FlashCard"><div class="card-head"><h3>在线调试</h3></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+      <div>
+        <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="req">MQTT Broker 连接地址</span></label>
+    <div class="f-ctrl"><input data-mqtt-broker="1" data-req="1" data-err="请输入MQTT Broker 连接地址!" value="ws://10.12.0.10:32580/mqtt" placeholder=""></div>
+    
+    <div class="f-err">请输入MQTT Broker 连接地址!</div>
+  </div>
+        <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="req">客户端ID</span></label>
+    <div class="f-ctrl"><input data-req="1" data-err="请输入客户端ID" value="supos-debug-client" placeholder=""></div>
+    
+    <div class="f-err">请输入客户端ID</div>
+  </div>
+        <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">连接状态</span></label>
+    <div class="f-ctrl"><span class="tag err" data-mqtt-state>断开</span></div>
+    
+    <div class="f-err"></div>
+  </div>
+        <div class="btn-row" style="margin-left:128px"><button class="btn primary" data-op="mqtt-toggle" data-mqtt-btn>连接</button></div>
+        <div style="height:1px;background:var(--flash-border);margin:12px 0"></div>
+        <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">选择工厂模型节点</span></label>
+    <div class="f-ctrl"><input readonly="" data-mqtt-node="1" value="" placeholder="请选择工厂模型节点"><button class="btn sm" data-op="mqtt-pick" style="margin-left:6px">选择节点</button></div>
+    
+    <div class="f-err"></div>
+  </div>
+        <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">订阅Topic</span></label>
+    <div class="f-ctrl"><input data-mqtt-topic="1" value="" placeholder="uns/注塑车间/注塑机01/温度"></div>
+    
+    <div class="f-err"></div>
+  </div>
+        <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">QoS</span></label>
+    <div class="f-ctrl"><select ><option >0</option><option >1</option><option >2</option></select></div>
+    
+    <div class="f-err"></div>
+  </div>
+        <div class="btn-row" style="margin-left:128px">
+          <button class="btn primary" data-op="mqtt-sub">开始订阅</button>
+          <button class="btn" data-op="mqtt-unsub">取消订阅</button>
+        </div>
+      </div>
+      <div>
+        <div class="pane-head"><b>已订阅 Topic</b><span class="muted">点击 ✕ 移除</span></div>
+        <div data-mqtt-topics style="display:flex;flex-wrap:wrap;gap:8px"><span class="muted">暂无订阅</span></div>
+        <div class="note" style="margin-top:14px">连接状态：连通 / 连接中 / 断开 / 重连中；Broker 地址默认 ws(s)://host:32580/mqtt，校验「Broker地址必须以ws://或wss://开头」；连接按钮文案：连接 / 断开连接 / 正在连接中... / 断线重连中...。</div>
+      </div>
+    </div></section>
+</div>
+  <div data-section="mcp" hidden>
+  <div class="note ">supOS MCP Servers，基于MCP协议，将 supOS 工厂模型与数据服务封装为标准 MCP 工具，供外部 Agent 调用。</div>
+  <div class="toolbar" data-component="Toolbar" style="flex-wrap:wrap">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><input style="width:220px;height:28px" placeholder="请输入名称或功能描述" data-mcp-search></div>
+  <span class="spacer"></span>
+  <div class="btn-row" style="gap:8px"></div>
+  <span class="count">共 3 条 · 示例</span></div>
+  <div class="grid cols-3" data-mcp-list>
+  <a class="card" href="#" data-op="mcp-detail" data-name="supOS-UNS MCP Server" style="display:block">
+    <div style="display:flex;align-items:flex-start;gap:10px">
+      <span class="quick-icon glyph" style="background:var(--flash-primary)">U</span>
+      <div style="min-width:0"><b style="font-size:13px;color:var(--flash-text-strong)">supOS-UNS MCP Server</b>
+        <div class="muted" style="margin-top:2px">提供工厂模型目录、位号查询与实时订阅工具</div></div>
+    </div>
+    <div style="margin-top:10px;font-size:12px;color:var(--flash-text-secondary)">含 6 个工具</div>
+  </a>
+  <a class="card" href="#" data-op="mcp-detail" data-name="supOS-数据服务 MCP Server" style="display:block">
+    <div style="display:flex;align-items:flex-start;gap:10px">
+      <span class="quick-icon glyph" style="background:var(--flash-success)">数</span>
+      <div style="min-width:0"><b style="font-size:13px;color:var(--flash-text-strong)">supOS-数据服务 MCP Server</b>
+        <div class="muted" style="margin-top:2px">提供实时/历史数据查询与订阅工具</div></div>
+    </div>
+    <div style="margin-top:10px;font-size:12px;color:var(--flash-text-secondary)">含 4 个工具</div>
+  </a>
+  <a class="card" href="#" data-op="mcp-detail" data-name="supOS-OpenAPI MCP Server" style="display:block">
+    <div style="display:flex;align-items:flex-start;gap:10px">
+      <span class="quick-icon glyph" style="background:var(--flash-warning)">O</span>
+      <div style="min-width:0"><b style="font-size:13px;color:var(--flash-text-strong)">supOS-OpenAPI MCP Server</b>
+        <div class="muted" style="margin-top:2px">将已注册开放接口封装为 MCP 工具</div></div>
+    </div>
+    <div style="margin-top:10px;font-size:12px;color:var(--flash-text-secondary)">含 3 个工具</div>
+  </a></div>
+  <div class="empty" data-mcp-empty hidden><div class="empty-mark">▤</div><span>暂无 supOS MCP Servers</span></div>
+</div>
+  <div data-section="event" hidden>
+  <div class="split sider-main">
+    <section class="card" data-component="FlashCard"><div class="card-head"><h3>事件菜单</h3></div>
+      <input style="width:100%;height:28px" placeholder="请输入名称搜索">
+      <div class="tree" data-tree style="margin-top:8px">
+        <div class="tree-row" data-ev="设备事件"><b>设备事件</b><span class="sub" style="margin-left:auto">2</span></div>
+        <div class="tree-row" data-ev="设备报警事件" style="padding-left:24px">设备报警事件</div>
+        <div class="tree-row" data-ev="注塑机离线事件" style="padding-left:24px">注塑机离线事件</div>
+        <div class="tree-row" data-ev="生产事件"><b>生产事件</b><span class="sub" style="margin-left:auto">2</span></div>
+        <div class="tree-row" data-ev="工单完成事件" style="padding-left:24px">工单完成事件</div>
+        <div class="tree-row" data-ev="库存不足事件" style="padding-left:24px">库存不足事件</div>
+      </div></section>
+    <div data-ev-area>
+      <div data-subwrap>
+        <div class="tabs">
+          <a data-subtab="em" class="is-active">事件管理</a>
+          <a data-subtab="es">事件订阅</a>
+        </div>
+        <div data-subpane="em">
+          <div data-ev-empty class="empty"><div class="empty-mark">▤</div><span>请先选择左侧菜单</span></div>
+          <div data-ev-panel hidden>
+            <div class="toolbar" data-component="Toolbar" style="flex-wrap:wrap">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--flash-text-tertiary)">事件名称
+  <input style="width:160px;height:28px" placeholder="事件名称"></span></div>
+  <span class="spacer"></span>
+  <div class="btn-row" style="gap:8px"></div>
+  <span class="count">共 4 条 · 示例</span></div>
+            <div class="table-wrap"><table class="flash-table" data-component="FlashTable"><thead><tr><th>事件名称</th><th>事件显示名称</th><th>备注</th><th>数据结构描述</th></tr></thead><tbody><tr><td><span data-evgroup="设备事件">设备报警事件</span></td><td>设备报警</td><td>PLC 报警位触发</td><td><a href="#" style="color:var(--flash-primary)" data-op="event-detail" data-name="设备报警事件">查看</a></td></tr><tr><td><span data-evgroup="设备事件">注塑机离线事件</span></td><td>注塑机离线</td><td>采集心跳超时</td><td><a href="#" style="color:var(--flash-primary)" data-op="event-detail" data-name="注塑机离线事件">查看</a></td></tr><tr><td><span data-evgroup="生产事件">工单完成事件</span></td><td>工单完成</td><td>MES 报工完成回调</td><td><a href="#" style="color:var(--flash-primary)" data-op="event-detail" data-name="工单完成事件">查看</a></td></tr><tr><td><span data-evgroup="生产事件">库存不足事件</span></td><td>库存不足</td><td>原料库存低于安全库存</td><td><a href="#" style="color:var(--flash-primary)" data-op="event-detail" data-name="库存不足事件">查看</a></td></tr></tbody></table></div>
+          </div>
+        </div>
+        <div data-subpane="es" hidden>
+          <div class="toolbar" data-component="Toolbar" style="flex-wrap:wrap">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--flash-text-tertiary)">订阅名称
+  <input style="width:160px;height:28px" placeholder="订阅名称"></span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--flash-text-tertiary)">事件名称
+  <input style="width:160px;height:28px" placeholder="事件名称"></span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--flash-text-tertiary)">事件分组
+  <input style="width:160px;height:28px" placeholder="事件分组"></span><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--flash-text-tertiary)">主题名称
+  <input style="width:160px;height:28px" placeholder="主题名称"></span></div>
+  <span class="spacer"></span>
+  <div class="btn-row" style="gap:8px"></div>
+  <span class="count">共 2 条 · 示例</span></div>
+          <div class="table-wrap"><table class="flash-table" data-component="FlashTable"><thead><tr><th>订阅名称</th><th>订阅显示名称</th><th>传输类型</th><th>传输地址</th><th>最大拉取事件</th><th>事件确认方式</th><th>事件名称</th><th>事件分组</th><th>主题名称</th><th>订阅创建时间</th></tr></thead><tbody><tr><td>sub-alarm-01</td><td>设备报警订阅</td><td>KAFKA</td><td>kafka://10.12.0.11:9092/alarm</td><td>100</td><td>自动确认</td><td>设备报警事件</td><td>设备事件</td><td>alarm-topic</td><td>2026-10-20 11:00</td></tr><tr><td>sub-order-02</td><td>MES 工单订阅</td><td>MQTT</td><td>mqtt://10.12.0.10:31883/order</td><td>50</td><td>手动确认</td><td>工单完成事件</td><td>生产事件</td><td>order-topic</td><td>2026-10-25 14:30</td></tr></tbody></table></div>
+        </div>
+      </div>
+    </div>
+  </div></div>
+
+</body>
+</html>

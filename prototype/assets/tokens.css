@@ -1,0 +1,166 @@
+/* 构建产物，勿手改 · 源：tokens/flash-product.css + tokens/flash-desktop.css */
+/* supOS Flash · 门户 / 设计期 token
+ * ─────────────────────────────────────────────────────────────
+ * 真源 1（代码实证）：gitlab-supos/supos/supbase/supbase-frontend-main
+ *   分支 flash_1.08.00.00-C · src/App.tsx → ConfigProvider theme.token
+ * 真源 2（运行期实证）：flash01.devcloud.supos.net 2026-11-09 实测
+ *   /#/login · /#/home · /#/os/home 的 computed style 与截图
+ *
+ * 重要：本文件取代 01-品牌基础.md v0.1 草案的 #1448ED。
+ * 草案色值取自 logo 像素，与真实产品代码不符；用户 2026-11-09
+ * 明确「色值和规格冲突按实际线上 + 源码实证」。
+ * ───────────────────────────────────────────────────────────── */
+
+:root {
+  /* ── 品牌 / 动作色 ── App.tsx token ── */
+  --flash-primary: #297bff;             /* colorPrimary / colorInfo / colorLink */
+  --flash-primary-hover: #0666ff;       /* colorPrimaryHover / colorLinkHover */
+  --flash-primary-soft: #edf9fe;        /* 线上实测 rgb(237,249,254)，浅蓝底 */
+  --flash-legacy-component: #0055f2;    /* @supos/organization、@supos/table 组件包自带主色 */
+  --flash-legacy-button: #0f71e2;       /* button.global.module.less 旧按钮 */
+  --flash-tour-gradient: linear-gradient(180deg, #297bff, #0055f2cf); /* Ant Tour */
+
+  /* ── 语义色 ── App.tsx token ── */
+  --flash-error: #f3324f;               /* colorError */
+  --flash-error-soft: #fde8e9;
+  --flash-success: #05c933;             /* colorSuccess */
+  --flash-success-soft: #f2f8eb;
+  --flash-warning: #faad14;             /* colorWarning */
+  --flash-warning-soft: #fcf8e9;
+
+  /* ── 文字 ── App.tsx + 线上实测 ── */
+  --flash-text: #323c47;                /* colorText，实测 rgb(50,60,71) */
+  --flash-text-strong: #222426;         /* 标题，实测 rgb(34,36,38) */
+  --flash-text-secondary: #4e5969;      /* 实测 rgb(78,89,105) */
+  --flash-text-tertiary: #8a94a6;       /* 实测 rgb(138,148,166) */
+  --flash-text-muted: #999999;          /* 实测 rgb(153,153,153) */
+  --flash-text-inverse: #ffffff;
+  --flash-text-disabled: #323c47;       /* App.tsx colorTextDisabled（有意不淡化） */
+
+  /* ── 边框 / 背景 ── */
+  --flash-border: #e0e6ee;              /* colorBorder */
+  --flash-border-strong: #dee4ed;       /* 登录页容器底色 / 分割线 */
+  --flash-bg-page: #f5f5f5;             /* 内容区底，实测 rgb(245,245,245) */
+  --flash-bg-container: #ffffff;
+  --flash-bg-subtle: #fafafb;
+  --flash-bg-disabled: #dbdddf;         /* App.tsx colorBgContainerDisabled */
+  --flash-sider-shadow: 0 2px 8px 0 rgba(201, 201, 201, .5);
+
+  /* ── 排版 ── */
+  --flash-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Microsoft YaHei", sans-serif;
+  --flash-font-size: 13px;              /* App.tsx fontSize */
+  --flash-line-height: 1.6923076923;    /* 22 / 13，源码注释：保证 Input 默认高 32px */
+  --flash-font-size-sm: 12px;
+  --flash-font-size-lg: 16px;
+  --flash-font-size-h1: 20px;
+  --flash-font-size-stat: 26px;         /* 首页统计数字，实测 26/28/48px 阶梯 */
+  --flash-font-size-stat-lg: 48px;
+
+  /* ── 尺寸 / 密度 ── */
+  --flash-radius: 4px;                  /* App.tsx borderRadius */
+  --flash-radius-lg: 8px;               /* 卡片，线上实测 */
+  --flash-radius-xl: 12px;              /* 大面板，线上实测 */
+  --flash-control-height: 32px;         /* 源码注释保证值 */
+  --flash-header-height: 50px;          /* 实测 .ant-layout-header */
+  --flash-sider-width: 250px;           /* 实测 .ant-layout-sider */
+  --flash-menu-row-1: 36px;             /* 实测一级菜单行 */
+  --flash-menu-row-2: 34px;             /* 实测二级菜单行 */
+  --flash-row-height: 48px;             /* 表格行 */
+  --flash-space-1: 4px;
+  --flash-space-2: 8px;
+  --flash-space-3: 12px;
+  --flash-space-4: 16px;
+  --flash-space-5: 24px;
+  --flash-space-6: 32px;
+  --flash-screen-xl: 1440px;            /* App.tsx screenXL */
+
+  /* ── 统计卡片浅色底（线上实测） ── */
+  --flash-stat-purple: #f5f2ff;
+  --flash-stat-blue: #edf9fe;
+  --flash-stat-green: #f2f8eb;
+  --flash-stat-amber: #fcf8e9;
+
+  /* ── L2 二级交互实证色（源码逐字取证，供二级组件引用；页面仍不得直接写 hex） ──
+   * supbase-frontend-main：APP 运行状态 cells.tsx、数据源连接状态 SourceContent.tsx、
+   * 元数据采集状态 CollectStatus、联邦查询节点色 QueryArea、diviner 待分配/Tag 色 */
+  --flash-status-running: #06a72b;      /* AppRuntimeManage RUNNING 运行中 */
+  --flash-status-pending: #2db7f5;      /* AppRuntimeManage PENDING 启动中 */
+  --flash-link-ok: #1bb934;             /* 数据源已连接 */
+  --flash-link-fail: #ed1c24;           /* 数据源失败 / 未连接 */
+  --flash-collect-doing: #0099b1;       /* 元数据采集中 / SQL 节点 */
+  --flash-sem-pending: #c48a1a;         /* diviner 待分配 */
+  --flash-node-js: #297bff;             /* 联邦查询 JS 节点 */
+  --flash-node-sub: #5c00e9;            /* 联邦查询订阅任务节点 */
+  --flash-installed: #222426;           /* 应用商店「已安装」文字色 */
+  --flash-mask: rgba(0, 0, 0, .45);     /* antd Modal 遮罩 */
+}
+
+/* 统计卡片四类语义：仅用于设计期首页指标卡，不是通用状态色 */
+.stat-purple { background: var(--flash-stat-purple); }
+.stat-blue   { background: var(--flash-stat-blue); }
+.stat-green  { background: var(--flash-stat-green); }
+.stat-amber  { background: var(--flash-stat-amber); }
+
+
+/* supOS Flash · 运行期「桌面视图」token
+ * ─────────────────────────────────────────────────────────────
+ * 真源 1（运行期实证）：flash01 桌面壳层
+ *   /os/statics/pkg/toolkit/desktop/main/assets/index-BMEQV8cy.css
+ * 真源 2（源码实证）：poc/工业AI之旅/app/trial-journey/web/
+ *   journey-dd2fcca47ffe.css（#005FE1 出现 69 次）
+ * 真源 3：2026-11-09 桌面视图 / 架构图 / 工作台 tab 截图
+ *
+ * 桌面运行期是独立的视觉语言，不要强行用门户的 --flash-primary 覆盖。
+ * ───────────────────────────────────────────────────────────── */
+
+:root {
+  /* 桌面壳层（顶部标签栏、系统操作） */
+  --desk-shell-primary: #0f71e2;
+  --desk-shell-primary-light: #3793f0;
+  --desk-shell-text: #232426;
+  --desk-shell-border: #dee7f5;
+  --desk-shell-divider: #e4e5e6;
+  --desk-shell-muted: #a5a5a5;
+  --desk-shell-line: #d3d3d3;
+
+  /* 试用之旅 app（独立品牌色，与门户不同） */
+  --desk-journey-primary: #005fe1;       /* 69 次，主按钮/节点/路径 */
+  --desk-journey-primary-deep: #004bb4;
+  --desk-journey-primary-soft: #83b1f5;
+  --desk-journey-bg-soft: #edf4ff;
+  --desk-journey-bg-soft-2: #eff5ff;
+  --desk-journey-teal: #176d88;
+  --desk-journey-teal-deep: #12566f;
+  --desk-journey-green: #159968;
+  --desk-journey-cyan: #9adcf4;
+  --desk-journey-gold: #d3b58c;
+  --desk-journey-planet: #ee493c;        /* 右上角红色星球插画 */
+  --desk-journey-planet-deep: #d52224;
+
+  /* 桌面渐变底（截图取色） */
+  --desk-bg-gradient: linear-gradient(
+    135deg,
+    #dceaff 0%,
+    #eaf4ff 32%,
+    #f4f8ff 58%,
+    #e9e2ff 100%
+  );
+  --desk-bg-glow: rgba(0, 95, 225, .06);
+
+  /* 桌面浮层卡片 */
+  --desk-card-bg: #ffffff;
+  --desk-card-radius: 10px;
+  --desk-card-shadow: 0 8px 28px rgba(30, 74, 140, .10);
+  --desk-tab-active: var(--desk-shell-primary);
+  --desk-tab-height: 40px;
+}
+
+/* 桌面视图的容器，与门户 .flash-shell 互斥 */
+.desktop-surface {
+  background: var(--desk-bg-gradient);
+  color: var(--desk-shell-text);
+  font-family: var(--flash-font-sans);
+  font-size: var(--flash-font-size);
+}
+

@@ -1,0 +1,182 @@
+[
+  {
+    "code": "1.1",
+    "file": "task-1-1.mp4",
+    "source": "OT数据连接_配音版.mp4",
+    "bytes": 11894388,
+    "sha256": "412e3a6948e775b8af7d145a7e10f8f7cb9123092fbef082d3cd2f505644aa61"
+  },
+  {
+    "code": "1.2",
+    "file": "task-1-2.mp4",
+    "source": "金蝶ERP数据同步_配音版.mp4",
+    "bytes": 8681395,
+    "sha256": "49d19036ccdb848d8e2f2df14c65bf63597eef737dbbf1fad843cdffdb49ccbe"
+  },
+  {
+    "code": "1.3",
+    "file": "task-1-3.mp4",
+    "source": "打通关系数据库_配音版.mp4",
+    "bytes": 3097505,
+    "sha256": "2a89f5dca70b7626fe7a134d1b0823e0f8084377d79c5612a21dfffd01c4ada5"
+  },
+  {
+    "code": "2.1",
+    "file": "task-2-1.mp4",
+    "source": "数据质量清洗_配音版mp4.mp4",
+    "bytes": 6876509,
+    "sha256": "de0b659fd76098440b74ce6a43f21b0bd2c076da78d4b9abdbf1447eee15f5f8"
+  },
+  {
+    "code": "2.2",
+    "file": "task-2-2.mp4",
+    "source": "2.2_创建工厂模型_精剪配音字幕版.mp4",
+    "bytes": 3674936,
+    "sha256": "7bdeeb2717be1bd335e2c5d795e33cd59a37d76ccd43064c7e00f7a44ef64502",
+    "duration": 49.666666666666664,
+    "subtitles": 8,
+    "subtitle_file": "task-2-2.srt",
+    "edition": "2026-10-26 精剪配音字幕版",
+    "voice": "zh-CN-XiaoxiaoNeural",
+    "original_sha256": "4cb100186599058504492202af099e996d8af3c10430e0d2fdb0c759b51be507"
+  },
+  {
+    "code": "2.3",
+    "file": "task-2-3.mp4",
+    "source": "2.3_知识库与知识图谱_精剪配音字幕版.mp4",
+    "bytes": 11838537,
+    "sha256": "779a35527b578e351b74b633ed5c304fd00d0893a3559212fba841ab520e7c8b",
+    "duration": 166.5,
+    "subtitles": 27,
+    "subtitle_file": "task-2-3.srt",
+    "edition": "2026-10-26 精剪配音字幕版",
+    "voice": "zh-CN-XiaoxiaoNeural",
+    "original_sha256": "80a20e76edad5d79b7f660ec0d2c45e44314888e0c10b7d5da8bda3c4420a21c"
+  },
+  {
+    "code": "3.1",
+    "file": "task-3-1.mp4",
+    "source": "3.1_生成开停车事件_精剪配音字幕版.mp4",
+    "bytes": 4562853,
+    "sha256": "ff59c7b67b428d65bc9c35fa6c649ad6e83de150dc438957a4d6416d806935dd",
+    "duration": 59.63333333333333,
+    "subtitles": 10,
+    "subtitle_file": "task-3-1.srt",
+    "edition": "2026-10-26 精剪配音字幕版",
+    "voice": "zh-CN-XiaoxiaoNeural",
+    "original_sha256": "82fb99012d0d07a6dde1562a3f156094357185fe442003073e911ba99f3f4c79"
+  },
+  {
+    "code": "3.2",
+    "file": "task-3-2.mp4",
+    "source": "3.2_计算设备OEE_精剪配音字幕版.mp4",
+    "bytes": 2873094,
+    "sha256": "4ff24c19e851e7ea85edcf0e13d6230c431e613ac93e073753394bf24bcf84ae",
+    "duration": 46.36666666666667,
+    "subtitles": 8,
+    "subtitle_file": "task-3-2.srt",
+    "edition": "2026-10-26 精剪配音字幕版",
+    "voice": "zh-CN-XiaoxiaoNeural",
+    "original_sha256": "90866e930e0b70ab7b669e6c24fe90e07ae2f28394cc47a851d43d883226cf47"
+  },
+  {
+    "code": "3.3",
+    "file": "task-3-3.mp4",
+    "source": "3.3_报警消息推送_精剪配音字幕版.mp4",
+    "bytes": 4525335,
+    "sha256": "dedaf54299d869a57d12b2fc46e62ab530622d1d78383214f19d5a82d857e07f",
+    "duration": 54.06666666666667,
+    "subtitles": 9,
+    "subtitle_file": "task-3-3.srt",
+    "edition": "2026-10-26 精剪配音字幕版",
+    "voice": "zh-CN-XiaoxiaoNeural",
+    "original_sha256": "a0005c5b9db73e7c2651c72c163c46a53e1d210189e103fe8acb73fdcebaccbc"
+  },
+  {
+    "code": "4.1",
+    "file": "task-4-1.mp4",
+    "source": "4.1_知识检索_精剪配音字幕版.mp4",
+    "bytes": 2749144,
+    "sha256": "5a254e2d6fa687ac22a8d91944193731b817d2e4321963391f79723dfa3f3cbe",
+    "duration": 33.766666666666666,
+    "subtitles": 6,
+    "subtitle_file": "task-4-1.srt",
+    "edition": "2026-10-26 精剪配音字幕版",
+    "voice": "zh-CN-XiaoxiaoNeural",
+    "original_sha256": "ef4629d3e7526f7ea7c252115cc6262cc14ea0233b15b51266df4b876a52816d"
+  },
+  {
+    "code": "4.2",
+    "file": "task-4-2.mp4",
+    "source": "4.2_SOP报警智能_精剪配音字幕版.mp4",
+    "bytes": 4265775,
+    "sha256": "71a7be1e07a7378eada71f2227f468adabb69696074e6e053faaa52ac800c9e9",
+    "duration": 46.1,
+    "subtitles": 7,
+    "subtitle_file": "task-4-2.srt",
+    "edition": "2026-10-26 精剪配音字幕版",
+    "voice": "zh-CN-XiaoxiaoNeural",
+    "original_sha256": "bf5714ea248a1085024f1b01d770378875abae28970e89a82d32d8d18058d76c"
+  },
+  {
+    "code": "4.3",
+    "file": "task-4-3.mp4",
+    "source": "4.3_自由角色洞察_精剪配音字幕版.mp4",
+    "bytes": 3637160,
+    "sha256": "d1db85e428a8238a75f1870686beeb52c50ada27be8d8efe233615a1aadeb189",
+    "duration": 42.5,
+    "subtitles": 7,
+    "subtitle_file": "task-4-3.srt",
+    "edition": "2026-10-26 精剪配音字幕版",
+    "voice": "zh-CN-XiaoxiaoNeural",
+    "original_sha256": "4dfe6b4b6434346db80daa4c4cafe5277a54f3185eaf1cab05538ab09d91b790"
+  },
+  {
+    "code": "5.1",
+    "file": "task-5-1.mp4",
+    "source": "MES应用完整性体验_配音版.mp4",
+    "bytes": 31194248,
+    "sha256": "a55fc746367a9747fbfcc8eee03a28a77ebcc7efefc1c55670529f686575ded8",
+    "duration": 250.467,
+    "edition": "2026-10-27 用户提供配音版",
+    "replaced_sha256": "b69d2a31e81d54b418b2202a66674c200ec2e77385b96c02c743fddf99469970"
+  },
+  {
+    "code": "5.2",
+    "file": "task-5-2.mp4",
+    "source": "实时监控大屏_配音版5.2.mp4",
+    "bytes": 9853316,
+    "sha256": "02453841c6b0764e217d536a898768ddf2a9054e84341d12a2165e37cf9ef112"
+  },
+  {
+    "code": "5.3",
+    "file": "task-5-3.mp4",
+    "source": "设备台账应用5.3.mp4",
+    "bytes": 7808205,
+    "sha256": "c10161e2ed8fac4dd830f0c4c327dab62139172c4f941cc869e80db8ec7b872a"
+  },
+  {
+    "code": "6.1",
+    "file": "task-6-1.mp4",
+    "source": "AI助手（自然语言创建部门岗位）_配音版6.1.mp4",
+    "bytes": 2648226,
+    "sha256": "746b5feb2435f6385056c15f9b43139542ccc1b762c8b24dda7a4a1bde83ed53"
+  },
+  {
+    "code": "6.2",
+    "file": "task-6-2.mp4",
+    "source": "AI自动化巡检_配音版6.2.mp4",
+    "bytes": 6728047,
+    "sha256": "636150d8ae9e903bbcf081d9a6333e8295699f43b0b36b7c740f3af2f83af2e1"
+  },
+  {
+    "code": "6.3",
+    "file": "task-6-3.mp4",
+    "source": "个人工作台_配音版.mp4",
+    "bytes": 7780905,
+    "sha256": "fbbcfdda69dc49002a17bd266fda174d893639be1d2463caaa4970004f9991a3",
+    "duration": 46.467,
+    "edition": "2026-10-27 用户提供配音版",
+    "replaced_sha256": "840bbfe4e962aa764436b7b72d432cfa79f97bfdfea4e034c60acade819640fc"
+  }
+]

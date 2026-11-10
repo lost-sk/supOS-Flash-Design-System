@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>运行期 · 桌面视图 · supOS Flash 产品原型</title>
+<link rel="stylesheet" href="assets/flash.css">
+
+<script src="assets/data.js" defer></script>
+<script src="assets/shell.js" defer></script>
+<script src="assets/interact.js" defer></script>
+</head>
+<body data-mode="runtime-desktop" data-nav="runtime-desktop.html" data-title="运行期 · 桌面视图">
+<div class="desktop-surface" data-component="DesktopSurface">
+    <div class="desk-topbar">
+      <div class="desk-logo"><img src="assets/brand/default_logo.svg" alt="supOS X"></div>
+      <nav class="desk-tabs" data-component="DesktopTabs"><a href="?tab=journey" data-desk-tab-link="journey" class="is-active">supOS工业AI之旅</a><a href="?tab=architecture" data-desk-tab-link="architecture" class="">架构图</a><a href="?tab=workbench" data-desk-tab-link="workbench" class="">工作台</a></nav>
+      <div class="desk-topbar-right">
+        <span class="desk-tag">自定义布局</span><span>11月10日 周二</span>
+        <span class="desk-icon" title="通知"><img src="assets/brand/smnIcon-CBGfisYv.png" alt=""></span>
+        <span class="desk-icon" title="显示桌面"><img src="assets/brand/showDesktop-CkmC1w8R.png" alt=""></span>
+        <span class="flash-avatar">S</span>
+      </div>
+    </div>
+    <div class="desk-stage">
+      <div data-desk-tab="journey"><iframe class="desk-frame" src="apps/trial-journey/progress-preview.html" title="supOS 工业AI之旅 · 进度效果"></iframe></div>
+      <div data-desk-tab="architecture" hidden><div class="desk-arch" data-component="ArchitectureMap">
+    <div class="arch-layer"><div class="arch-box" style="flex:1"><b>外部 Agent 入口</b><span>WorkBuddy · 千问办公 · 平台外</span></div><div class="arch-box" style="flex:1"><b>各类 APP / Agent</b><span>注塑生产应用 · MES 管理系统 · 字航 AI 管理</span></div></div>
+    <div class="section-title"><span></span></div>
+    <div class="arch-box" style="margin-bottom:10px"><b>AI 开放服务</b><span>skill 管理 · 提示词 · 大模型网关 · Agent Hub · Flash · MCP 能力 · 统一出口</span></div>
+    <div class="arch-box" style="margin-bottom:10px"><b>建模服务</b><span>工厂模型 · 知识库 · 服务与订阅管理 · 报警管理</span></div>
+    <div class="arch-layer"><div class="arch-box"><b>数据开放</b><span>SQL 联邦查询 · OpenAPI 开放 · WebSocket 开放 · MQTT 协议开放 · 事件开放</span></div><div class="arch-box" style="text-align:center"><div class="arch-core">supOS Flash</div><span style="margin-top:8px">平台内核 · 统一底座</span></div><div class="arch-box"><b>存储服务</b><span>数据库资源管理 · 数据库实例回滚</span></div></div>
+    <div class="arch-box"><b>连接服务</b><span>数据源注册 · 数据接入服务 · 采集器</span></div>
+  </div></div>
+      <div data-desk-tab="workbench" hidden><div class="desk-floatcard" data-component="DesktopWorkbench">
+    <div class="tabs"><a href="#" class="is-active">我的待办</a><a href="#">我的已办</a><a href="#">我的发起</a><a href="#" style="margin-left:auto">更多 ›</a></div>
+    <div class="table-wrap"><table class="flash-table" data-component="FlashTable"><thead><tr><th>所属模块</th><th>流程名称</th><th>任务名称</th><th>创建时间</th><th>发起人</th><th>状态</th><th>操作</th></tr></thead><tbody></tbody></table></div>
+    <div class="empty"><div class="empty-mark">▤</div><span>暂无数据</span></div>
+    <div class="note ">运行期桌面视图的「工作台」是浮在渐变底上的独立卡片，与门户工作台的高密度布局是两套视觉语言。</div>
+  </div></div>
+    </div>
+    <div class="desk-footer">© 2017-2026 蓝卓数字科技有限公司 版权所有 · supOS X 工厂操作系统</div>
+  </div>
+</body>
+</html>

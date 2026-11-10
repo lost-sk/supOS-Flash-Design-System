@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MES 制造执行管理系统</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- 导航形态判定：放在 <head> 里，首帧即生效，避免门户形态下先闪出应用内菜单再消失。
+       · 门户形态（路径以 /os/ 开头，或被门户 iframe 嵌入）→ 应用内不出菜单，业务页面切换由 supOS 门户菜单承载；
+       · 本地直连形态（如 http://localhost:8080）→ 应用内保留「顶栏视图页签 + 左侧功能域树」，便于自由切换；
+       可用 ?nav=1 / ?nav=0 强制显示 / 隐藏应用内菜单（覆盖自动判定）。 -->
+  <script>
+    (function () {
+      var p = location.pathname || '', q = location.search || '';
+      var forced = (/[?&]nav=([01])/.exec(q) || [])[1];
+      var hosted = p.indexOf('/os/') === 0 || window.self !== window.top;
+      var mode = forced === '1' ? 'local' : forced === '0' ? 'portal' : hosted ? 'portal' : 'local';
+      window.__MES_NAV__ = mode;                               // 供 app.js 复用（单一判定来源）
+      if (mode === 'portal') document.documentElement.className += ' in-portal';
+    })();
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">⚙</span>
+      <div>
+        <div class="title">MES 制造执行管理系统</div>
+        <div class="subtitle">汽配车间 · 9 大功能域 / 79 张表（Schema 驱动 · 含主子表 · 全表可 CSV 导入校验 · 支持条码追溯）</div>
+      </div>
+    </div>
+    <!-- 顶栏视图页签：仅「本地直连」形态渲染内容（门户形态下由 CSS 整块隐藏） -->
+    <div class="topnav" id="topnav"></div>
+    <div class="pagehead" id="pageHead"><!-- 当前所在功能域 / 页面（由 app.js 渲染） --></div>
+    <div class="topright">
+      <span class="ver" id="verBadge" title="应用版本"></span>
+      <span class="whoami" id="whoami"></span>
+      <span class="dsbadge" id="dsBadge" title="数据源状态"></span>
+      <button id="btnSettings" class="ghost">⚙ 显示设置</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <!-- 左侧功能域树：仅「本地直连」形态渲染内容（门户形态下由 CSS 整块隐藏） -->
+    <aside class="sidebar" id="sidebar"></aside>
+    <main class="content" id="content"><!-- 业务页面 --></main>
+  </div>
+
+  <div class="modal-mask" id="modalMask" style="display:none">
+    <div class="modal" id="modal">
+      <div class="modal-head"><span id="modalTitle">编辑</span><button id="modalClose">✕</button></div>
+      <div class="modal-body" id="modalBody"></div>
+      <div class="modal-foot"><button id="modalCancel" class="ghost">取消</button><button id="modalSave" class="primary">保存</button></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" style="display:none"></div>
+
+  <script src="js/version.js"></script>
+  <script src="js/qrcode.js"></script>
+  <script src="js/schema.js"></script>
+  <script src="js/seed.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

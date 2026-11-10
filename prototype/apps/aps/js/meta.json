@@ -1,0 +1,5391 @@
+{
+ "generatedAt": "2000-01-01T00:00:00.000Z",
+ "source": "aps_system/js/schema.js",
+ "tables": {
+  "BAS_DEMAND": {
+   "label": "需求源",
+   "domain": "BAS",
+   "module": "需求管理",
+   "alias": "aps_bas_demand",
+   "keys": [
+    "demand_no"
+   ],
+   "keyCodes": [
+    "DEMAND_NO"
+   ],
+   "doc": true,
+   "detail": false,
+   "calc": false,
+   "report": false,
+   "pk": "DEMAND_NO",
+   "lineCols": null,
+   "lead": [
+    "SOURCE_TYPE",
+    "SOURCE_NO"
+   ],
+   "upRef": [
+    "RF_SO"
+   ],
+   "cols": [
+    {
+     "code": "ID",
+     "label": "主键",
+     "type": "s",
+     "req": true,
+     "sys": true,
+     "pk": true
+    },
+    {
+     "code": "ORG_ID",
+     "label": "组织",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_BY",
+     "label": "创建人",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_TIME",
+     "label": "创建时间",
+     "type": "dt",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_BY",
+     "label": "修改人",
+     "type": "s",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_TIME",
+     "label": "修改时间",
+     "type": "dt",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DEL_FLAG",
+     "label": "删除标记",
+     "type": "b",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "VER_NO",
+     "label": "数据版本",
+     "type": "i",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "EXT_JSON",
+     "label": "扩展字段",
+     "type": "j",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DOC_NO",
+     "label": "单据号",
+     "type": "s",
+     "req": true,
+     "doc": true
+    },
+    {
+     "code": "DOC_TYPE",
+     "label": "单别",
+     "type": "s",
+     "req": true,
+     "doc": true
+    },
+    {
+     "code": "DOC_DATE",
+     "label": "单据日期",
+     "type": "da",
+     "req": true,
+     "doc": true
+    },
+    {
+     "code": "STATUS",
+     "label": "状态",
+     "type": "s",
+     "req": true,
+     "doc": true
+    },
+    {
+     "code": "MAKER",
+     "label": "制单人",
+     "type": "s",
+     "req": true,
+     "doc": true
+    },
+    {
+     "code": "MAKE_TIME",
+     "label": "制单时间",
+     "type": "dt",
+     "req": true,
+     "doc": true
+    },
+    {
+     "code": "AUDIT_STATUS",
+     "label": "审核状态",
+     "type": "s",
+     "req": false,
+     "doc": true
+    },
+    {
+     "code": "AUDIT_BY",
+     "label": "审核人",
+     "type": "s",
+     "req": false,
+     "doc": true
+    },
+    {
+     "code": "AUDIT_TIME",
+     "label": "审核时间",
+     "type": "dt",
+     "req": false,
+     "doc": true
+    },
+    {
+     "code": "PRINT_TIMES",
+     "label": "打印次数",
+     "type": "i",
+     "req": false,
+     "doc": true
+    },
+    {
+     "code": "ATTACH_URLS",
+     "label": "附件",
+     "type": "j",
+     "req": false,
+     "doc": true
+    },
+    {
+     "code": "DEMAND_NO",
+     "label": "需求单号",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "SOURCE_TYPE",
+     "label": "需求来源",
+     "type": "s",
+     "req": true,
+     "dict": "DEMAND_SOURCE"
+    },
+    {
+     "code": "SOURCE_NO",
+     "label": "来源单据号",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "CUSTOMER_CODE",
+     "label": "客户",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "PLAN_HORIZON",
+     "label": "计划展望期(天)",
+     "type": "i",
+     "req": false
+    },
+    {
+     "code": "FREEZE_FLAG",
+     "label": "是否冻结",
+     "type": "b",
+     "req": false
+    },
+    {
+     "code": "FREEZE_DAYS",
+     "label": "冻结窗口(天)",
+     "type": "i",
+     "req": false
+    },
+    {
+     "code": "FREEZE_UNTIL",
+     "label": "冻结至",
+     "type": "da",
+     "req": false
+    },
+    {
+     "code": "APPROVE_BY",
+     "label": "变更审批人",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "REMARK",
+     "label": "备注",
+     "type": "s",
+     "req": false,
+     "sys": true
+    }
+   ]
+  },
+  "BAS_DEMAND_LINE": {
+   "label": "需求明细",
+   "domain": "BAS",
+   "module": "需求管理",
+   "alias": "aps_bas_demand_line",
+   "keys": [
+    "demand_no",
+    "seq_no"
+   ],
+   "keyCodes": [
+    "DEMAND_NO",
+    "SEQ_NO"
+   ],
+   "doc": false,
+   "detail": true,
+   "calc": false,
+   "report": false,
+   "pk": "DEMAND_NO",
+   "lineCols": 6,
+   "lead": null,
+   "upRef": null,
+   "cols": [
+    {
+     "code": "ID",
+     "label": "主键",
+     "type": "s",
+     "req": true,
+     "sys": true,
+     "pk": true
+    },
+    {
+     "code": "ORG_ID",
+     "label": "组织",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_BY",
+     "label": "创建人",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_TIME",
+     "label": "创建时间",
+     "type": "dt",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_BY",
+     "label": "修改人",
+     "type": "s",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_TIME",
+     "label": "修改时间",
+     "type": "dt",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DEL_FLAG",
+     "label": "删除标记",
+     "type": "b",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "VER_NO",
+     "label": "数据版本",
+     "type": "i",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "EXT_JSON",
+     "label": "扩展字段",
+     "type": "j",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DEMAND_NO",
+     "label": "需求单号",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "SEQ_NO",
+     "label": "序号",
+     "type": "i",
+     "req": true
+    },
+    {
+     "code": "ITEM_NO",
+     "label": "品号",
+     "type": "s",
+     "req": true,
+     "ref": "RF_ITEM"
+    },
+    {
+     "code": "ITEM_NAME",
+     "label": "品名",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "DEMAND_QTY",
+     "label": "需求数量",
+     "type": "d",
+     "req": true
+    },
+    {
+     "code": "REQ_DATE",
+     "label": "需求日期",
+     "type": "da",
+     "req": true
+    },
+    {
+     "code": "SRC_DOC_NO",
+     "label": "来源单据号",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "LOCK_FLAG",
+     "label": "是否锁定",
+     "type": "b",
+     "req": false
+    },
+    {
+     "code": "LINE_STATUS",
+     "label": "明细状态",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_STATUS",
+     "label": "审核状态",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_BY",
+     "label": "审核人",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_TIME",
+     "label": "审核时间",
+     "type": "dt",
+     "req": false
+    },
+    {
+     "code": "REMARK",
+     "label": "备注",
+     "type": "s",
+     "req": false,
+     "sys": true
+    }
+   ]
+  },
+  "BAS_ITEM_PLAN_ATTR": {
+   "label": "物料计划属性",
+   "domain": "BAS",
+   "module": "计划基础数据",
+   "alias": "aps_bas_item_plan_attr",
+   "keys": [
+    "item_no"
+   ],
+   "keyCodes": [
+    "ITEM_NO"
+   ],
+   "doc": false,
+   "detail": false,
+   "calc": false,
+   "report": false,
+   "pk": "ITEM_NO",
+   "lineCols": null,
+   "lead": null,
+   "upRef": null,
+   "cols": [
+    {
+     "code": "ID",
+     "label": "主键",
+     "type": "s",
+     "req": true,
+     "sys": true,
+     "pk": true
+    },
+    {
+     "code": "ORG_ID",
+     "label": "组织",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_BY",
+     "label": "创建人",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_TIME",
+     "label": "创建时间",
+     "type": "dt",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_BY",
+     "label": "修改人",
+     "type": "s",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_TIME",
+     "label": "修改时间",
+     "type": "dt",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DEL_FLAG",
+     "label": "删除标记",
+     "type": "b",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "VER_NO",
+     "label": "数据版本",
+     "type": "i",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "EXT_JSON",
+     "label": "扩展字段",
+     "type": "j",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "ITEM_NO",
+     "label": "物料品号",
+     "type": "s",
+     "req": true,
+     "ref": "RF_ITEM"
+    },
+    {
+     "code": "ITEM_NAME",
+     "label": "品名",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "PLAN_TYPE",
+     "label": "计划类型",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "PRODUCE_LEAD_TIME",
+     "label": "生产提前期(天)",
+     "type": "i",
+     "req": false
+    },
+    {
+     "code": "PURCHASE_LEAD_TIME",
+     "label": "采购提前期(天)",
+     "type": "i",
+     "req": false
+    },
+    {
+     "code": "MIN_BATCH",
+     "label": "最小批量",
+     "type": "d",
+     "req": false
+    },
+    {
+     "code": "BATCH_MULTIPLE",
+     "label": "批量倍数",
+     "type": "d",
+     "req": false
+    },
+    {
+     "code": "SCH_BATCH",
+     "label": "排产批量",
+     "type": "d",
+     "req": false
+    },
+    {
+     "code": "SAFETY_STOCK",
+     "label": "安全库存",
+     "type": "d",
+     "req": false
+    },
+    {
+     "code": "MIN_STOCK",
+     "label": "补充下限(min)",
+     "type": "d",
+     "req": false
+    },
+    {
+     "code": "MAX_STOCK",
+     "label": "补充上限(max)",
+     "type": "d",
+     "req": false
+    },
+    {
+     "code": "KEY_ITEM_FLAG",
+     "label": "关键件标识",
+     "type": "b",
+     "req": false
+    },
+    {
+     "code": "LONG_CYCLE_FLAG",
+     "label": "长周期件标识",
+     "type": "b",
+     "req": false
+    },
+    {
+     "code": "SUBSTITUTE_RULE",
+     "label": "替代料规则",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "DEFAULT_RES_GROUP",
+     "label": "默认资源组",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "GROUP_CYCLE",
+     "label": "组批周期(天)",
+     "type": "i",
+     "req": false
+    },
+    {
+     "code": "FROM_MES_FLAG",
+     "label": "取MES默认值",
+     "type": "b",
+     "req": false
+    },
+    {
+     "code": "ENABLE_FLAG",
+     "label": "是否启用",
+     "type": "b",
+     "req": true
+    },
+    {
+     "code": "ENABLE_FROM",
+     "label": "启用时间",
+     "type": "da",
+     "req": false
+    },
+    {
+     "code": "ENABLE_TO",
+     "label": "失效时间",
+     "type": "da",
+     "req": false
+    },
+    {
+     "code": "AUDIT_STATUS",
+     "label": "审核状态",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_BY",
+     "label": "审核人",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_TIME",
+     "label": "审核时间",
+     "type": "dt",
+     "req": false
+    },
+    {
+     "code": "REMARK",
+     "label": "备注",
+     "type": "s",
+     "req": false,
+     "sys": true
+    }
+   ]
+  },
+  "BAS_RESOURCE": {
+   "label": "排产资源",
+   "domain": "BAS",
+   "module": "计划基础数据",
+   "alias": "aps_bas_resource",
+   "keys": [
+    "res_no"
+   ],
+   "keyCodes": [
+    "RES_NO"
+   ],
+   "doc": false,
+   "detail": false,
+   "calc": false,
+   "report": false,
+   "pk": "RES_NO",
+   "lineCols": null,
+   "lead": null,
+   "upRef": null,
+   "cols": [
+    {
+     "code": "ID",
+     "label": "主键",
+     "type": "s",
+     "req": true,
+     "sys": true,
+     "pk": true
+    },
+    {
+     "code": "ORG_ID",
+     "label": "组织",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_BY",
+     "label": "创建人",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_TIME",
+     "label": "创建时间",
+     "type": "dt",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_BY",
+     "label": "修改人",
+     "type": "s",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_TIME",
+     "label": "修改时间",
+     "type": "dt",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DEL_FLAG",
+     "label": "删除标记",
+     "type": "b",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "VER_NO",
+     "label": "数据版本",
+     "type": "i",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "EXT_JSON",
+     "label": "扩展字段",
+     "type": "j",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "RES_NO",
+     "label": "资源编号",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "RES_NAME",
+     "label": "资源名称",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "RES_TYPE",
+     "label": "资源类型",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "WORK_CENTER",
+     "label": "工作中心",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "RES_GROUP",
+     "label": "资源分组",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "STD_CYCLE",
+     "label": "标准节拍(s/件)",
+     "type": "d",
+     "req": false
+    },
+    {
+     "code": "STD_CAP",
+     "label": "班次能力(件)",
+     "type": "d",
+     "req": false
+    },
+    {
+     "code": "SUPPORTED_STEP",
+     "label": "可加工工序",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "LOCATION",
+     "label": "机台位置",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "HOUR_MODE",
+     "label": "工时处理方式",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "ENABLE_FLAG",
+     "label": "是否启用",
+     "type": "b",
+     "req": true
+    },
+    {
+     "code": "ENABLE_FROM",
+     "label": "启用时间",
+     "type": "da",
+     "req": false
+    },
+    {
+     "code": "ENABLE_TO",
+     "label": "失效时间",
+     "type": "da",
+     "req": false
+    },
+    {
+     "code": "AUDIT_STATUS",
+     "label": "审核状态",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_BY",
+     "label": "审核人",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_TIME",
+     "label": "审核时间",
+     "type": "dt",
+     "req": false
+    },
+    {
+     "code": "REMARK",
+     "label": "备注",
+     "type": "s",
+     "req": false,
+     "sys": true
+    }
+   ]
+  },
+  "BAS_RESOURCE_GROUP": {
+   "label": "资源分组(一工序多机)",
+   "domain": "BAS",
+   "module": "计划基础数据",
+   "alias": "aps_bas_resource_group",
+   "keys": [
+    "group_code"
+   ],
+   "keyCodes": [
+    "GROUP_CODE"
+   ],
+   "doc": false,
+   "detail": false,
+   "calc": false,
+   "report": false,
+   "pk": "GROUP_CODE",
+   "lineCols": null,
+   "lead": null,
+   "upRef": null,
+   "cols": [
+    {
+     "code": "ID",
+     "label": "主键",
+     "type": "s",
+     "req": true,
+     "sys": true,
+     "pk": true
+    },
+    {
+     "code": "ORG_ID",
+     "label": "组织",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_BY",
+     "label": "创建人",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_TIME",
+     "label": "创建时间",
+     "type": "dt",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_BY",
+     "label": "修改人",
+     "type": "s",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_TIME",
+     "label": "修改时间",
+     "type": "dt",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DEL_FLAG",
+     "label": "删除标记",
+     "type": "b",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "VER_NO",
+     "label": "数据版本",
+     "type": "i",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "EXT_JSON",
+     "label": "扩展字段",
+     "type": "j",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "GROUP_CODE",
+     "label": "分组编码",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "GROUP_NAME",
+     "label": "分组名称",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "WORK_CENTER",
+     "label": "工作中心",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "MEMBER_RES",
+     "label": "成员资源",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "STEP_SCOPE",
+     "label": "可加工工序范围",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "PRIORITY",
+     "label": "优选优先级",
+     "type": "i",
+     "req": false
+    },
+    {
+     "code": "ENABLE_FLAG",
+     "label": "是否启用",
+     "type": "b",
+     "req": false
+    },
+    {
+     "code": "ENABLE_FROM",
+     "label": "启用时间",
+     "type": "da",
+     "req": false
+    },
+    {
+     "code": "ENABLE_TO",
+     "label": "失效时间",
+     "type": "da",
+     "req": false
+    },
+    {
+     "code": "AUDIT_STATUS",
+     "label": "审核状态",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_BY",
+     "label": "审核人",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_TIME",
+     "label": "审核时间",
+     "type": "dt",
+     "req": false
+    },
+    {
+     "code": "REMARK",
+     "label": "备注",
+     "type": "s",
+     "req": false,
+     "sys": true
+    }
+   ]
+  },
+  "BAS_CHANGEOVER": {
+   "label": "换型时间",
+   "domain": "BAS",
+   "module": "计划基础数据",
+   "alias": "aps_bas_changeover",
+   "keys": [
+    "cv_id"
+   ],
+   "keyCodes": [
+    "CV_ID"
+   ],
+   "doc": false,
+   "detail": false,
+   "calc": false,
+   "report": false,
+   "pk": "CV_ID",
+   "lineCols": null,
+   "lead": null,
+   "upRef": null,
+   "cols": [
+    {
+     "code": "ID",
+     "label": "主键",
+     "type": "s",
+     "req": true,
+     "sys": true,
+     "pk": true
+    },
+    {
+     "code": "ORG_ID",
+     "label": "组织",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_BY",
+     "label": "创建人",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_TIME",
+     "label": "创建时间",
+     "type": "dt",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_BY",
+     "label": "修改人",
+     "type": "s",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_TIME",
+     "label": "修改时间",
+     "type": "dt",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DEL_FLAG",
+     "label": "删除标记",
+     "type": "b",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "VER_NO",
+     "label": "数据版本",
+     "type": "i",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "EXT_JSON",
+     "label": "扩展字段",
+     "type": "j",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "CV_ID",
+     "label": "换型ID",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "RES_GROUP",
+     "label": "资源分组",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "FROM_PRODUCT",
+     "label": "前置产品",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "TO_PRODUCT",
+     "label": "后置产品",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "CHANGE_MIN",
+     "label": "换型时间(分)",
+     "type": "d",
+     "req": true
+    },
+    {
+     "code": "IS_WILDCARD",
+     "label": "通配配置(任意→某产品)",
+     "type": "b",
+     "req": false
+    },
+    {
+     "code": "SAME_SPEC_ZERO",
+     "label": "同规格记0",
+     "type": "b",
+     "req": false
+    },
+    {
+     "code": "EXPR_FORMULA",
+     "label": "表达式",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "ENABLE_FLAG",
+     "label": "是否启用",
+     "type": "b",
+     "req": false
+    },
+    {
+     "code": "ENABLE_FROM",
+     "label": "启用时间",
+     "type": "da",
+     "req": false
+    },
+    {
+     "code": "ENABLE_TO",
+     "label": "失效时间",
+     "type": "da",
+     "req": false
+    },
+    {
+     "code": "AUDIT_STATUS",
+     "label": "审核状态",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_BY",
+     "label": "审核人",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_TIME",
+     "label": "审核时间",
+     "type": "dt",
+     "req": false
+    },
+    {
+     "code": "REMARK",
+     "label": "备注",
+     "type": "s",
+     "req": false,
+     "sys": true
+    }
+   ]
+  },
+  "BAS_CALENDAR": {
+   "label": "工厂日历(三级)",
+   "domain": "BAS",
+   "module": "计划基础数据",
+   "alias": "aps_bas_calendar",
+   "keys": [
+    "cal_level",
+    "owner_code",
+    "work_date",
+    "shift"
+   ],
+   "keyCodes": [
+    "CAL_LEVEL",
+    "OWNER_CODE",
+    "WORK_DATE",
+    "SHIFT"
+   ],
+   "doc": false,
+   "detail": false,
+   "calc": false,
+   "report": false,
+   "pk": "CAL_ID",
+   "lineCols": null,
+   "lead": null,
+   "upRef": null,
+   "cols": [
+    {
+     "code": "ID",
+     "label": "主键",
+     "type": "s",
+     "req": true,
+     "sys": true,
+     "pk": true
+    },
+    {
+     "code": "ORG_ID",
+     "label": "组织",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_BY",
+     "label": "创建人",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_TIME",
+     "label": "创建时间",
+     "type": "dt",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_BY",
+     "label": "修改人",
+     "type": "s",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_TIME",
+     "label": "修改时间",
+     "type": "dt",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DEL_FLAG",
+     "label": "删除标记",
+     "type": "b",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "VER_NO",
+     "label": "数据版本",
+     "type": "i",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "EXT_JSON",
+     "label": "扩展字段",
+     "type": "j",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "CAL_ID",
+     "label": "日历ID",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "CAL_LEVEL",
+     "label": "日历层级",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "OWNER_CODE",
+     "label": "所属对象",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "WORK_DATE",
+     "label": "日期",
+     "type": "da",
+     "req": true
+    },
+    {
+     "code": "SHIFT",
+     "label": "班次",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "WORK_START",
+     "label": "工作开始",
+     "type": "dt",
+     "req": false
+    },
+    {
+     "code": "WORK_END",
+     "label": "工作结束",
+     "type": "dt",
+     "req": false
+    },
+    {
+     "code": "CAP_HOURS",
+     "label": "可用工时",
+     "type": "d",
+     "req": false
+    },
+    {
+     "code": "IS_HOLIDAY",
+     "label": "是否节假日",
+     "type": "b",
+     "req": false
+    },
+    {
+     "code": "IS_OVERTIME",
+     "label": "加班窗口",
+     "type": "b",
+     "req": false
+    },
+    {
+     "code": "ENABLE_FLAG",
+     "label": "是否启用",
+     "type": "b",
+     "req": false
+    },
+    {
+     "code": "ENABLE_FROM",
+     "label": "启用时间",
+     "type": "da",
+     "req": false
+    },
+    {
+     "code": "ENABLE_TO",
+     "label": "失效时间",
+     "type": "da",
+     "req": false
+    },
+    {
+     "code": "AUDIT_STATUS",
+     "label": "审核状态",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_BY",
+     "label": "审核人",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_TIME",
+     "label": "审核时间",
+     "type": "dt",
+     "req": false
+    },
+    {
+     "code": "REMARK",
+     "label": "备注",
+     "type": "s",
+     "req": false,
+     "sys": true
+    }
+   ]
+  },
+  "BAS_MAINTENANCE": {
+   "label": "维保/故障占用",
+   "domain": "BAS",
+   "module": "计划基础数据",
+   "alias": "aps_bas_maintenance",
+   "keys": [
+    "occupy_no"
+   ],
+   "keyCodes": [
+    "OCCUPY_NO"
+   ],
+   "doc": false,
+   "detail": false,
+   "calc": false,
+   "report": false,
+   "pk": "OCCUPY_NO",
+   "lineCols": null,
+   "lead": null,
+   "upRef": null,
+   "cols": [
+    {
+     "code": "ID",
+     "label": "主键",
+     "type": "s",
+     "req": true,
+     "sys": true,
+     "pk": true
+    },
+    {
+     "code": "ORG_ID",
+     "label": "组织",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_BY",
+     "label": "创建人",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_TIME",
+     "label": "创建时间",
+     "type": "dt",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_BY",
+     "label": "修改人",
+     "type": "s",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_TIME",
+     "label": "修改时间",
+     "type": "dt",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DEL_FLAG",
+     "label": "删除标记",
+     "type": "b",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "VER_NO",
+     "label": "数据版本",
+     "type": "i",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "EXT_JSON",
+     "label": "扩展字段",
+     "type": "j",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "OCCUPY_NO",
+     "label": "占用编号",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "RES_NO",
+     "label": "资源",
+     "type": "s",
+     "req": true,
+     "ref": "BAS_RESOURCE"
+    },
+    {
+     "code": "OCCUPY_TYPE",
+     "label": "占用类型",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "START_TIME",
+     "label": "开始时间",
+     "type": "dt",
+     "req": true
+    },
+    {
+     "code": "END_TIME",
+     "label": "结束时间",
+     "type": "dt",
+     "req": true
+    },
+    {
+     "code": "SOURCE_SYS",
+     "label": "数据来源",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "STATUS",
+     "label": "状态",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "AUDIT_STATUS",
+     "label": "审核状态",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_BY",
+     "label": "审核人",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_TIME",
+     "label": "审核时间",
+     "type": "dt",
+     "req": false
+    },
+    {
+     "code": "REMARK",
+     "label": "备注",
+     "type": "s",
+     "req": false,
+     "sys": true
+    }
+   ]
+  },
+  "MRP_BATCH": {
+   "label": "需求计算版本",
+   "domain": "MRP",
+   "module": "物料需求计算",
+   "alias": "aps_mrp_batch",
+   "keys": [
+    "batch_no"
+   ],
+   "keyCodes": [
+    "BATCH_NO"
+   ],
+   "doc": false,
+   "detail": false,
+   "calc": true,
+   "report": false,
+   "pk": "BATCH_NO",
+   "lineCols": null,
+   "lead": null,
+   "upRef": null,
+   "cols": [
+    {
+     "code": "ID",
+     "label": "主键",
+     "type": "s",
+     "req": true,
+     "sys": true,
+     "pk": true
+    },
+    {
+     "code": "ORG_ID",
+     "label": "组织",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_BY",
+     "label": "创建人",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_TIME",
+     "label": "创建时间",
+     "type": "dt",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_BY",
+     "label": "修改人",
+     "type": "s",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_TIME",
+     "label": "修改时间",
+     "type": "dt",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DEL_FLAG",
+     "label": "删除标记",
+     "type": "b",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "VER_NO",
+     "label": "数据版本",
+     "type": "i",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "EXT_JSON",
+     "label": "扩展字段",
+     "type": "j",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "BATCH_NO",
+     "label": "版本号",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "BATCH_TYPE",
+     "label": "版本类型",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "RULE_NO",
+     "label": "排程规则",
+     "type": "s",
+     "req": false,
+     "ref": "SCH_RULE"
+    },
+    {
+     "code": "CALC_TIME",
+     "label": "计算时间",
+     "type": "dt",
+     "req": true
+    },
+    {
+     "code": "CALC_BY",
+     "label": "计算人",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "REQ_ROWS",
+     "label": "需求行数",
+     "type": "i",
+     "req": false
+    },
+    {
+     "code": "NET_ROWS",
+     "label": "净需求行数",
+     "type": "i",
+     "req": false
+    },
+    {
+     "code": "DURATION_SEC",
+     "label": "耗时(秒)",
+     "type": "d",
+     "req": false
+    },
+    {
+     "code": "STATUS",
+     "label": "版本状态",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "IDEMPOTENT_KEY",
+     "label": "幂等键",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "REMARK",
+     "label": "备注",
+     "type": "s",
+     "req": false,
+     "sys": true
+    }
+   ]
+  },
+  "MRP_NET_REQ": {
+   "label": "净需求",
+   "domain": "MRP",
+   "module": "物料需求计算",
+   "alias": "aps_mrp_net_req",
+   "keys": [
+    "net_id"
+   ],
+   "keyCodes": [
+    "NET_ID"
+   ],
+   "doc": false,
+   "detail": false,
+   "calc": true,
+   "report": false,
+   "pk": "NET_ID",
+   "lineCols": null,
+   "lead": null,
+   "upRef": null,
+   "cols": [
+    {
+     "code": "ID",
+     "label": "主键",
+     "type": "s",
+     "req": true,
+     "sys": true,
+     "pk": true
+    },
+    {
+     "code": "ORG_ID",
+     "label": "组织",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_BY",
+     "label": "创建人",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_TIME",
+     "label": "创建时间",
+     "type": "dt",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_BY",
+     "label": "修改人",
+     "type": "s",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_TIME",
+     "label": "修改时间",
+     "type": "dt",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DEL_FLAG",
+     "label": "删除标记",
+     "type": "b",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "VER_NO",
+     "label": "数据版本",
+     "type": "i",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "EXT_JSON",
+     "label": "扩展字段",
+     "type": "j",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "NET_ID",
+     "label": "净需求ID",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "BATCH_NO",
+     "label": "计算版本",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "LEVEL_NO",
+     "label": "BOM层级",
+     "type": "i",
+     "req": true
+    },
+    {
+     "code": "ITEM_NO",
+     "label": "品号",
+     "type": "s",
+     "req": true,
+     "ref": "RF_ITEM"
+    },
+    {
+     "code": "ITEM_NAME",
+     "label": "品名",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "ITEM_TYPE",
+     "label": "建议类型",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "PARENT_ITEM",
+     "label": "父项物料",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "BOM_VER",
+     "label": "BOM版本",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "GROSS_QTY",
+     "label": "毛需求",
+     "type": "d",
+     "req": true
+    },
+    {
+     "code": "SAFE_STOCK",
+     "label": "安全库存",
+     "type": "d",
+     "req": false
+    },
+    {
+     "code": "AVAIL_STOCK",
+     "label": "可用库存",
+     "type": "d",
+     "req": false
+    },
+    {
+     "code": "WIP_QTY",
+     "label": "在制",
+     "type": "d",
+     "req": false
+    },
+    {
+     "code": "ON_ORDER_QTY",
+     "label": "在途",
+     "type": "d",
+     "req": false
+    },
+    {
+     "code": "NET_QTY",
+     "label": "净需求",
+     "type": "d",
+     "req": true
+    },
+    {
+     "code": "ADJ_QTY",
+     "label": "批量调整后",
+     "type": "d",
+     "req": false
+    },
+    {
+     "code": "SUBSTITUTE_ITEM",
+     "label": "替代料",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "REQ_DATE",
+     "label": "需求日期",
+     "type": "da",
+     "req": true
+    },
+    {
+     "code": "SUGGEST_DATE",
+     "label": "建议开工/下达日期",
+     "type": "da",
+     "req": false
+    },
+    {
+     "code": "STATUS",
+     "label": "状态",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "REMARK",
+     "label": "备注",
+     "type": "s",
+     "req": false,
+     "sys": true
+    }
+   ]
+  },
+  "MRP_KIT_CHECK": {
+   "label": "齐套检查",
+   "domain": "MRP",
+   "module": "物料需求计算",
+   "alias": "aps_mrp_kit_check",
+   "keys": [
+    "check_no"
+   ],
+   "keyCodes": [
+    "CHECK_NO"
+   ],
+   "doc": false,
+   "detail": false,
+   "calc": true,
+   "report": false,
+   "pk": "CHECK_NO",
+   "lineCols": null,
+   "lead": null,
+   "upRef": null,
+   "cols": [
+    {
+     "code": "ID",
+     "label": "主键",
+     "type": "s",
+     "req": true,
+     "sys": true,
+     "pk": true
+    },
+    {
+     "code": "ORG_ID",
+     "label": "组织",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_BY",
+     "label": "创建人",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_TIME",
+     "label": "创建时间",
+     "type": "dt",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_BY",
+     "label": "修改人",
+     "type": "s",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_TIME",
+     "label": "修改时间",
+     "type": "dt",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DEL_FLAG",
+     "label": "删除标记",
+     "type": "b",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "VER_NO",
+     "label": "数据版本",
+     "type": "i",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "EXT_JSON",
+     "label": "扩展字段",
+     "type": "j",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "CHECK_NO",
+     "label": "齐套单号",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "BATCH_NO",
+     "label": "计算版本",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "CHECK_TYPE",
+     "label": "检查口径",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "CHECK_DATE",
+     "label": "检查日期",
+     "type": "da",
+     "req": true
+    },
+    {
+     "code": "ORDER_NO",
+     "label": "销售订单/工单",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "ITEM_NO",
+     "label": "品号",
+     "type": "s",
+     "req": true,
+     "ref": "RF_ITEM"
+    },
+    {
+     "code": "ITEM_NAME",
+     "label": "品名",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "LEVEL_NO",
+     "label": "层级",
+     "type": "i",
+     "req": false
+    },
+    {
+     "code": "DEMAND_QTY",
+     "label": "需求数量",
+     "type": "d",
+     "req": true
+    },
+    {
+     "code": "KIT_QTY",
+     "label": "齐套数量",
+     "type": "d",
+     "req": false
+    },
+    {
+     "code": "SHORT_QTY",
+     "label": "缺料数量",
+     "type": "d",
+     "req": false
+    },
+    {
+     "code": "KIT_RATE",
+     "label": "齐套率",
+     "type": "d",
+     "req": false
+    },
+    {
+     "code": "KIT_DATE",
+     "label": "齐套日期",
+     "type": "da",
+     "req": false
+    },
+    {
+     "code": "KEY_ITEM_FLAG",
+     "label": "是否关键件",
+     "type": "b",
+     "req": false
+    },
+    {
+     "code": "PERIOD_TYPE",
+     "label": "按日/按周/时段",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "STATUS",
+     "label": "状态",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "REMARK",
+     "label": "备注",
+     "type": "s",
+     "req": false,
+     "sys": true
+    }
+   ]
+  },
+  "MRP_KIT_SHORT": {
+   "label": "缺料明细",
+   "domain": "MRP",
+   "module": "物料需求计算",
+   "alias": "aps_mrp_kit_short",
+   "keys": [
+    "short_id"
+   ],
+   "keyCodes": [
+    "SHORT_ID"
+   ],
+   "doc": false,
+   "detail": true,
+   "calc": true,
+   "report": false,
+   "pk": "SHORT_ID",
+   "lineCols": null,
+   "lead": null,
+   "upRef": null,
+   "cols": [
+    {
+     "code": "ID",
+     "label": "主键",
+     "type": "s",
+     "req": true,
+     "sys": true,
+     "pk": true
+    },
+    {
+     "code": "ORG_ID",
+     "label": "组织",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_BY",
+     "label": "创建人",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_TIME",
+     "label": "创建时间",
+     "type": "dt",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_BY",
+     "label": "修改人",
+     "type": "s",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_TIME",
+     "label": "修改时间",
+     "type": "dt",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DEL_FLAG",
+     "label": "删除标记",
+     "type": "b",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "VER_NO",
+     "label": "数据版本",
+     "type": "i",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "EXT_JSON",
+     "label": "扩展字段",
+     "type": "j",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "SHORT_ID",
+     "label": "缺料ID",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "CHECK_NO",
+     "label": "齐套单号",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "ORDER_NO",
+     "label": "销售订单/工单",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "ITEM_NO",
+     "label": "品号",
+     "type": "s",
+     "req": true,
+     "ref": "RF_ITEM"
+    },
+    {
+     "code": "ITEM_NAME",
+     "label": "品名",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "SHORT_QTY",
+     "label": "缺料数量",
+     "type": "d",
+     "req": true
+    },
+    {
+     "code": "REQ_DATE",
+     "label": "需求日期",
+     "type": "da",
+     "req": false
+    },
+    {
+     "code": "RECOVER_DATE",
+     "label": "预计恢复日",
+     "type": "da",
+     "req": false
+    },
+    {
+     "code": "SUPPLY_TYPE",
+     "label": "供应方式",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "KEY_ITEM_FLAG",
+     "label": "是否关键件",
+     "type": "b",
+     "req": false
+    },
+    {
+     "code": "BLOCK_FLAG",
+     "label": "是否阻断",
+     "type": "b",
+     "req": false
+    },
+    {
+     "code": "STATUS",
+     "label": "状态",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "REMARK",
+     "label": "备注",
+     "type": "s",
+     "req": false,
+     "sys": true
+    }
+   ]
+  },
+  "PR_SUGGEST": {
+   "label": "补料建议",
+   "domain": "MRP",
+   "module": "物料需求计算",
+   "alias": "aps_pr_suggest",
+   "keys": [
+    "pr_no"
+   ],
+   "keyCodes": [
+    "PR_NO"
+   ],
+   "doc": true,
+   "detail": false,
+   "calc": true,
+   "report": false,
+   "pk": "PR_NO",
+   "lineCols": null,
+   "lead": null,
+   "upRef": null,
+   "cols": [
+    {
+     "code": "ID",
+     "label": "主键",
+     "type": "s",
+     "req": true,
+     "sys": true,
+     "pk": true
+    },
+    {
+     "code": "ORG_ID",
+     "label": "组织",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_BY",
+     "label": "创建人",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_TIME",
+     "label": "创建时间",
+     "type": "dt",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_BY",
+     "label": "修改人",
+     "type": "s",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_TIME",
+     "label": "修改时间",
+     "type": "dt",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DEL_FLAG",
+     "label": "删除标记",
+     "type": "b",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "VER_NO",
+     "label": "数据版本",
+     "type": "i",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "EXT_JSON",
+     "label": "扩展字段",
+     "type": "j",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DOC_NO",
+     "label": "单据号",
+     "type": "s",
+     "req": true,
+     "doc": true
+    },
+    {
+     "code": "DOC_TYPE",
+     "label": "单别",
+     "type": "s",
+     "req": true,
+     "doc": true
+    },
+    {
+     "code": "DOC_DATE",
+     "label": "单据日期",
+     "type": "da",
+     "req": true,
+     "doc": true
+    },
+    {
+     "code": "STATUS",
+     "label": "状态",
+     "type": "s",
+     "req": true,
+     "doc": true
+    },
+    {
+     "code": "MAKER",
+     "label": "制单人",
+     "type": "s",
+     "req": true,
+     "doc": true
+    },
+    {
+     "code": "MAKE_TIME",
+     "label": "制单时间",
+     "type": "dt",
+     "req": true,
+     "doc": true
+    },
+    {
+     "code": "PRINT_TIMES",
+     "label": "打印次数",
+     "type": "i",
+     "req": false,
+     "doc": true
+    },
+    {
+     "code": "ATTACH_URLS",
+     "label": "附件",
+     "type": "j",
+     "req": false,
+     "doc": true
+    },
+    {
+     "code": "PR_NO",
+     "label": "补料建议号",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "BATCH_NO",
+     "label": "计算版本",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "ITEM_NO",
+     "label": "品号",
+     "type": "s",
+     "req": true,
+     "ref": "RF_ITEM"
+    },
+    {
+     "code": "ITEM_NAME",
+     "label": "品名",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "ITEM_TYPE",
+     "label": "供应方式",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "NET_QTY",
+     "label": "建议数量",
+     "type": "d",
+     "req": true
+    },
+    {
+     "code": "REQ_DATE",
+     "label": "需求日期",
+     "type": "da",
+     "req": true
+    },
+    {
+     "code": "SUGGEST_DATE",
+     "label": "建议下达日期",
+     "type": "da",
+     "req": false
+    },
+    {
+     "code": "SUGGEST_SUPPLIER",
+     "label": "建议供应商",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "CONFIRM_BY",
+     "label": "确认人",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "CONFIRM_TIME",
+     "label": "确认时间",
+     "type": "dt",
+     "req": false
+    },
+    {
+     "code": "LINK_PR_NO",
+     "label": "回写MES请购与比价选商单号",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "REMARK",
+     "label": "备注",
+     "type": "s",
+     "req": false,
+     "sys": true
+    }
+   ]
+  },
+  "PP_PLAN_SUGGEST": {
+   "label": "生产计划建议",
+   "domain": "MRP",
+   "module": "物料需求计算",
+   "alias": "aps_pp_plan_suggest",
+   "keys": [
+    "suggest_no"
+   ],
+   "keyCodes": [
+    "SUGGEST_NO"
+   ],
+   "doc": true,
+   "detail": false,
+   "calc": true,
+   "report": false,
+   "pk": "SUGGEST_NO",
+   "lineCols": null,
+   "lead": null,
+   "upRef": null,
+   "cols": [
+    {
+     "code": "ID",
+     "label": "主键",
+     "type": "s",
+     "req": true,
+     "sys": true,
+     "pk": true
+    },
+    {
+     "code": "ORG_ID",
+     "label": "组织",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_BY",
+     "label": "创建人",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_TIME",
+     "label": "创建时间",
+     "type": "dt",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_BY",
+     "label": "修改人",
+     "type": "s",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_TIME",
+     "label": "修改时间",
+     "type": "dt",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DEL_FLAG",
+     "label": "删除标记",
+     "type": "b",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "VER_NO",
+     "label": "数据版本",
+     "type": "i",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "EXT_JSON",
+     "label": "扩展字段",
+     "type": "j",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DOC_NO",
+     "label": "单据号",
+     "type": "s",
+     "req": true,
+     "doc": true
+    },
+    {
+     "code": "DOC_TYPE",
+     "label": "单别",
+     "type": "s",
+     "req": true,
+     "doc": true
+    },
+    {
+     "code": "DOC_DATE",
+     "label": "单据日期",
+     "type": "da",
+     "req": true,
+     "doc": true
+    },
+    {
+     "code": "STATUS",
+     "label": "状态",
+     "type": "s",
+     "req": true,
+     "doc": true
+    },
+    {
+     "code": "MAKER",
+     "label": "制单人",
+     "type": "s",
+     "req": true,
+     "doc": true
+    },
+    {
+     "code": "MAKE_TIME",
+     "label": "制单时间",
+     "type": "dt",
+     "req": true,
+     "doc": true
+    },
+    {
+     "code": "PRINT_TIMES",
+     "label": "打印次数",
+     "type": "i",
+     "req": false,
+     "doc": true
+    },
+    {
+     "code": "ATTACH_URLS",
+     "label": "附件",
+     "type": "j",
+     "req": false,
+     "doc": true
+    },
+    {
+     "code": "SUGGEST_NO",
+     "label": "计划建议号",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "BATCH_NO",
+     "label": "计算版本",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "ITEM_NO",
+     "label": "品号",
+     "type": "s",
+     "req": true,
+     "ref": "RF_ITEM"
+    },
+    {
+     "code": "ITEM_NAME",
+     "label": "品名",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "NET_QTY",
+     "label": "建议数量",
+     "type": "d",
+     "req": true
+    },
+    {
+     "code": "SUGGEST_START",
+     "label": "建议开工",
+     "type": "da",
+     "req": false
+    },
+    {
+     "code": "SUGGEST_END",
+     "label": "建议完工",
+     "type": "da",
+     "req": false
+    },
+    {
+     "code": "REQ_DATE",
+     "label": "需求日期",
+     "type": "da",
+     "req": true
+    },
+    {
+     "code": "LINK_PLAN_NO",
+     "label": "回写MES生产计划号",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "REMARK",
+     "label": "备注",
+     "type": "s",
+     "req": false,
+     "sys": true
+    }
+   ]
+  },
+  "SCH_RULE": {
+   "label": "排程规则",
+   "domain": "SCH",
+   "module": "生产排程",
+   "alias": "aps_sch_rule",
+   "keys": [
+    "rule_no"
+   ],
+   "keyCodes": [
+    "RULE_NO"
+   ],
+   "doc": false,
+   "detail": false,
+   "calc": false,
+   "report": false,
+   "pk": "RULE_NO",
+   "lineCols": null,
+   "lead": null,
+   "upRef": null,
+   "cols": [
+    {
+     "code": "ID",
+     "label": "主键",
+     "type": "s",
+     "req": true,
+     "sys": true,
+     "pk": true
+    },
+    {
+     "code": "ORG_ID",
+     "label": "组织",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_BY",
+     "label": "创建人",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_TIME",
+     "label": "创建时间",
+     "type": "dt",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_BY",
+     "label": "修改人",
+     "type": "s",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_TIME",
+     "label": "修改时间",
+     "type": "dt",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DEL_FLAG",
+     "label": "删除标记",
+     "type": "b",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "VER_NO",
+     "label": "数据版本",
+     "type": "i",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "EXT_JSON",
+     "label": "扩展字段",
+     "type": "j",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "RULE_NO",
+     "label": "规则编号",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "RULE_NAME",
+     "label": "规则名称",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "ORDER_SORT",
+     "label": "订单排序规则",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "RES_SELECT",
+     "label": "资源优选规则",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "OPT_TARGET",
+     "label": "优化目标",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "FINITE_CAP",
+     "label": "有限产能",
+     "type": "b",
+     "req": true
+    },
+    {
+     "code": "SCH_DIR",
+     "label": "排程方向",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "BOTTLENECK_STEP",
+     "label": "瓶颈工序",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "TRANSFER_BATCH",
+     "label": "转移批量",
+     "type": "d",
+     "req": false
+    },
+    {
+     "code": "KIT_CONSTRAINT",
+     "label": "启用齐套约束",
+     "type": "b",
+     "req": false
+    },
+    {
+     "code": "FREEZE_FIRST",
+     "label": "冻结优先",
+     "type": "b",
+     "req": false
+    },
+    {
+     "code": "IS_DEFAULT",
+     "label": "是否默认规则",
+     "type": "b",
+     "req": false
+    },
+    {
+     "code": "ENABLE_FLAG",
+     "label": "是否启用",
+     "type": "b",
+     "req": true
+    },
+    {
+     "code": "ENABLE_FROM",
+     "label": "启用时间",
+     "type": "da",
+     "req": false
+    },
+    {
+     "code": "ENABLE_TO",
+     "label": "失效时间",
+     "type": "da",
+     "req": false
+    },
+    {
+     "code": "AUDIT_STATUS",
+     "label": "审核状态",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_BY",
+     "label": "审核人",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_TIME",
+     "label": "审核时间",
+     "type": "dt",
+     "req": false
+    },
+    {
+     "code": "REMARK",
+     "label": "备注",
+     "type": "s",
+     "req": false,
+     "sys": true
+    }
+   ]
+  },
+  "SCH_VERSION": {
+   "label": "排程版本",
+   "domain": "SCH",
+   "module": "生产排程",
+   "alias": "aps_sch_version",
+   "keys": [
+    "version_no"
+   ],
+   "keyCodes": [
+    "VERSION_NO"
+   ],
+   "doc": true,
+   "detail": false,
+   "calc": true,
+   "report": false,
+   "pk": "VERSION_NO",
+   "lineCols": null,
+   "lead": null,
+   "upRef": null,
+   "cols": [
+    {
+     "code": "ID",
+     "label": "主键",
+     "type": "s",
+     "req": true,
+     "sys": true,
+     "pk": true
+    },
+    {
+     "code": "ORG_ID",
+     "label": "组织",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_BY",
+     "label": "创建人",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_TIME",
+     "label": "创建时间",
+     "type": "dt",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_BY",
+     "label": "修改人",
+     "type": "s",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_TIME",
+     "label": "修改时间",
+     "type": "dt",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DEL_FLAG",
+     "label": "删除标记",
+     "type": "b",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "VER_NO",
+     "label": "数据版本",
+     "type": "i",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "EXT_JSON",
+     "label": "扩展字段",
+     "type": "j",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DOC_NO",
+     "label": "单据号",
+     "type": "s",
+     "req": true,
+     "doc": true
+    },
+    {
+     "code": "DOC_TYPE",
+     "label": "单别",
+     "type": "s",
+     "req": true,
+     "doc": true
+    },
+    {
+     "code": "DOC_DATE",
+     "label": "单据日期",
+     "type": "da",
+     "req": true,
+     "doc": true
+    },
+    {
+     "code": "STATUS",
+     "label": "状态",
+     "type": "s",
+     "req": true,
+     "doc": true
+    },
+    {
+     "code": "MAKER",
+     "label": "制单人",
+     "type": "s",
+     "req": true,
+     "doc": true
+    },
+    {
+     "code": "MAKE_TIME",
+     "label": "制单时间",
+     "type": "dt",
+     "req": true,
+     "doc": true
+    },
+    {
+     "code": "PRINT_TIMES",
+     "label": "打印次数",
+     "type": "i",
+     "req": false,
+     "doc": true
+    },
+    {
+     "code": "ATTACH_URLS",
+     "label": "附件",
+     "type": "j",
+     "req": false,
+     "doc": true
+    },
+    {
+     "code": "VERSION_NO",
+     "label": "版本号",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "RULE_NO",
+     "label": "排程规则",
+     "type": "s",
+     "req": true,
+     "ref": "SCH_RULE"
+    },
+    {
+     "code": "VERSION_TYPE",
+     "label": "版本类型",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "RANGE_FROM",
+     "label": "计划起始",
+     "type": "da",
+     "req": true
+    },
+    {
+     "code": "RANGE_TO",
+     "label": "计划截止",
+     "type": "da",
+     "req": true
+    },
+    {
+     "code": "GEN_TIME",
+     "label": "生成时间",
+     "type": "dt",
+     "req": false
+    },
+    {
+     "code": "GEN_BY",
+     "label": "生成人",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "PUBLISH_TIME",
+     "label": "发布时间",
+     "type": "dt",
+     "req": false
+    },
+    {
+     "code": "PUBLISH_BY",
+     "label": "发布人",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "TOTAL_TASK",
+     "label": "任务数",
+     "type": "i",
+     "req": false
+    },
+    {
+     "code": "DELAY_TASK",
+     "label": "延期任务数",
+     "type": "i",
+     "req": false
+    },
+    {
+     "code": "TOTAL_CHANGE_MIN",
+     "label": "总换型时间(分)",
+     "type": "d",
+     "req": false
+    },
+    {
+     "code": "UTIL_RATE",
+     "label": "资源利用率",
+     "type": "d",
+     "req": false
+    },
+    {
+     "code": "ROLLBACK_FLAG",
+     "label": "发布回滚",
+     "type": "b",
+     "req": false
+    },
+    {
+     "code": "REMARK",
+     "label": "备注",
+     "type": "s",
+     "req": false,
+     "sys": true
+    }
+   ]
+  },
+  "SCH_TASK": {
+   "label": "排程任务",
+   "domain": "SCH",
+   "module": "生产排程",
+   "alias": "aps_sch_task",
+   "keys": [
+    "task_id"
+   ],
+   "keyCodes": [
+    "TASK_ID"
+   ],
+   "doc": false,
+   "detail": true,
+   "calc": true,
+   "report": false,
+   "pk": "TASK_ID",
+   "lineCols": null,
+   "lead": null,
+   "upRef": null,
+   "cols": [
+    {
+     "code": "ID",
+     "label": "主键",
+     "type": "s",
+     "req": true,
+     "sys": true,
+     "pk": true
+    },
+    {
+     "code": "ORG_ID",
+     "label": "组织",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_BY",
+     "label": "创建人",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_TIME",
+     "label": "创建时间",
+     "type": "dt",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_BY",
+     "label": "修改人",
+     "type": "s",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_TIME",
+     "label": "修改时间",
+     "type": "dt",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DEL_FLAG",
+     "label": "删除标记",
+     "type": "b",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "VER_NO",
+     "label": "数据版本",
+     "type": "i",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "EXT_JSON",
+     "label": "扩展字段",
+     "type": "j",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "TASK_ID",
+     "label": "任务ID",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "VERSION_NO",
+     "label": "版本号",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "WO_NO",
+     "label": "工单号",
+     "type": "s",
+     "req": true,
+     "ref": "RF_WORK_ORDER"
+    },
+    {
+     "code": "SO_NO",
+     "label": "销售订单",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "ITEM_NO",
+     "label": "品号",
+     "type": "s",
+     "req": true,
+     "ref": "RF_ITEM"
+    },
+    {
+     "code": "ITEM_NAME",
+     "label": "品名",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "STEP_NO",
+     "label": "工序号",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "STEP_NAME",
+     "label": "工序名",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "RES_NO",
+     "label": "资源",
+     "type": "s",
+     "req": true,
+     "ref": "BAS_RESOURCE"
+    },
+    {
+     "code": "RES_GROUP",
+     "label": "资源分组",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "START_TIME",
+     "label": "计划开工",
+     "type": "dt",
+     "req": true
+    },
+    {
+     "code": "END_TIME",
+     "label": "计划完工",
+     "type": "dt",
+     "req": true
+    },
+    {
+     "code": "PLAN_QTY",
+     "label": "计划数量",
+     "type": "d",
+     "req": true
+    },
+    {
+     "code": "DONE_QTY",
+     "label": "已完工数量",
+     "type": "d",
+     "req": false
+    },
+    {
+     "code": "CHANGE_MIN",
+     "label": "换型时间(分)",
+     "type": "d",
+     "req": false
+    },
+    {
+     "code": "KIT_DATE",
+     "label": "齐套日期",
+     "type": "da",
+     "req": false
+    },
+    {
+     "code": "LOCK_FLAG",
+     "label": "锁定",
+     "type": "b",
+     "req": false
+    },
+    {
+     "code": "RUSH_FLAG",
+     "label": "插单",
+     "type": "b",
+     "req": false
+    },
+    {
+     "code": "DELAY_FLAG",
+     "label": "延期",
+     "type": "b",
+     "req": false
+    },
+    {
+     "code": "TASK_STATUS",
+     "label": "任务状态",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "REMARK",
+     "label": "备注",
+     "type": "s",
+     "req": false,
+     "sys": true
+    }
+   ]
+  },
+  "SCH_DAY_PLAN": {
+   "label": "日排产(3~7天)",
+   "domain": "SCH",
+   "module": "生产排程",
+   "alias": "aps_sch_day_plan",
+   "keys": [
+    "dp_id"
+   ],
+   "keyCodes": [
+    "DP_ID"
+   ],
+   "doc": false,
+   "detail": false,
+   "calc": true,
+   "report": false,
+   "pk": "DP_ID",
+   "lineCols": null,
+   "lead": null,
+   "upRef": null,
+   "cols": [
+    {
+     "code": "ID",
+     "label": "主键",
+     "type": "s",
+     "req": true,
+     "sys": true,
+     "pk": true
+    },
+    {
+     "code": "ORG_ID",
+     "label": "组织",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_BY",
+     "label": "创建人",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_TIME",
+     "label": "创建时间",
+     "type": "dt",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_BY",
+     "label": "修改人",
+     "type": "s",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_TIME",
+     "label": "修改时间",
+     "type": "dt",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DEL_FLAG",
+     "label": "删除标记",
+     "type": "b",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "VER_NO",
+     "label": "数据版本",
+     "type": "i",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "EXT_JSON",
+     "label": "扩展字段",
+     "type": "j",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DP_ID",
+     "label": "日排产ID",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "VERSION_NO",
+     "label": "版本号",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "WO_NO",
+     "label": "工单号",
+     "type": "s",
+     "req": true,
+     "ref": "RF_WORK_ORDER"
+    },
+    {
+     "code": "STEP_NO",
+     "label": "工序号",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "STEP_NAME",
+     "label": "工序名",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "PLAN_DATE",
+     "label": "生产日期",
+     "type": "da",
+     "req": true
+    },
+    {
+     "code": "RES_NO",
+     "label": "资源",
+     "type": "s",
+     "req": true,
+     "ref": "BAS_RESOURCE"
+    },
+    {
+     "code": "SHIFT",
+     "label": "班次",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "PLAN_QTY",
+     "label": "计划量",
+     "type": "d",
+     "req": true
+    },
+    {
+     "code": "PLAN_START",
+     "label": "计划开始",
+     "type": "dt",
+     "req": false
+    },
+    {
+     "code": "PLAN_END",
+     "label": "计划结束",
+     "type": "dt",
+     "req": false
+    },
+    {
+     "code": "STATUS",
+     "label": "状态",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "REMARK",
+     "label": "备注",
+     "type": "s",
+     "req": false,
+     "sys": true
+    }
+   ]
+  },
+  "SCH_ADJUST": {
+   "label": "人工调整记录",
+   "domain": "SCH",
+   "module": "生产排程",
+   "alias": "aps_sch_adjust",
+   "keys": [
+    "adj_id"
+   ],
+   "keyCodes": [
+    "ADJ_ID"
+   ],
+   "doc": false,
+   "detail": false,
+   "calc": false,
+   "report": false,
+   "pk": "ADJ_ID",
+   "lineCols": null,
+   "lead": null,
+   "upRef": null,
+   "cols": [
+    {
+     "code": "ID",
+     "label": "主键",
+     "type": "s",
+     "req": true,
+     "sys": true,
+     "pk": true
+    },
+    {
+     "code": "ORG_ID",
+     "label": "组织",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_BY",
+     "label": "创建人",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_TIME",
+     "label": "创建时间",
+     "type": "dt",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_BY",
+     "label": "修改人",
+     "type": "s",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_TIME",
+     "label": "修改时间",
+     "type": "dt",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DEL_FLAG",
+     "label": "删除标记",
+     "type": "b",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "VER_NO",
+     "label": "数据版本",
+     "type": "i",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "EXT_JSON",
+     "label": "扩展字段",
+     "type": "j",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "ADJ_ID",
+     "label": "调整ID",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "VERSION_NO",
+     "label": "版本号",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "TASK_ID",
+     "label": "任务ID",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "WO_NO",
+     "label": "工单号",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "STEP_NO",
+     "label": "工序号",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "ADJ_TYPE",
+     "label": "调整类型",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "FROM_RES",
+     "label": "原资源",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "TO_RES",
+     "label": "新资源",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "FROM_TIME",
+     "label": "原时间",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "TO_TIME",
+     "label": "新时间",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "RUSH_MODE",
+     "label": "插单模式",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "IMPACT_ORDERS",
+     "label": "受影响订单",
+     "type": "x",
+     "req": false
+    },
+    {
+     "code": "CONFLICT_MSG",
+     "label": "冲突校验提示",
+     "type": "x",
+     "req": false
+    },
+    {
+     "code": "ADJ_BY",
+     "label": "调整人",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "ADJ_TIME",
+     "label": "调整时间",
+     "type": "dt",
+     "req": false
+    },
+    {
+     "code": "STATUS",
+     "label": "状态",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_STATUS",
+     "label": "审核状态",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_BY",
+     "label": "审核人",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_TIME",
+     "label": "审核时间",
+     "type": "dt",
+     "req": false
+    },
+    {
+     "code": "REMARK",
+     "label": "备注",
+     "type": "s",
+     "req": false,
+     "sys": true
+    }
+   ]
+  },
+  "SCH_EXCEPTION": {
+   "label": "排产异常",
+   "domain": "SCH",
+   "module": "生产排程",
+   "alias": "aps_sch_exception",
+   "keys": [
+    "exc_id"
+   ],
+   "keyCodes": [
+    "EXC_ID"
+   ],
+   "doc": false,
+   "detail": false,
+   "calc": true,
+   "report": false,
+   "pk": "EXC_ID",
+   "lineCols": null,
+   "lead": null,
+   "upRef": null,
+   "cols": [
+    {
+     "code": "ID",
+     "label": "主键",
+     "type": "s",
+     "req": true,
+     "sys": true,
+     "pk": true
+    },
+    {
+     "code": "ORG_ID",
+     "label": "组织",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_BY",
+     "label": "创建人",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_TIME",
+     "label": "创建时间",
+     "type": "dt",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_BY",
+     "label": "修改人",
+     "type": "s",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_TIME",
+     "label": "修改时间",
+     "type": "dt",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DEL_FLAG",
+     "label": "删除标记",
+     "type": "b",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "VER_NO",
+     "label": "数据版本",
+     "type": "i",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "EXT_JSON",
+     "label": "扩展字段",
+     "type": "j",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "EXC_ID",
+     "label": "异常ID",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "VERSION_NO",
+     "label": "版本号",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "TASK_ID",
+     "label": "任务ID",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "WO_NO",
+     "label": "工单号",
+     "type": "s",
+     "req": true,
+     "ref": "RF_WORK_ORDER"
+    },
+    {
+     "code": "EXC_TYPE",
+     "label": "异常类型",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "EXC_LEVEL",
+     "label": "异常级别",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "ITEM_NO",
+     "label": "品号",
+     "type": "s",
+     "req": true,
+     "ref": "RF_ITEM"
+    },
+    {
+     "code": "ITEM_NAME",
+     "label": "品名",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "EXC_DESC",
+     "label": "异常说明",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "RES_NO",
+     "label": "相关资源",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "REQ_DATE",
+     "label": "需求交期",
+     "type": "da",
+     "req": false
+    },
+    {
+     "code": "PLAN_END",
+     "label": "计划完工",
+     "type": "dt",
+     "req": false
+    },
+    {
+     "code": "DELAY_DAYS",
+     "label": "延期天数",
+     "type": "i",
+     "req": false
+    },
+    {
+     "code": "SUGGEST_ACTION",
+     "label": "建议处置",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "HANDLE_STATUS",
+     "label": "处置状态",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "REMARK",
+     "label": "备注",
+     "type": "s",
+     "req": false,
+     "sys": true
+    }
+   ]
+  },
+  "IF_CONFIG": {
+   "label": "集成配置",
+   "domain": "IF",
+   "module": "系统与集成",
+   "alias": "aps_if_config",
+   "keys": [
+    "if_code"
+   ],
+   "keyCodes": [
+    "IF_CODE"
+   ],
+   "doc": false,
+   "detail": false,
+   "calc": false,
+   "report": false,
+   "pk": "IF_CODE",
+   "lineCols": null,
+   "lead": null,
+   "upRef": null,
+   "cols": [
+    {
+     "code": "ID",
+     "label": "主键",
+     "type": "s",
+     "req": true,
+     "sys": true,
+     "pk": true
+    },
+    {
+     "code": "ORG_ID",
+     "label": "组织",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_BY",
+     "label": "创建人",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_TIME",
+     "label": "创建时间",
+     "type": "dt",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_BY",
+     "label": "修改人",
+     "type": "s",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_TIME",
+     "label": "修改时间",
+     "type": "dt",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DEL_FLAG",
+     "label": "删除标记",
+     "type": "b",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "VER_NO",
+     "label": "数据版本",
+     "type": "i",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "EXT_JSON",
+     "label": "扩展字段",
+     "type": "j",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "IF_CODE",
+     "label": "接口编码",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "SYS_NAME",
+     "label": "对接系统",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "IF_TYPE",
+     "label": "接口方式",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "DIRECTION",
+     "label": "数据方向",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "DATA_SCOPE",
+     "label": "数据范围",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "FREQ",
+     "label": "同步频次",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "IS_RESERVED",
+     "label": "是否预留未启用",
+     "type": "b",
+     "req": false
+    },
+    {
+     "code": "ENABLE_FLAG",
+     "label": "是否启用",
+     "type": "b",
+     "req": true
+    },
+    {
+     "code": "ENABLE_FROM",
+     "label": "启用时间",
+     "type": "da",
+     "req": false
+    },
+    {
+     "code": "ENABLE_TO",
+     "label": "失效时间",
+     "type": "da",
+     "req": false
+    },
+    {
+     "code": "AUDIT_STATUS",
+     "label": "审核状态",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_BY",
+     "label": "审核人",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_TIME",
+     "label": "审核时间",
+     "type": "dt",
+     "req": false
+    },
+    {
+     "code": "REMARK",
+     "label": "备注",
+     "type": "s",
+     "req": false,
+     "sys": true
+    }
+   ]
+  },
+  "IF_RUN_LOG": {
+   "label": "集成运行日志",
+   "domain": "IF",
+   "module": "系统与集成",
+   "alias": "aps_if_run_log",
+   "keys": [
+    "log_id"
+   ],
+   "keyCodes": [
+    "LOG_ID"
+   ],
+   "doc": false,
+   "detail": false,
+   "calc": false,
+   "report": false,
+   "pk": "LOG_ID",
+   "lineCols": null,
+   "lead": null,
+   "upRef": null,
+   "cols": [
+    {
+     "code": "ID",
+     "label": "主键",
+     "type": "s",
+     "req": true,
+     "sys": true,
+     "pk": true
+    },
+    {
+     "code": "ORG_ID",
+     "label": "组织",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_BY",
+     "label": "创建人",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_TIME",
+     "label": "创建时间",
+     "type": "dt",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_BY",
+     "label": "修改人",
+     "type": "s",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_TIME",
+     "label": "修改时间",
+     "type": "dt",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DEL_FLAG",
+     "label": "删除标记",
+     "type": "b",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "VER_NO",
+     "label": "数据版本",
+     "type": "i",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "EXT_JSON",
+     "label": "扩展字段",
+     "type": "j",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "LOG_ID",
+     "label": "日志ID",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "IF_CODE",
+     "label": "接口编码",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "RUN_TIME",
+     "label": "运行时间",
+     "type": "dt",
+     "req": true
+    },
+    {
+     "code": "DIRECTION",
+     "label": "数据方向",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "RECORDS",
+     "label": "记录数",
+     "type": "i",
+     "req": false
+    },
+    {
+     "code": "STATUS",
+     "label": "运行状态",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "ERROR_MSG",
+     "label": "错误信息",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "RETRY_FLAG",
+     "label": "已重试",
+     "type": "b",
+     "req": false
+    },
+    {
+     "code": "MANUAL_FALLBACK",
+     "label": "手工兜底",
+     "type": "b",
+     "req": false
+    },
+    {
+     "code": "AUDIT_STATUS",
+     "label": "审核状态",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_BY",
+     "label": "审核人",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_TIME",
+     "label": "审核时间",
+     "type": "dt",
+     "req": false
+    },
+    {
+     "code": "REMARK",
+     "label": "备注",
+     "type": "s",
+     "req": false,
+     "sys": true
+    }
+   ]
+  },
+  "SYS_DICT": {
+   "label": "字典",
+   "domain": "SYS",
+   "module": "系统与集成",
+   "alias": "aps_sys_dict",
+   "keys": [
+    "dict_code",
+    "item_code"
+   ],
+   "keyCodes": [
+    "DICT_CODE",
+    "ITEM_CODE"
+   ],
+   "doc": false,
+   "detail": false,
+   "calc": false,
+   "report": false,
+   "pk": "DICT_CODE",
+   "lineCols": null,
+   "lead": null,
+   "upRef": null,
+   "cols": [
+    {
+     "code": "ID",
+     "label": "主键",
+     "type": "s",
+     "req": true,
+     "sys": true,
+     "pk": true
+    },
+    {
+     "code": "ORG_ID",
+     "label": "组织",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_BY",
+     "label": "创建人",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_TIME",
+     "label": "创建时间",
+     "type": "dt",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_BY",
+     "label": "修改人",
+     "type": "s",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_TIME",
+     "label": "修改时间",
+     "type": "dt",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DEL_FLAG",
+     "label": "删除标记",
+     "type": "b",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "VER_NO",
+     "label": "数据版本",
+     "type": "i",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "EXT_JSON",
+     "label": "扩展字段",
+     "type": "j",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DICT_CODE",
+     "label": "字典编码",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "DICT_NAME",
+     "label": "字典名称",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "DICT_TYPE",
+     "label": "字典类型",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "ITEM_CODE",
+     "label": "项编码",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "ITEM_NAME",
+     "label": "项名称",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "ITEM_VALUE",
+     "label": "项值",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "SORT_NO",
+     "label": "排序",
+     "type": "i",
+     "req": false
+    },
+    {
+     "code": "ENABLE_FLAG",
+     "label": "是否启用",
+     "type": "b",
+     "req": false
+    },
+    {
+     "code": "ENABLE_FROM",
+     "label": "启用时间",
+     "type": "da",
+     "req": false
+    },
+    {
+     "code": "ENABLE_TO",
+     "label": "失效时间",
+     "type": "da",
+     "req": false
+    },
+    {
+     "code": "AUDIT_STATUS",
+     "label": "审核状态",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_BY",
+     "label": "审核人",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_TIME",
+     "label": "审核时间",
+     "type": "dt",
+     "req": false
+    },
+    {
+     "code": "REMARK",
+     "label": "备注",
+     "type": "s",
+     "req": false,
+     "sys": true
+    }
+   ]
+  },
+  "SYS_CODE_RULE": {
+   "label": "编码规则",
+   "domain": "SYS",
+   "module": "系统与集成",
+   "alias": "aps_sys_code_rule",
+   "keys": [
+    "rule_code"
+   ],
+   "keyCodes": [
+    "RULE_CODE"
+   ],
+   "doc": false,
+   "detail": false,
+   "calc": false,
+   "report": false,
+   "pk": "RULE_CODE",
+   "lineCols": null,
+   "lead": null,
+   "upRef": null,
+   "cols": [
+    {
+     "code": "ID",
+     "label": "主键",
+     "type": "s",
+     "req": true,
+     "sys": true,
+     "pk": true
+    },
+    {
+     "code": "ORG_ID",
+     "label": "组织",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_BY",
+     "label": "创建人",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_TIME",
+     "label": "创建时间",
+     "type": "dt",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_BY",
+     "label": "修改人",
+     "type": "s",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_TIME",
+     "label": "修改时间",
+     "type": "dt",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DEL_FLAG",
+     "label": "删除标记",
+     "type": "b",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "VER_NO",
+     "label": "数据版本",
+     "type": "i",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "EXT_JSON",
+     "label": "扩展字段",
+     "type": "j",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "RULE_CODE",
+     "label": "规则编码",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "BIZ_TYPE",
+     "label": "业务类型",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "PREFIX",
+     "label": "前缀",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "DATE_FMT",
+     "label": "日期格式",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "FLOW_LEN",
+     "label": "流水长度",
+     "type": "i",
+     "req": false
+    },
+    {
+     "code": "CUR_NO",
+     "label": "当前流水",
+     "type": "i",
+     "req": false
+    },
+    {
+     "code": "ENABLE_FLAG",
+     "label": "是否启用",
+     "type": "b",
+     "req": false
+    },
+    {
+     "code": "ENABLE_FROM",
+     "label": "启用时间",
+     "type": "da",
+     "req": false
+    },
+    {
+     "code": "ENABLE_TO",
+     "label": "失效时间",
+     "type": "da",
+     "req": false
+    },
+    {
+     "code": "AUDIT_STATUS",
+     "label": "审核状态",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_BY",
+     "label": "审核人",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_TIME",
+     "label": "审核时间",
+     "type": "dt",
+     "req": false
+    },
+    {
+     "code": "REMARK",
+     "label": "备注",
+     "type": "s",
+     "req": false,
+     "sys": true
+    }
+   ]
+  },
+  "SYS_AUDIT_LOG": {
+   "label": "审计日志",
+   "domain": "SYS",
+   "module": "系统与集成",
+   "alias": "aps_sys_audit_log",
+   "keys": [
+    "log_id"
+   ],
+   "keyCodes": [
+    "LOG_ID"
+   ],
+   "doc": false,
+   "detail": false,
+   "calc": false,
+   "report": false,
+   "pk": "LOG_ID",
+   "lineCols": null,
+   "lead": null,
+   "upRef": null,
+   "cols": [
+    {
+     "code": "ID",
+     "label": "主键",
+     "type": "s",
+     "req": true,
+     "sys": true,
+     "pk": true
+    },
+    {
+     "code": "ORG_ID",
+     "label": "组织",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_BY",
+     "label": "创建人",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_TIME",
+     "label": "创建时间",
+     "type": "dt",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_BY",
+     "label": "修改人",
+     "type": "s",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_TIME",
+     "label": "修改时间",
+     "type": "dt",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DEL_FLAG",
+     "label": "删除标记",
+     "type": "b",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "VER_NO",
+     "label": "数据版本",
+     "type": "i",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "EXT_JSON",
+     "label": "扩展字段",
+     "type": "j",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "LOG_ID",
+     "label": "日志ID",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "TABLE_NAME",
+     "label": "表名",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "RECORD_ID",
+     "label": "记录ID",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "ACTION",
+     "label": "操作",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "FIELD_DIFF",
+     "label": "字段差异",
+     "type": "x",
+     "req": false
+    },
+    {
+     "code": "OPERATOR",
+     "label": "操作人",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "OP_TIME",
+     "label": "操作时间",
+     "type": "dt",
+     "req": false
+    },
+    {
+     "code": "AUDIT_STATUS",
+     "label": "审核状态",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_BY",
+     "label": "审核人",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_TIME",
+     "label": "审核时间",
+     "type": "dt",
+     "req": false
+    },
+    {
+     "code": "REMARK",
+     "label": "备注",
+     "type": "s",
+     "req": false,
+     "sys": true
+    }
+   ]
+  },
+  "SYS_ATTACHMENT": {
+   "label": "附件",
+   "domain": "SYS",
+   "module": "系统与集成",
+   "alias": "aps_sys_attachment",
+   "keys": [
+    "attach_id"
+   ],
+   "keyCodes": [
+    "ATTACH_ID"
+   ],
+   "doc": false,
+   "detail": false,
+   "calc": false,
+   "report": false,
+   "pk": "ATTACH_ID",
+   "lineCols": null,
+   "lead": null,
+   "upRef": null,
+   "cols": [
+    {
+     "code": "ID",
+     "label": "主键",
+     "type": "s",
+     "req": true,
+     "sys": true,
+     "pk": true
+    },
+    {
+     "code": "ORG_ID",
+     "label": "组织",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_BY",
+     "label": "创建人",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_TIME",
+     "label": "创建时间",
+     "type": "dt",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_BY",
+     "label": "修改人",
+     "type": "s",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_TIME",
+     "label": "修改时间",
+     "type": "dt",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DEL_FLAG",
+     "label": "删除标记",
+     "type": "b",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "VER_NO",
+     "label": "数据版本",
+     "type": "i",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "EXT_JSON",
+     "label": "扩展字段",
+     "type": "j",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "ATTACH_ID",
+     "label": "附件ID",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "BIZ_TYPE",
+     "label": "业务类型",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "BIZ_ID",
+     "label": "业务ID",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "FILE_NAME",
+     "label": "文件名",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "FILE_URL",
+     "label": "文件URL",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "FILE_SIZE",
+     "label": "文件大小",
+     "type": "i",
+     "req": false
+    },
+    {
+     "code": "UPLOAD_BY",
+     "label": "上传人",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "UPLOAD_TIME",
+     "label": "上传时间",
+     "type": "dt",
+     "req": false
+    },
+    {
+     "code": "AUDIT_STATUS",
+     "label": "审核状态",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_BY",
+     "label": "审核人",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_TIME",
+     "label": "审核时间",
+     "type": "dt",
+     "req": false
+    },
+    {
+     "code": "REMARK",
+     "label": "备注",
+     "type": "s",
+     "req": false,
+     "sys": true
+    }
+   ]
+  },
+  "SYS_DOC_LINK": {
+   "label": "单据上下游关联",
+   "domain": "SYS",
+   "module": "系统与集成",
+   "alias": "aps_sys_doc_link",
+   "keys": [
+    "link_id"
+   ],
+   "keyCodes": [
+    "LINK_ID"
+   ],
+   "doc": false,
+   "detail": false,
+   "calc": false,
+   "report": false,
+   "pk": "LINK_ID",
+   "lineCols": null,
+   "lead": null,
+   "upRef": null,
+   "cols": [
+    {
+     "code": "ID",
+     "label": "主键",
+     "type": "s",
+     "req": true,
+     "sys": true,
+     "pk": true
+    },
+    {
+     "code": "ORG_ID",
+     "label": "组织",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_BY",
+     "label": "创建人",
+     "type": "s",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "CREATE_TIME",
+     "label": "创建时间",
+     "type": "dt",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_BY",
+     "label": "修改人",
+     "type": "s",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "UPDATE_TIME",
+     "label": "修改时间",
+     "type": "dt",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "DEL_FLAG",
+     "label": "删除标记",
+     "type": "b",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "VER_NO",
+     "label": "数据版本",
+     "type": "i",
+     "req": true,
+     "sys": true
+    },
+    {
+     "code": "EXT_JSON",
+     "label": "扩展字段",
+     "type": "j",
+     "req": false,
+     "sys": true
+    },
+    {
+     "code": "LINK_ID",
+     "label": "关联ID",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "FROM_TABLE",
+     "label": "来源表",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "FROM_NO",
+     "label": "来源单号",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "TO_TABLE",
+     "label": "去向表",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "TO_NO",
+     "label": "去向单号",
+     "type": "s",
+     "req": true
+    },
+    {
+     "code": "FLOW_LABEL",
+     "label": "流转动作",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "LINK_TIME",
+     "label": "关联时间",
+     "type": "dt",
+     "req": false
+    },
+    {
+     "code": "AUDIT_STATUS",
+     "label": "审核状态",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_BY",
+     "label": "审核人",
+     "type": "s",
+     "req": false
+    },
+    {
+     "code": "AUDIT_TIME",
+     "label": "审核时间",
+     "type": "dt",
+     "req": false
+    },
+    {
+     "code": "REMARK",
+     "label": "备注",
+     "type": "s",
+     "req": false,
+     "sys": true
+    }
+   ]
+  }
+ },
+ "groups": [
+  {
+   "name": "计划基础数据",
+   "tables": [
+    "BAS_ITEM_PLAN_ATTR",
+    "BAS_RESOURCE",
+    "BAS_RESOURCE_GROUP",
+    "BAS_CHANGEOVER",
+    "BAS_CALENDAR",
+    "BAS_MAINTENANCE"
+   ]
+  },
+  {
+   "name": "需求管理",
+   "tables": [
+    "BAS_DEMAND",
+    "BAS_DEMAND_LINE"
+   ]
+  },
+  {
+   "name": "物料需求计算",
+   "views": [
+    "mrp"
+   ],
+   "tables": [
+    "MRP_BATCH",
+    "MRP_NET_REQ",
+    "PR_SUGGEST",
+    "PP_PLAN_SUGGEST"
+   ]
+  },
+  {
+   "name": "物料齐套计算",
+   "views": [
+    "kit",
+    "kitrate"
+   ],
+   "tables": [
+    "MRP_KIT_CHECK",
+    "MRP_KIT_SHORT"
+   ]
+  },
+  {
+   "name": "生产排程",
+   "views": [
+    "sched",
+    "gantt"
+   ],
+   "tables": [
+    "SCH_RULE",
+    "SCH_VERSION",
+    "SCH_TASK",
+    "SCH_DAY_PLAN",
+    "SCH_ADJUST",
+    "SCH_EXCEPTION"
+   ]
+  },
+  {
+   "name": "计划分析与预警",
+   "tables": [
+    "RPT_DELIVERY_ALERT",
+    "RPT_SCHEDULE_KPI",
+    "RPT_NET_REQ_SUM",
+    "RPT_SHORT_DETAIL"
+   ],
+   "report": true
+  },
+  {
+   "name": "计划看板",
+   "tables": [],
+   "views": [
+    "board",
+    "capload"
+   ]
+  },
+  {
+   "name": "系统与集成",
+   "views": [
+    "uns"
+   ],
+   "tables": [
+    "IF_CONFIG",
+    "IF_RUN_LOG",
+    "SYS_DICT",
+    "SYS_CODE_RULE",
+    "SYS_AUDIT_LOG",
+    "SYS_ATTACHMENT",
+    "SYS_DOC_LINK"
+   ]
+  }
+ ],
+ "masterDetail": {
+  "BAS_DEMAND": [
+   {
+    "table": "BAS_DEMAND_LINE",
+    "fk": "demand_no"
+   }
+  ],
+  "MRP_BATCH": [
+   {
+    "table": "MRP_NET_REQ",
+    "fk": "batch_no"
+   }
+  ],
+  "MRP_KIT_CHECK": [
+   {
+    "table": "MRP_KIT_SHORT",
+    "fk": "check_no"
+   }
+  ],
+  "SCH_VERSION": [
+   {
+    "table": "SCH_TASK",
+    "fk": "version_no"
+   }
+  ]
+ },
+ "domains": [
+  {
+   "code": "BAS",
+   "name": "计划基础数据",
+   "desc": "排程前提：计划参数 + 资源建模 + 规则配置（F1.1~F1.5）",
+   "modules": [
+    {
+     "name": "计划基础数据",
+     "tables": [
+      "BAS_ITEM_PLAN_ATTR",
+      "BAS_RESOURCE",
+      "BAS_RESOURCE_GROUP",
+      "BAS_CHANGEOVER",
+      "BAS_CALENDAR",
+      "BAS_MAINTENANCE"
+     ]
+    }
+   ]
+  },
+  {
+   "code": "DEM",
+   "name": "需求管理",
+   "desc": "业务源头：四类需求源 + 预测冲减 + 时界（F2.1~F2.4）",
+   "modules": [
+    {
+     "name": "需求管理",
+     "tables": [
+      "BAS_DEMAND",
+      "BAS_DEMAND_LINE"
+     ]
+    }
+   ]
+  },
+  {
+   "code": "MRP",
+   "name": "物料需求计算",
+   "desc": "核心①：净需求展开 → 判断当前是否缺料 + 建议流转（F3.1~F3.3）",
+   "modules": [
+    {
+     "name": "物料需求计算",
+     "tables": [
+      "MRP_BATCH",
+      "MRP_NET_REQ",
+      "PR_SUGGEST",
+      "PP_PLAN_SUGGEST"
+     ]
+    }
+   ]
+  },
+  {
+   "code": "KIT",
+   "name": "物料齐套计算",
+   "desc": "核心②：逐层配套 → 齐套数量 / 齐套率 / 齐套日期（F4.1~F4.2）",
+   "modules": [
+    {
+     "name": "物料齐套计算",
+     "tables": [
+      "MRP_KIT_CHECK",
+      "MRP_KIT_SHORT"
+     ]
+    }
+   ]
+  },
+  {
+   "code": "SCH",
+   "name": "生产排程",
+   "desc": "核心③：有限产能排程 + 人机协同 + 日排产 + 异常预警（不含 ECN）（F5.1~F5.7）",
+   "modules": [
+    {
+     "name": "生产排程",
+     "tables": [
+      "SCH_RULE",
+      "SCH_VERSION",
+      "SCH_TASK",
+      "SCH_DAY_PLAN",
+      "SCH_ADJUST",
+      "SCH_EXCEPTION"
+     ]
+    }
+   ]
+  },
+  {
+   "code": "RPT",
+   "name": "计划分析与预警",
+   "desc": "全部只读派生：交期 / KPI / 物料需求 / 缺料（F6.1~F6.4）",
+   "modules": [
+    {
+     "name": "计划分析与预警",
+     "tables": [
+      "RPT_DELIVERY_ALERT",
+      "RPT_SCHEDULE_KPI",
+      "RPT_NET_REQ_SUM",
+      "RPT_SHORT_DETAIL"
+     ]
+    }
+   ]
+  },
+  {
+   "code": "SYS",
+   "name": "系统与集成",
+   "desc": "接口 / 字典 / 权限 / 审计（F7.1~F7.3）",
+   "modules": [
+    {
+     "name": "系统与集成",
+     "tables": [
+      "IF_CONFIG",
+      "IF_RUN_LOG",
+      "SYS_DICT",
+      "SYS_CODE_RULE",
+      "SYS_AUDIT_LOG",
+      "SYS_ATTACHMENT",
+      "SYS_DOC_LINK"
+     ]
+    }
+   ]
+  }
+ ],
+ "flow": {
+  "BAS_DEMAND": [
+   {
+    "to": "MRP_BATCH",
+    "label": "纳入需求计算"
+   }
+  ],
+  "MRP_BATCH": [
+   {
+    "to": "MRP_KIT_CHECK",
+    "label": "执行齐套检查"
+   },
+   {
+    "to": "PR_SUGGEST",
+    "label": "生成补料建议"
+   },
+   {
+    "to": "PP_PLAN_SUGGEST",
+    "label": "生成生产计划建议"
+   }
+  ],
+  "MRP_KIT_CHECK": [
+   {
+    "to": "MRP_KIT_SHORT",
+    "label": "生成缺料明细"
+   }
+  ],
+  "PP_PLAN_SUGGEST": [
+   {
+    "to": "SCH_VERSION",
+    "label": "执行自动排程"
+   }
+  ],
+  "SCH_RULE": [
+   {
+    "to": "SCH_VERSION",
+    "label": "按规则排程"
+   }
+  ],
+  "SCH_VERSION": [
+   {
+    "to": "SCH_DAY_PLAN",
+    "label": "细化日排产"
+   },
+   {
+    "to": "SCH_ADJUST",
+    "label": "登记人工调整"
+   },
+   {
+    "to": "SCH_EXCEPTION",
+    "label": "生成排产异常"
+   }
+  ],
+  "IF_CONFIG": [
+   {
+    "to": "IF_RUN_LOG",
+    "label": "生成运行日志"
+   }
+  ]
+ },
+ "importFk": {
+  "BAS_DEMAND_LINE": {
+   "DEMAND_NO": "BAS_DEMAND"
+  },
+  "MRP_NET_REQ": {
+   "BATCH_NO": "MRP_BATCH"
+  },
+  "MRP_KIT_SHORT": {
+   "CHECK_NO": "MRP_KIT_CHECK"
+  },
+  "PR_SUGGEST": {
+   "BATCH_NO": "MRP_BATCH"
+  },
+  "PP_PLAN_SUGGEST": {
+   "BATCH_NO": "MRP_BATCH"
+  },
+  "SCH_TASK": {
+   "VERSION_NO": "SCH_VERSION"
+  },
+  "SCH_DAY_PLAN": {
+   "VERSION_NO": "SCH_VERSION"
+  },
+  "SCH_ADJUST": {
+   "VERSION_NO": "SCH_VERSION"
+  },
+  "IF_RUN_LOG": {
+   "IF_CODE": "IF_CONFIG"
+  }
+ },
+ "masterAgg": {
+  "BAS_DEMAND": [
+   {
+    "field": "SOURCE_NO",
+    "table": "BAS_DEMAND_LINE",
+    "fk": "DEMAND_NO",
+    "col": "SRC_DOC_NO",
+    "sep": "；"
+   }
+  ]
+ },
+ "unsMap": {
+  "RF_ITEM": {
+   "alias": "mes_md_material",
+   "node": "MES制造管理系统/工厂建模"
+  },
+  "RF_BOM": {
+   "alias": "mes_md_bom_line",
+   "node": "MES制造管理系统/工厂建模"
+  },
+  "RF_ROUTE": {
+   "alias": "mes_rt_route_step",
+   "node": "MES制造管理系统/工艺管理"
+  },
+  "RF_EQUIPMENT": {
+   "alias": "mes_md_equipment",
+   "node": "MES制造管理系统/工厂建模"
+  },
+  "RF_SO": {
+   "alias": "mes_sd_sales_order_line",
+   "node": "MES制造管理系统/订单管理"
+  },
+  "RF_STOCK": {
+   "alias": "mes_wm_stock",
+   "node": "MES制造管理系统/库存管理"
+  },
+  "RF_PO_ONWAY": {
+   "alias": "mes_pd_purchase_order_line",
+   "node": "MES制造管理系统/订单管理"
+  },
+  "RF_WORK_ORDER": {
+   "alias": "mes_ex_wo_step",
+   "node": "MES制造管理系统/生产管理"
+  }
+ },
+ "excluded": [
+  "RF_ITEM",
+  "RF_BOM",
+  "RF_ROUTE",
+  "RF_EQUIPMENT",
+  "RF_SO",
+  "RF_STOCK",
+  "RF_PO_ONWAY",
+  "RF_WORK_ORDER",
+  "RPT_DELIVERY_ALERT",
+  "RPT_SCHEDULE_KPI",
+  "RPT_NET_REQ_SUM",
+  "RPT_SHORT_DETAIL"
+ ]
+}

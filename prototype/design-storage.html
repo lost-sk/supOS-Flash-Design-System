@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>数据库资源管理 · supOS Flash 产品原型</title>
+<link rel="stylesheet" href="assets/flash.css">
+
+<script src="assets/data.js" defer></script>
+<script src="assets/shell.js" defer></script>
+<script src="assets/interact.js" defer></script>
+<script src="assets/page/dlake.js" defer></script>
+</head>
+<body data-mode="design" data-nav="design-storage.html" data-title="数据库资源管理">
+<div class="tabbar" data-component="TabBar"><span class="tab">数据库资源管理<span class="close">×</span></span></div><div class="sys-notice" data-component="SysNotice"><img src="assets/brand/smnIcon-CBGfisYv.png" alt=""><span>系统维护通知：平台将于本周日 22:00–23:00 进行例行维护，届时部分服务短暂不可用。</span><a class="more" href="#">查看详情 ›</a></div><div class="crumb"><span>设计期</span><span>数据平台</span><span>存储服务</span><span>数据库资源管理</span></div><div class="page-head"><div><h1>数据库资源管理</h1><p>申请/注册数据库资源并统一纳管连接（二级交互：申请资源 / 注册资源 / 测试连接 / 删除与恢复）</p></div><div class="btn-row"></div></div>
+  <div class="grid cols-4" style="margin-bottom:14px">
+    <div class="stat-card " data-component="StatCard"><div class="label">接入数据库</div><div class="value">21</div></div>
+    <div class="stat-card " data-component="StatCard"><div class="label">时序数据库</div><div class="value">1</div></div>
+    <div class="stat-card " data-component="StatCard"><div class="label">关系数据库</div><div class="value">20</div></div>
+    <div class="stat-card " data-component="StatCard"><div class="label">非关系数据库</div><div class="value">0</div></div>
+  </div>
+  <div data-lake-tabs><div class="tabs"><a href="#all" data-tab="all" class="is-active">全部</a><a href="#rel" data-tab="rel" class="">关系数据库</a><a href="#nonrel" data-tab="nonrel" class="">非关系数据库</a><a href="#ts" data-tab="ts" class="">时序数据库</a><a href="#file" data-tab="file" class="">文件数据库</a><a href="#dw" data-tab="dw" class="">分析型数仓</a><a href="#deleted" data-tab="deleted" class="">已删除</a></div></div>
+  <div class="toolbar" data-component="Toolbar" style="flex-wrap:wrap">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--flash-text-tertiary)">资源名称
+  <input style="width:160px;height:28px" placeholder="资源名称"></span>
+  <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--flash-text-tertiary)">资源类型
+    <select style="width:150px;height:28px"><option>全部</option><option>PostgreSQL</option><option>MySQL</option><option>SQL Server</option><option>TimescaleDB</option><option>MinIO</option><option>Redis</option><option>ClickHouse</option></select></span>
+  <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--flash-text-tertiary)">状态
+    <select style="width:110px;height:28px"><option>全部</option><option>离线</option><option>在线</option><option>错误</option></select></span></div>
+  <span class="spacer"></span>
+  <div class="btn-row" style="gap:8px"><button class="btn primary" data-op="add">＋ 新增</button><button class="btn" data-op="refresh">刷新</button></div>
+  <span class="count">共 9 条 · 示例</span></div>
+  <div class="table-wrap"><table class="flash-table" data-component="FlashTable"><thead><tr><th>资源名称</th><th>状态</th><th>资源类型</th><th>数据库名称</th><th>实例名称</th><th>独占实例</th><th>资源来源</th><th>申请方来源</th><th>访问地址</th><th>描述</th><th>创建时间</th><th>更新时间</th><th>操作</th></thead><tbody><tr data-kind="rel" data-source="申请资源">
+    <td>注塑机工艺库</td><td><span class="dot-status" style="color:var(--flash-success)">在线</span></td><td>PostgreSQL</td><td class="mono">inj_process</td><td>pg-main-01</td><td>是</td>
+    <td>申请资源</td><td>平台服务</td><td class="mono">10.12.4.8:5432</td><td>注塑车间工艺参数库</td>
+    <td>2026-09-12 10:20</td><td>2026-11-01 15:40</td><td><span class="link-ops"><a href="#" data-op="detail" data-name="注塑机工艺库">详情</a><span class="muted" title="仅手动开通的资源可编辑" style="margin-right:8px">编辑</span><a href="#" data-op="viewdb" data-name="注塑机工艺库">查看数据库</a><a href="#" data-op="more" data-name="注塑机工艺库">更多</a></span></td></tr><tr data-kind="rel" data-source="注册资源" data-manual="1">
+    <td>精达台账库</td><td><span class="dot-status" style="color:var(--flash-success)">在线</span></td><td>MySQL</td><td class="mono">jinda_mes</td><td>-</td><td>否</td>
+    <td>注册资源</td><td>手动开通</td><td class="mono">106.55.100.236:3306</td><td>外部已开通库，仅纳管连接</td>
+    <td>2026-09-28 11:05</td><td>2026-10-30 09:12</td><td><span class="link-ops"><a href="#" data-op="detail" data-name="精达台账库">详情</a><a href="#" data-op="edit" data-name="精达台账库">编辑</a><a href="#" data-op="viewdb" data-name="精达台账库">查看数据库</a><a href="#" data-op="more" data-name="精达台账库">更多</a></span></td></tr><tr data-kind="rel" data-source="注册资源" data-manual="1">
+    <td>金蝶中间库</td><td><span class="dot-status" style="color:var(--flash-text-tertiary)">离线</span></td><td>SQL Server</td><td class="mono">kingdee_mid</td><td>-</td><td>否</td>
+    <td>注册资源</td><td>手动开通</td><td class="mono">kingdee.example.local</td><td>-</td>
+    <td>2026-10-11 16:44</td><td>2026-10-25 10:02</td><td><span class="link-ops"><a href="#" data-op="detail" data-name="金蝶中间库">详情</a><a href="#" data-op="edit" data-name="金蝶中间库">编辑</a><a href="#" data-op="viewdb" data-name="金蝶中间库">查看数据库</a><a href="#" data-op="more" data-name="金蝶中间库">更多</a></span></td></tr><tr data-kind="rel" data-source="申请资源">
+    <td>质检报告库</td><td><span class="dot-status" style="color:var(--flash-error)">错误</span></td><td>PostgreSQL</td><td class="mono">qc_report</td><td>pg-main-01</td><td>否</td>
+    <td>申请资源</td><td>平台服务</td><td class="mono">10.12.4.8:5432</td><td>-</td>
+    <td>2026-10-18 14:30</td><td>2026-11-02 08:55</td><td><span class="link-ops"><a href="#" data-op="detail" data-name="质检报告库">详情</a><span class="muted" title="仅手动开通的资源可编辑" style="margin-right:8px">编辑</span><a href="#" data-op="viewdb" data-name="质检报告库">查看数据库</a><a href="#" data-op="more" data-name="质检报告库">更多</a></span></td></tr><tr data-kind="ts" data-source="申请资源">
+    <td>设备时序库</td><td><span class="dot-status" style="color:var(--flash-success)">在线</span></td><td>TimescaleDB</td><td class="mono">ts_history</td><td>ts-main-01</td><td>否</td>
+    <td>申请资源</td><td>平台服务</td><td class="mono">10.12.4.9:5432</td><td>平台时序历史数据</td>
+    <td>2026-09-30 08:00</td><td>2026-10-20 09:00</td><td><span class="link-ops"><a href="#" data-op="detail" data-name="设备时序库">详情</a><span class="muted" title="仅手动开通的资源可编辑" style="margin-right:8px">编辑</span><a href="#" data-op="viewdb" data-name="设备时序库">查看数据库</a><a href="#" data-op="more" data-name="设备时序库">更多</a></span></td></tr><tr data-kind="ts" data-source="申请资源">
+    <td>能源时序库</td><td><span class="dot-status" style="color:var(--flash-success)">在线</span></td><td>TimescaleDB</td><td class="mono">energy_ts</td><td>ts-main-01</td><td>是</td>
+    <td>申请资源</td><td>平台服务</td><td class="mono">10.12.4.9:5432</td><td>-</td>
+    <td>2026-10-02 10:00</td><td>2026-10-22 17:20</td><td><span class="link-ops"><a href="#" data-op="detail" data-name="能源时序库">详情</a><span class="muted" title="仅手动开通的资源可编辑" style="margin-right:8px">编辑</span><a href="#" data-op="viewdb" data-name="能源时序库">查看数据库</a><a href="#" data-op="more" data-name="能源时序库">更多</a></span></td></tr><tr data-kind="nonrel" data-source="注册资源" data-manual="1">
+    <td>缓存服务</td><td><span class="dot-status" style="color:var(--flash-text-tertiary)">离线</span></td><td>Redis</td><td class="mono">cache_main</td><td>redis-main</td><td>否</td>
+    <td>注册资源</td><td>手动开通</td><td class="mono">172.21.6.20:6379</td><td>-</td>
+    <td>2026-10-05 09:40</td><td>2026-10-15 11:11</td><td><span class="link-ops"><a href="#" data-op="detail" data-name="缓存服务">详情</a><a href="#" data-op="edit" data-name="缓存服务">编辑</a><a href="#" data-op="viewdb" data-name="缓存服务">查看数据库</a><a href="#" data-op="more" data-name="缓存服务">更多</a></span></td></tr><tr data-kind="file" data-source="申请资源">
+    <td>图纸对象存储</td><td><span class="dot-status" style="color:var(--flash-success)">在线</span></td><td>MinIO</td><td class="mono">drawings</td><td>minio-main</td><td>否</td>
+    <td>申请资源</td><td>扩展应用</td><td class="mono">minio.local:9000</td><td>工艺图纸与文档</td>
+    <td>2026-10-08 13:22</td><td>2026-11-05 14:08</td><td><span class="link-ops"><a href="#" data-op="detail" data-name="图纸对象存储">详情</a><span class="muted" title="仅手动开通的资源可编辑" style="margin-right:8px">编辑</span><a href="#" data-op="viewdb" data-name="图纸对象存储">查看数据库</a><a href="#" data-op="more" data-name="图纸对象存储">更多</a></span></td></tr><tr data-kind="dw" data-source="申请资源">
+    <td>报表数仓</td><td><span class="dot-status" style="color:var(--flash-success)">在线</span></td><td>ClickHouse</td><td class="mono">bi_warehouse</td><td>ch-main-01</td><td>否</td>
+    <td>申请资源</td><td>平台服务</td><td class="mono">10.12.4.30:8123</td><td>经营报表与看板</td>
+    <td>2026-09-15 10:10</td><td>2026-11-08 09:45</td><td><span class="link-ops"><a href="#" data-op="detail" data-name="报表数仓">详情</a><span class="muted" title="仅手动开通的资源可编辑" style="margin-right:8px">编辑</span><a href="#" data-op="viewdb" data-name="报表数仓">查看数据库</a><a href="#" data-op="more" data-name="报表数仓">更多</a></span></td></tr><tr data-kind="rel" data-deleted="1" hidden data-source="注册资源" data-manual="1">
+    <td>旧版注塑库</td><td><span class="tag warn">已删除</span></td><td>PostgreSQL</td><td class="mono">inj_process_old</td><td>pg-main-01</td><td>否</td>
+    <td>注册资源</td><td>手动开通</td><td class="mono">10.12.4.8:5432</td><td>-</td>
+    <td>2026-08-11 10:00</td><td>2026-10-28 15:00</td><td><span class="link-ops"><a href="#" data-op="restore" data-name="旧版注塑库">恢复</a><a href="#" class="danger" data-op="purge" data-name="旧版注塑库">彻底删除</a></span></td></tr><tr data-kind="ts" data-deleted="1" hidden data-source="申请资源">
+    <td>临时试验库</td><td><span class="tag warn">已删除</span></td><td>TimescaleDB</td><td class="mono">trial_ts</td><td>ts-main-01</td><td>否</td>
+    <td>申请资源</td><td>平台服务</td><td class="mono">10.12.4.9:5432</td><td>-</td>
+    <td>2026-09-01 08:00</td><td>2026-10-30 12:00</td><td><span class="link-ops"><a href="#" data-op="restore" data-name="临时试验库">恢复</a><a href="#" class="danger" data-op="purge" data-name="临时试验库">彻底删除</a></span></td></tr></tbody></table></div>
+  <div class="note ">删除内部资源（申请资源）可在 30 天内恢复；外部资源（注册资源）删除后无法恢复。</div>
+
+</body>
+</html>

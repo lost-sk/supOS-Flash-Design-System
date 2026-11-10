@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>语义模型 · supOS Flash 产品原型</title>
+<link rel="stylesheet" href="assets/flash.css">
+
+<script src="assets/data.js" defer></script>
+<script src="assets/shell.js" defer></script>
+<script src="assets/interact.js" defer></script>
+<script src="assets/page/diviner.js" defer></script>
+</head>
+<body data-mode="design" data-nav="design-semantic.html" data-title="语义模型">
+<div class="tabbar" data-component="TabBar"><span class="tab">语义模型<span class="close">×</span></span></div><div class="sys-notice" data-component="SysNotice"><img src="assets/brand/smnIcon-CBGfisYv.png" alt=""><span>系统维护通知：平台将于本周日 22:00–23:00 进行例行维护，届时部分服务短暂不可用。</span><a class="more" href="#">查看详情 ›</a></div><div class="crumb"><span>设计期</span><span>数据平台</span><span>建模服务</span><span>语义模型</span></div><div class="page-head"><div><h1>语义模型</h1><p>diviner 前端还原：业务域与实体、字段与外键、指标、知识、知识草稿审批与实体关系图（二级交互）</p></div><div class="btn-row"></div></div>
+<div class="split tree-main">
+  <aside><section class="card" data-component="FlashCard"><div class="card-head"><h3>语义模型</h3></div>
+  <div style="margin-bottom:6px">
+    <div class="muted">所属应用</div>
+    <select style="width:100%;height:28px;margin-top:4px"><option>全部</option><option>平台</option><option>mes_app</option></select>
+  </div>
+  <div class="anchor-group">语义定义</div>
+  <div class="tree" data-nav-tree>
+    <div class="tree-row is-active" data-op="nav" data-view="domains"><span>▦</span>实体</div>
+    <div class="tree-children">
+      <div class="tree-row" data-op="toggle" data-open="1"><span data-caret>▾</span><span>📁</span>精达传动<span class="sub" style="margin-left:auto">4</span></div>
+      <div class="tree-children">
+        <div class="tree-row" data-op="open-model" data-ident="md_equipment"><span>📄</span>设备台账</div>
+        <div class="tree-row" data-op="open-model" data-ident="md_work_order"><span>📄</span>生产工单</div>
+        <div class="tree-row" data-op="open-model" data-ident="md_process_report"><span>📄</span>工序报工</div>
+        <div class="tree-row" data-op="open-model" data-ident="md_quality_check"><span>📄</span>质量检验</div>
+      </div>
+      <div class="tree-row" data-op="open-model" data-ident="md_analysis_wide"><span>📄</span>分析宽表</div>
+    </div>
+    <div class="tree-row" data-op="nav" data-view="metrics"><span>∑</span>指标</div>
+    <div class="tree-row"><span>ƒ</span>SQL 片段</div>
+    <div class="tree-row" data-op="nav" data-view="knowledge"><span>☰</span>知识</div>
+    <div class="tree-row"><span>§</span>规则</div>
+    <div class="tree-row"><span>⚡</span>动作</div>
+    <div class="tree-row" data-op="nav" data-view="graph"><span>⌗</span>关系</div>
+  </div>
+  <div class="anchor-group">治理</div>
+  <div class="tree">
+    <div class="tree-row" data-op="nav" data-view="drafts"><span>⏳</span>知识草稿</div>
+  </div>
+  <div class="note ">本页文案来自 diviner 前端源码（组件硬编码中文）。</div></section></aside>
+  <div data-views>
+    
+<div data-view="domains">
+  <div class="grid cols-3" style="margin-bottom:12px">
+    <div class="stat-card " data-component="StatCard"><div class="label">业务域</div><div class="value">1</div></div><div class="stat-card " data-component="StatCard"><div class="label">实体总数</div><div class="value">5</div></div><div class="stat-card " data-component="StatCard"><div class="label">待分配</div><div class="value"><span style="color:var(--flash-sem-pending)">1</span></div><div class="foot">未分配业务域的实体</div></div>
+  </div>
+  <div class="toolbar" data-component="Toolbar" style="flex-wrap:wrap">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><input style="width:250px;height:28px" placeholder="搜索业务域或实体（名称 / 标识）" data-search="entity">
+     <div class="segmented" data-seg="entity"><a class="is-active" data-kind="all">全部 6</a><a data-kind="domain">业务域 1</a><a data-kind="entity">实体 5</a></div></div>
+  <span class="spacer"></span>
+  <div class="btn-row" style="gap:8px"><button class="btn primary" data-op="add-domain">新建业务域</button><button class="btn" data-op="add-model">新建模型</button></div>
+  <span class="count">共 6 条 · 示例</span></div>
+  <div data-list="entity">
+    <div class="table-wrap"><table class="flash-table"><thead><tr><th>名称</th><th>类型</th><th>描述</th></tr></thead><tbody><tr data-kind="domain">
+  <td><div style="font-weight:500">精达传动</div><div class="mono muted">jd_transmission</div></td>
+  <td><span class="tag info">业务域</span></td><td>精达传动业务域：设备、工单、报工与质量主题</td></tr><tr data-kind="entity" data-op="open-model" data-ident="md_equipment" style="cursor:pointer">
+    <td><div style="font-weight:500">设备台账</div><div class="mono muted">md_equipment</div></td>
+    <td><span class="tag ">实体</span></td><td>设备主数据与台账信息</td></tr><tr data-kind="entity" data-op="open-model" data-ident="md_work_order" style="cursor:pointer">
+    <td><div style="font-weight:500">生产工单</div><div class="mono muted">md_work_order</div></td>
+    <td><span class="tag ">实体</span></td><td>生产工单主表与状态跟踪</td></tr><tr data-kind="entity" data-op="open-model" data-ident="md_process_report" style="cursor:pointer">
+    <td><div style="font-weight:500">工序报工</div><div class="mono muted">md_process_report</div></td>
+    <td><span class="tag ">实体</span></td><td>工序级报工明细</td></tr><tr data-kind="entity" data-op="open-model" data-ident="md_quality_check" style="cursor:pointer">
+    <td><div style="font-weight:500">质量检验</div><div class="mono muted">md_quality_check</div></td>
+    <td><span class="tag ">实体</span></td><td>检验单与缺陷记录</td></tr><tr data-kind="entity" data-op="open-model" data-ident="md_analysis_wide" style="cursor:pointer">
+    <td><div style="font-weight:500">分析宽表</div><div class="mono muted">md_analysis_wide</div></td>
+    <td><span class="tag ">实体</span></td><td>多主题拼接的分析宽表</td></tr></tbody></table></div>
+  </div>
+  <div class="empty" data-empty hidden style="min-height:150px"><div class="empty-mark">▤</div><span>没有匹配的业务域或实体</span></div>
+</div>
+    
+<div data-view="detail" hidden>
+  <div style="margin-bottom:10px"><button class="btn sm" data-op="back">← 返回列表</button></div>
+  <div data-detail-body></div>
+</div>
+    
+<div data-view="metrics" hidden>
+  <div class="toolbar" data-component="Toolbar" style="flex-wrap:wrap">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><input style="width:200px;height:28px" placeholder="搜索指标" data-search="metric">
+     <select style="height:28px" data-filter="metric"><option>全部</option><option>原子</option><option>派生</option><option>独立</option></select></div>
+  <span class="spacer"></span>
+  <div class="btn-row" style="gap:8px"><button class="btn primary" data-op="metric-add">新建指标</button></div>
+  <span class="count">共 7 条 · 示例</span></div>
+  <div data-list="metric">
+    <div class="table-wrap"><table class="flash-table"><thead><tr><th>指标名称</th><th>类型</th><th>口径</th><th>观察粒度</th><th>时间口径</th><th>单位</th><th>关联实体</th><th>描述</th><th>操作</th></tr></thead><tbody><tr data-mtype="原子" data-mident="metric_asset_value_sum" data-mname="设备原值合计">
+    <td style="font-weight:500">设备原值合计</td><td><span class="tag" style="color:var(--flash-primary);background:var(--flash-primary-soft);border-color:var(--flash-primary-soft)">原子</span></td><td>求和(eq_value)</td>
+    <td>设备编码</td><td>全量</td><td>元</td><td>设备台账</td>
+    <td><span class="muted">未添加描述</span></td>
+    <td><span class="link-ops"><a href="javascript:;" data-op="metric-edit" data-mident="metric_asset_value_sum">编辑</a><a href="javascript:;" class="danger" data-op="metric-del" data-mname="设备原值合计">删除</a></span></td></tr><tr data-mtype="原子" data-mident="metric_equipment_count" data-mname="设备台数">
+    <td style="font-weight:500">设备台数</td><td><span class="tag" style="color:var(--flash-primary);background:var(--flash-primary-soft);border-color:var(--flash-primary-soft)">原子</span></td><td>按行计数</td>
+    <td>设备编码</td><td>全量</td><td>台</td><td>设备台账</td>
+    <td><span class="muted">未添加描述</span></td>
+    <td><span class="link-ops"><a href="javascript:;" data-op="metric-edit" data-mident="metric_equipment_count">编辑</a><a href="javascript:;" class="danger" data-op="metric-del" data-mname="设备台数">删除</a></span></td></tr><tr data-mtype="原子" data-mident="metric_work_order_count" data-mname="工单总数">
+    <td style="font-weight:500">工单总数</td><td><span class="tag" style="color:var(--flash-primary);background:var(--flash-primary-soft);border-color:var(--flash-primary-soft)">原子</span></td><td>按行计数</td>
+    <td>工单编号</td><td>全量</td><td>单</td><td>生产工单</td>
+    <td><span class="muted">未添加描述</span></td>
+    <td><span class="link-ops"><a href="javascript:;" data-op="metric-edit" data-mident="metric_work_order_count">编辑</a><a href="javascript:;" class="danger" data-op="metric-del" data-mname="工单总数">删除</a></span></td></tr><tr data-mtype="原子" data-mident="metric_qualified_reports" data-mname="合格报工数">
+    <td style="font-weight:500">合格报工数</td><td><span class="tag" style="color:var(--flash-primary);background:var(--flash-primary-soft);border-color:var(--flash-primary-soft)">原子</span></td><td>计数(rp_id)</td>
+    <td>工单编号 / 工序</td><td>全量</td><td>件</td><td>工序报工</td>
+    <td><span class="muted">未添加描述</span></td>
+    <td><span class="link-ops"><a href="javascript:;" data-op="metric-edit" data-mident="metric_qualified_reports">编辑</a><a href="javascript:;" class="danger" data-op="metric-del" data-mname="合格报工数">删除</a></span></td></tr><tr data-mtype="派生" data-mident="metric_qualified_narrowed" data-mname="报工合格数（口径收窄）">
+    <td style="font-weight:500">报工合格数（口径收窄）</td><td><span class="tag" style="color:var(--flash-success);background:var(--flash-success-soft);border-color:var(--flash-success-soft)">派生</span></td><td><span class="tag info">合格报工数</span> + 限定 qc_result=合格</td>
+    <td>工序</td><td><span class="tag" style="color:var(--flash-success);background:var(--flash-success-soft);border-color:var(--flash-success-soft)">按查询时间</span></td><td>件</td><td>工序报工</td>
+    <td><span class="muted">未添加描述</span></td>
+    <td><span class="link-ops"><a href="javascript:;" data-op="metric-edit" data-mident="metric_qualified_narrowed">编辑</a><a href="javascript:;" class="danger" data-op="metric-del" data-mname="报工合格数（口径收窄）">删除</a></span></td></tr><tr data-mtype="派生" data-mident="metric_monthly_output" data-mname="月度产量">
+    <td style="font-weight:500">月度产量</td><td><span class="tag" style="color:var(--flash-success);background:var(--flash-success-soft);border-color:var(--flash-success-soft)">派生</span></td><td><span class="tag info">产量合计</span> + 按月汇总</td>
+    <td>月</td><td><span class="tag" style="color:var(--flash-success);background:var(--flash-success-soft);border-color:var(--flash-success-soft)">按查询时间</span></td><td>吨</td><td>工序报工</td>
+    <td><span class="muted">未添加描述</span></td>
+    <td><span class="link-ops"><a href="javascript:;" data-op="metric-edit" data-mident="metric_monthly_output">编辑</a><a href="javascript:;" class="danger" data-op="metric-del" data-mname="月度产量">删除</a></span></td></tr><tr data-mtype="独立" data-mident="metric_oee" data-mname="OEE 设备综合效率">
+    <td style="font-weight:500">OEE 设备综合效率</td><td><span class="tag" style="color:var(--flash-node-sub);background:var(--flash-stat-purple);border-color:var(--flash-stat-purple)">独立</span></td><td>实现 SQL + <span class="tag info">班次</span> <span class="tag info">车间</span></td>
+    <td>设备编码</td><td>全量</td><td>%</td><td>设备台账</td>
+    <td><span class="muted">未添加描述</span></td>
+    <td><span class="link-ops"><a href="javascript:;" data-op="metric-edit" data-mident="metric_oee">编辑</a><a href="javascript:;" class="danger" data-op="metric-del" data-mname="OEE 设备综合效率">删除</a></span></td></tr></tbody></table></div>
+  </div>
+</div>
+    
+<div data-view="knowledge" hidden>
+  <div class="toolbar" data-component="Toolbar" style="flex-wrap:wrap">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><input style="width:200px;height:28px" placeholder="搜索知识" data-search="knowledge">
+     <select style="height:28px" data-filter="knowledge"><option>全部</option><option>术语</option><option>枚举定义</option><option>流程</option><option>场景</option></select></div>
+  <span class="spacer"></span>
+  <div class="btn-row" style="gap:8px"><button class="btn primary" data-op="knowledge-add">新建知识</button></div>
+  <span class="count">共 4 条 · 示例</span></div>
+  <div data-list="knowledge">
+    <div class="table-wrap"><table class="flash-table"><thead><tr><th>名称</th><th>类型</th><th>内容</th><th>关联实体</th><th>挂载</th><th>操作</th></tr></thead><tbody><tr data-ktype="术语">
+    <td style="font-weight:500">良品</td><td><span class="tag" style="color:var(--flash-primary);background:var(--flash-primary-soft);border-color:var(--flash-primary-soft)">术语</span></td><td>一次检验判定合格的产品</td>
+    <td>质量检验</td><td>3 处</td>
+    <td><span class="link-ops"><a href="javascript:;" class="danger" data-op="knowledge-del" data-kname="良品">删除</a></span></td></tr><tr data-ktype="枚举定义">
+    <td style="font-weight:500">设备状态码</td><td><span class="tag" style="color:var(--flash-node-sub);background:var(--flash-stat-purple);border-color:var(--flash-stat-purple)">枚举定义</span></td><td><span class="tag info">RUNNING 运行</span><span class="tag info">IDLE 待机</span><span class="tag info">DOWN 故障</span><span class="tag info">MAINT 维保</span><span class="muted">+2</span></td>
+    <td>设备台账</td><td>2 处</td>
+    <td><span class="link-ops"><a href="javascript:;" class="danger" data-op="knowledge-del" data-kname="设备状态码">删除</a></span></td></tr><tr data-ktype="流程">
+    <td style="font-weight:500">工单下达流程</td><td><span class="tag" style="color:var(--flash-collect-doing);background:var(--flash-stat-blue);border-color:var(--flash-stat-blue)">流程</span></td><td>计划员下达 → 车间接收 → 开工确认</td>
+    <td>生产工单</td><td>1 处</td>
+    <td><span class="link-ops"><a href="javascript:;" class="danger" data-op="knowledge-del" data-kname="工单下达流程">删除</a></span></td></tr><tr data-ktype="场景">
+    <td style="font-weight:500">换型超时场景</td><td><span class="tag" style="color:var(--flash-success);background:var(--flash-success-soft);border-color:var(--flash-success-soft)">场景</span></td><td>换型超过 30 分钟触发预警并记录停线原因</td>
+    <td>工序报工</td><td>1 处</td>
+    <td><span class="link-ops"><a href="javascript:;" class="danger" data-op="knowledge-del" data-kname="换型超时场景">删除</a></span></td></tr></tbody></table></div>
+  </div>
+  <div class="empty" data-empty hidden style="min-height:150px"><div class="empty-mark">▤</div><span>把业务含义沉淀下来，让分析更准确</span></div>
+</div>
+    
+<div data-view="drafts" hidden>
+  <div class="toolbar" data-component="Toolbar" style="flex-wrap:wrap">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span class="muted">草稿由抽取与人工补充产生，批准后按类型物化并重建索引</span></div>
+  <span class="spacer"></span>
+  <div class="btn-row" style="gap:8px"><button class="btn" data-op="draft-refresh">刷新</button></div>
+  <span class="count">共 5 条 · 示例</span></div>
+  <div data-list="drafts">
+    <div class="table-wrap"><table class="flash-table"><thead><tr><th>草稿</th><th>类型</th><th>来源</th><th>内容</th><th>目标引用</th><th>理由</th><th>状态</th><th>时间</th><th>操作</th></tr></thead><tbody><tr data-dname="设备稼动率">
+    <td style="font-weight:500">设备稼动率</td><td><span class="tag" style="color:var(--flash-primary);background:var(--flash-primary-soft);border-color:var(--flash-primary-soft)">术语</span></td><td>机器</td><td>稼动率＝实际运行时间 ÷ 计划运行时间</td><td>指标 · 设备稼动率</td><td>抽取指标描述中的新术语</td>
+    <td data-status><span class="dot-status" style="color:var(--flash-primary)">待审批</span></td><td>2026-11-09 16:20</td>
+    <td data-ops><span class="link-ops"><a href="javascript:;" data-op="draft-approve" data-dname="设备稼动率">通过</a><a href="javascript:;" data-op="draft-reject" data-dname="设备稼动率">驳回</a><a href="javascript:;" data-op="draft-detail" data-dname="设备稼动率">详情</a></span></td></tr><tr data-dname="报废复检规则">
+    <td style="font-weight:500">报废复检规则</td><td><span class="tag" style="color:var(--flash-warning);background:var(--flash-stat-amber);border-color:var(--flash-stat-amber)">规则</span></td><td>人工</td><td>连续报废 ≥3 件触发质检复检</td><td>模型 · 工序报工</td><td>人工补充业务规则</td>
+    <td data-status><span class="dot-status" style="color:var(--flash-primary)">待审批</span></td><td>2026-11-10 09:05</td>
+    <td data-ops><span class="link-ops"><a href="javascript:;" data-op="draft-approve" data-dname="报废复检规则">通过</a><a href="javascript:;" data-op="draft-reject" data-dname="报废复检规则">驳回</a><a href="javascript:;" data-op="draft-detail" data-dname="报废复检规则">详情</a></span></td></tr><tr data-dname="工单优先级">
+    <td style="font-weight:500">工单优先级</td><td><span class="tag" style="color:var(--flash-node-sub);background:var(--flash-stat-purple);border-color:var(--flash-stat-purple)">枚举定义</span></td><td>机器</td><td>HIGH 高 / NORMAL 中 / LOW 低</td><td>模型字段 · 生产工单.priority</td><td>新增字段缺枚举定义</td>
+    <td data-status><span class="dot-status" style="color:var(--flash-success)">已批准</span></td><td>2026-11-08 14:10</td>
+    <td data-ops><span class="link-ops"><a href="javascript:;" data-op="draft-detail" data-dname="工单优先级">详情</a></span></td></tr><tr data-dname="产量合计">
+    <td style="font-weight:500">产量合计</td><td><span class="tag" style="color:var(--flash-sem-pending);background:var(--flash-stat-amber);border-color:var(--flash-stat-amber)">指标</span></td><td>机器</td><td>求和(qty)，建议登记为原子指标</td><td>指标 · 产量合计</td><td>从 SQL 抽取聚合表达式</td>
+    <td data-status><span class="dot-status" style="color:var(--flash-success)">已批准</span></td><td>2026-11-07 11:32</td>
+    <td data-ops><span class="link-ops"><a href="javascript:;" data-op="draft-detail" data-dname="产量合计">详情</a></span></td></tr><tr data-dname="良品率片段">
+    <td style="font-weight:500">良品率片段</td><td><span class="tag" style="color:var(--flash-collect-doing);background:var(--flash-stat-blue);border-color:var(--flash-stat-blue)">片段</span></td><td>人工</td><td>SELECT 合格数 / 总数 AS yield_ratio …</td><td>SQL 片段 · yield_ratio</td><td>人工沉淀常用片段</td>
+    <td data-status><span class="dot-status" style="color:var(--flash-error)">已驳回</span></td><td>2026-11-06 17:48</td>
+    <td data-ops><span class="link-ops"><a href="javascript:;" data-op="draft-detail" data-dname="良品率片段">详情</a></span></td></tr></tbody></table></div>
+  </div>
+  <div class="empty" data-empty hidden style="min-height:150px"><div class="empty-mark">▤</div><span>没有该状态的草稿</span></div>
+</div>
+    
+<div data-view="graph" hidden>
+  <div class="pane-head" style="align-items:flex-start">
+    <div>
+      <b style="font-size:15px">实体关系图</b>
+      <div class="muted" style="margin-top:3px;max-width:720px">展示模型间关联：外键边（列对标注，箭头由引用方指向被引用方）+ 语义关系边（分类:语义 标注）；点击实体进入编辑。</div>
+    </div>
+    <select style="height:28px" data-graph-filter><option>全部业务域</option><option>精达传动</option><option>未分配</option></select>
+  </div>
+  <div data-graph-wrap style="border:1px solid var(--flash-border);border-radius:var(--flash-radius-lg);background:var(--flash-bg-container);overflow:auto">
+    <div style="position:relative;width:980px;height:440px">
+      <svg width="980" height="440" viewBox="0 0 980 440" style="position:absolute;inset:0">
+        <defs>
+          <marker id="garr-fk" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7" fill="none" style="stroke:var(--flash-primary)" stroke-width="1.4"></path></marker>
+          <marker id="garr-sem" markerWidth="9" markerHeight="9" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7" fill="none" style="stroke:var(--flash-node-sub)" stroke-width="1.4"></path></marker>
+        </defs>
+        <line x1="300" y1="286" x2="446" y2="102" style="stroke:var(--flash-primary)" stroke-width="1.4" marker-end="url(#garr-fk)"></line>
+        <line x1="644" y1="315" x2="378" y2="315" style="stroke:var(--flash-primary)" stroke-width="1.4" marker-end="url(#garr-fk)"></line>
+        <line x1="606" y1="70" x2="740" y2="282" style="stroke:var(--flash-node-sub)" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#garr-sem)"></line>
+      </svg>
+      
+  <span style="position:absolute;left:300px;top:176px;padding:1px 8px;font-size:11px;background:var(--flash-bg-container);border:1px solid var(--flash-border);border-radius:10px;color:var(--flash-text-secondary)" class="mono">equipment_id → eq_id</span>
+      
+  <span style="position:absolute;left:452px;top:300px;padding:1px 8px;font-size:11px;background:var(--flash-bg-container);border:1px solid var(--flash-border);border-radius:10px;color:var(--flash-text-secondary)" class="mono">work_order_no → order_no</span>
+      
+  <span style="position:absolute;left:690px;top:158px;padding:1px 8px;font-size:11px;background:var(--flash-bg-container);border:1px solid var(--flash-node-sub);border-radius:10px;color:var(--flash-node-sub)" class="mono">工艺:加工对象</span>
+      
+  <div class="graph-node" data-op="open-model" data-ident="md_equipment"
+    style="position:absolute;left:400px;top:36px;width:200px;border:1px solid var(--flash-node-js);border-radius:var(--flash-radius-lg);background:var(--flash-bg-container);padding:9px 12px;cursor:pointer">
+    <div style="font-weight:500;font-size:13px">设备台账</div><div class="mono muted">md_equipment</div>
+  </div>
+      
+  <div class="graph-node" data-op="open-model" data-ident="md_work_order"
+    style="position:absolute;left:170px;top:286px;width:200px;border:1px solid var(--flash-node-js);border-radius:var(--flash-radius-lg);background:var(--flash-bg-container);padding:9px 12px;cursor:pointer">
+    <div style="font-weight:500;font-size:13px">生产工单</div><div class="mono muted">md_work_order</div>
+  </div>
+      
+  <div class="graph-node" data-op="open-model" data-ident="md_process_report"
+    style="position:absolute;left:646px;top:286px;width:200px;border:1px solid var(--flash-node-js);border-radius:var(--flash-radius-lg);background:var(--flash-bg-container);padding:9px 12px;cursor:pointer">
+    <div style="font-weight:500;font-size:13px">工序报工</div><div class="mono muted">md_process_report</div>
+  </div>
+      <div style="position:absolute;left:14px;bottom:12px;display:flex;gap:14px;font-size:11px;color:var(--flash-text-tertiary)">
+        <span><span style="display:inline-block;width:18px;border-top:2px solid var(--flash-primary);vertical-align:middle;margin-right:5px"></span>外键边</span>
+        <span><span style="display:inline-block;width:18px;border-top:2px dashed var(--flash-node-sub);vertical-align:middle;margin-right:5px"></span>语义关系边</span>
+      </div>
+    </div>
+  </div>
+  <div class="empty" data-graph-empty hidden style="min-height:220px"><div class="empty-mark">▤</div><span>暂无实体关系</span></div>
+</div>
+  </div>
+</div>
+<template data-tpl="model">
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="req">模型标识</span></label>
+    <div class="f-ctrl"><input data-req="1" data-pattern="^[A-Za-z_][A-Za-z0-9_]*$" data-err="标识须以字母或下划线开头，仅包含字母、数字和下划线" data-m-ident="1" value="" placeholder="如 md_equipment"></div>
+    
+    <div class="f-err">标识须以字母或下划线开头，仅包含字母、数字和下划线</div>
+  </div>
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="req">业务名称</span></label>
+    <div class="f-ctrl"><input data-req="1" data-err="业务名称不能为空" data-m-name="1" value="" placeholder=""></div>
+    
+    <div class="f-err">业务名称不能为空</div>
+  </div>
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">业务同义词</span></label>
+    <div class="f-ctrl"><input  value="" placeholder="输入后回车"></div>
+    
+    <div class="f-err"></div>
+  </div>
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">业务描述</span></label>
+    <div class="f-ctrl"><input data-m-desc="1" value="" placeholder=""></div>
+    
+    <div class="f-err"></div>
+  </div>
+  <div class="form-section">存储来源</div>
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="req">数据源</span></label>
+    <div class="f-ctrl"><input list="dl-ds" data-req="1" data-err="数据源不能为空" data-m-ds="1" placeholder="输入以检索，支持 fedquery / uns"><datalist id="dl-ds"><option value="fedquery"></option><option value="uns"></option></datalist></div>
+    
+    <div class="f-err">数据源不能为空</div>
+  </div>
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">数据库</span></label>
+    <div class="f-ctrl"><input  value="" placeholder=""></div>
+    
+    <div class="f-err"></div>
+  </div>
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">Schema</span></label>
+    <div class="f-ctrl"><input  value="" placeholder=""></div>
+    
+    <div class="f-err"></div>
+  </div>
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">数据来源</span></label>
+    <div class="f-ctrl"><div style="display:flex;gap:16px;padding-top:6px"><label style="display:inline-flex;align-items:center;gap:5px;cursor:pointer"><input type="radio" name="m-src" value="phys" checked>物理数据表</label><label style="display:inline-flex;align-items:center;gap:5px;cursor:pointer"><input type="radio" name="m-src" value="sql" >SQL 定义</label></div></div>
+    
+    <div class="f-err"></div>
+  </div>
+  <div data-src-phys data-req-zone><div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="req">物理表名</span></label>
+    <div class="f-ctrl"><input data-req0="1" data-err="物理表名称不能为空" data-m-table="1" value="" placeholder=""></div>
+    
+    <div class="f-err">物理表名称不能为空</div>
+  </div></div>
+  <div data-src-sql data-req-zone hidden><div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="req">SQL 语句</span></label>
+    <div class="f-ctrl"><textarea rows="4" class="mono" style="width:100%" data-req0="1" data-err="视图 SQL 不能为空" data-m-sql="1"></textarea></div>
+    
+    <div class="f-err">视图 SQL 不能为空</div>
+  </div></div>
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">主键</span></label>
+    <div class="f-ctrl"><input data-m-pk="1" value="" placeholder="如 eq_id；复合主键以逗号分隔"></div>
+    
+    <div class="f-err"></div>
+  </div>
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">参与检索发现</span></label>
+    <div class="f-ctrl"><label class="switch"><input type="checkbox" checked data-m-search="1"><i></i></label></div>
+    
+    <div class="f-err"></div>
+  </div>
+</template>
+<template data-tpl="field">
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="req">字段标识</span></label>
+    <div class="f-ctrl"><input data-req="1" data-err="字段标识不能为空" data-f-ident="1" value="" placeholder="如 eq_code"></div>
+    
+    <div class="f-err">字段标识不能为空</div>
+  </div>
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">业务名称</span></label>
+    <div class="f-ctrl"><input data-f-name="1" value="" placeholder=""></div>
+    
+    <div class="f-err"></div>
+  </div>
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="req">数据类型</span></label>
+    <div class="f-ctrl"><select data-req="1" data-err="数据类型不能为空" data-f-type="1"><option value="">请选择</option><option>VARCHAR</option><option>BIGINT</option><option>INTEGER</option><option>DOUBLE</option><option>DECIMAL</option><option>BOOLEAN</option><option>DATE</option><option>TIMESTAMP</option></select></div>
+    
+    <div class="f-err">数据类型不能为空</div>
+  </div>
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">字段同义词</span></label>
+    <div class="f-ctrl"><input  value="" placeholder="输入后回车"></div>
+    
+    <div class="f-err"></div>
+  </div>
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">业务描述</span></label>
+    <div class="f-ctrl"><input data-f-desc="1" value="" placeholder=""></div>
+    
+    <div class="f-err"></div>
+  </div>
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">规范单位</span></label>
+    <div class="f-ctrl"><input data-f-unit="1" value="" placeholder="如 元、件"></div>
+    
+    <div class="f-err"></div>
+  </div>
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">换算比例</span></label>
+    <div class="f-ctrl"><input data-pattern="^\d+(\.\d+)?$" data-err="须为正十进制数" data-f-ratio="1" value="" placeholder="如 1000"></div>
+    
+    <div class="f-err">须为正十进制数</div>
+  </div>
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">分析角色</span></label>
+    <div class="f-ctrl"><div style="display:flex;gap:16px;padding-top:6px"><label style="display:inline-flex;align-items:center;gap:5px;cursor:pointer"><input type="radio" name="f-role" value="未设置" checked>未设置</label><label style="display:inline-flex;align-items:center;gap:5px;cursor:pointer"><input type="radio" name="f-role" value="分析维度" >分析维度</label><label style="display:inline-flex;align-items:center;gap:5px;cursor:pointer"><input type="radio" name="f-role" value="度量" >度量</label></div></div>
+    
+    <div class="f-err"></div>
+  </div>
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">标记</span></label>
+    <div class="f-ctrl"><div style="display:flex;gap:14px;padding-top:6px;flex-wrap:wrap"><label style="display:inline-flex;align-items:center;gap:5px;cursor:pointer"><input type="checkbox" data-f-time="1">时间维度</label><label style="display:inline-flex;align-items:center;gap:5px;cursor:pointer"><input type="checkbox">允许 NULL</label><label style="display:inline-flex;align-items:center;gap:5px;cursor:pointer"><input type="checkbox">建立索引</label><label style="display:inline-flex;align-items:center;gap:5px;cursor:pointer"><input type="checkbox" data-f-hidden="1">隐藏字段</label></div></div>
+    
+    <div class="f-err"></div>
+  </div>
+</template>
+<template data-tpl="domain">
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="req">名称</span></label>
+    <div class="f-ctrl"><input data-req="1" data-err="名称不能为空" maxlength="50" value="" placeholder=""></div>
+    
+    <div class="f-err">名称不能为空</div>
+  </div>
+</template>
+<template data-tpl="set-domain">
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">所属业务域</span></label>
+    <div class="f-ctrl"><select style="width:100%"><option value="">未分配</option><option>精达传动</option></select></div>
+    <div class="f-extra">清空即解除分配；不改变模型 Ref 与权限。</div>
+    <div class="f-err"></div>
+  </div>
+</template>
+<template data-tpl="fk">
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="req">目标模型</span></label>
+    <div class="f-ctrl"><select data-fk-target data-req="1" data-err="请选择目标模型"><option value="">请选择目标模型</option><option>设备台账</option><option>生产工单</option><option>工序报工</option><option>质量检验</option></select></div>
+    <div class="f-extra">选中后带出对端主键首列</div>
+    <div class="f-err">请选择目标模型</div>
+  </div>
+  <div class="form-section">列映射</div>
+  <div data-fk-rows></div>
+  <div style="margin:6px 0 2px"><button class="btn sm" data-op-tpl="fk-add-row">＋ 添加列映射行</button></div>
+</template>
+<template data-tpl="metric">
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="req">指标类型</span></label>
+    <div class="f-ctrl"><select data-metric-type data-req="1" data-err="指标类型不能为空"><option>原子</option><option>派生</option><option>独立</option></select></div>
+    
+    <div class="f-err">指标类型不能为空</div>
+  </div>
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="req">指标标识</span></label>
+    <div class="f-ctrl"><input data-req="1" data-err="指标标识不能为空" data-mt-ident="1" value="" placeholder="如 metric_asset_value_sum"></div>
+    
+    <div class="f-err">指标标识不能为空</div>
+  </div>
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="req">指标名称</span></label>
+    <div class="f-ctrl"><input data-req="1" data-err="指标名称不能为空" data-mt-name="1" value="" placeholder=""></div>
+    
+    <div class="f-err">指标名称不能为空</div>
+  </div>
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">同义词</span></label>
+    <div class="f-ctrl"><input  value="" placeholder="输入后回车"></div>
+    
+    <div class="f-err"></div>
+  </div>
+  <div class="form-section">口径定义</div>
+  <div data-metric-atomic data-req-zone>
+    <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="req">基表模型</span></label>
+    <div class="f-ctrl"><select data-req0="1" data-err="原子指标必须关联基表模型"><option value="">请选择</option><option>设备台账</option><option>生产工单</option><option>工序报工</option><option>质量检验</option></select></div>
+    
+    <div class="f-err">原子指标必须关联基表模型</div>
+  </div>
+    <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">聚合函数</span></label>
+    <div class="f-ctrl"><select data-agg><option>求和</option><option>计数</option><option>去重计数</option><option>平均</option><option>最小</option><option>最大</option><option>中位数</option><option>总体标准差</option></select></div>
+    
+    <div class="f-err"></div>
+  </div>
+    <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="req">取值表达式</span></label>
+    <div class="f-ctrl"><div class="code-editor" contenteditable="true" data-expr>SELECT SUM(eq_value) FROM md_equipment</div></div>
+    
+    <div class="f-err">非计数聚合需要取值表达式</div>
+  </div>
+  </div>
+  <div data-metric-derived data-req-zone hidden>
+    <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="req">基础原子指标</span></label>
+    <div class="f-ctrl"><select data-req0="1" data-err="派生指标必须选择基础原子指标"><option value="">请选择</option><option>设备原值合计</option><option>设备台数</option><option>合格报工数</option></select></div>
+    
+    <div class="f-err">派生指标必须选择基础原子指标</div>
+  </div>
+    <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">统计周期</span></label>
+    <div class="f-ctrl"><div style="display:flex;gap:16px;padding-top:6px"><label style="display:inline-flex;align-items:center;gap:5px;cursor:pointer"><input type="radio" name="d-period" value="all" checked>全量</label><label style="display:inline-flex;align-items:center;gap:5px;cursor:pointer"><input type="radio" name="d-period" value="query" >按查询时间</label></div></div>
+    
+    <div class="f-err"></div>
+  </div>
+    <div data-period-time data-req-zone hidden><div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="req">时间字段</span></label>
+    <div class="f-ctrl"><select data-req0="1" data-err="按查询时间口径需要指定时间字段"><option value="">请选择</option><option>report_time 报工时间</option><option>order_date 下达日期</option></select></div>
+    
+    <div class="f-err">按查询时间口径需要指定时间字段</div>
+  </div></div>
+    <div data-cond-rows></div>
+    <div style="margin:6px 0 2px"><button class="btn sm" data-op-tpl="cond-add-row">＋ 添加总体条件</button></div>
+  </div>
+  <div data-metric-independent data-req-zone hidden>
+    <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">实现 SQL</span></label>
+    <div class="f-ctrl"><div class="code-editor" contenteditable="true" data-isql>SELECT a.eq_code AS 设备编码, SUM(a.qty) / NULLIF(SUM(a.plan_qty),0) AS 完成率 FROM md_process_report a GROUP BY a.eq_code</div></div>
+    
+    <div class="f-err"></div>
+  </div>
+    <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">参数声明</span></label>
+    <div class="f-ctrl"><input  value="" placeholder="如 班次、车间，多个以逗号分隔"></div>
+    
+    <div class="f-err"></div>
+  </div>
+  </div>
+  <div class="form-section">描述</div>
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">指标描述</span></label>
+    <div class="f-ctrl"><textarea rows="3" style="width:100%"></textarea></div>
+    
+    <div class="f-err"></div>
+  </div>
+</template>
+<template data-tpl="knowledge">
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="req">知识类型</span></label>
+    <div class="f-ctrl"><select data-ktype data-req="1" data-err="知识类型不能为空"><option>术语</option><option>枚举定义</option><option>流程</option><option>场景</option></select></div>
+    
+    <div class="f-err">知识类型不能为空</div>
+  </div>
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="req">知识标识</span></label>
+    <div class="f-ctrl"><input data-req="1" data-err="知识标识不能为空" value="" placeholder="如 kpi_yield"></div>
+    
+    <div class="f-err">知识标识不能为空</div>
+  </div>
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="req">显示名称</span></label>
+    <div class="f-ctrl"><input data-req="1" data-err="显示名称不能为空" value="" placeholder=""></div>
+    
+    <div class="f-err">显示名称不能为空</div>
+  </div>
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">同义词</span></label>
+    <div class="f-ctrl"><input  value="" placeholder="输入后回车"></div>
+    
+    <div class="f-err"></div>
+  </div>
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">关联实体</span></label>
+    <div class="f-ctrl"><select><option value="">不关联（可选）</option><option>设备台账</option><option>生产工单</option><option>工序报工</option><option>质量检验</option></select></div>
+    
+    <div class="f-err"></div>
+  </div>
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">描述</span></label>
+    <div class="f-ctrl"><input  value="" placeholder=""></div>
+    
+    <div class="f-err"></div>
+  </div>
+  <div data-k-md data-req-zone>
+    <div class="form-section">内容 · Markdown</div>
+    <div data-dtabs>
+      <div class="tabs"><a href="javascript:;" data-dtab="edit" class="is-active">编辑</a><a href="javascript:;" data-dtab="preview">预览</a></div>
+      <div data-dpane="edit"><textarea rows="6" class="mono" style="width:100%" data-req0="1" data-err="知识内容不能为空" data-k-content="1">## 定义
+一次检验判定合格的产品。</textarea></div>
+      <div data-dpane="preview" hidden><div class="note" data-k-preview></div></div>
+    </div>
+  </div>
+  <div data-k-enum data-req-zone hidden>
+    <div class="form-section">枚举取值</div>
+    <div data-enum-rows></div>
+    <div style="margin:6px 0 2px"><button class="btn sm" data-op-tpl="enum-add-row">＋ 添加枚举定义</button></div>
+  </div>
+</template>
+<template data-tpl="approve">
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="">审批备注</span></label>
+    <div class="f-ctrl"><textarea rows="3" style="width:100%" placeholder="可选"></textarea></div>
+    
+    <div class="f-err"></div>
+  </div>
+</template>
+<template data-tpl="reject">
+  <div class="field" style="display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start">
+    <label style="width:120px;flex:none;padding-top:7px;"><span class="req">审批备注</span></label>
+    <div class="f-ctrl"><textarea rows="3" style="width:100%" data-req="1" data-err="驳回必须填写备注" placeholder="请说明驳回原因"></textarea></div>
+    
+    <div class="f-err">驳回必须填写备注</div>
+  </div>
+</template>
+<template data-tpl="detail">
+  <div data-detail-root>
+    <section class="card">
+      <div style="display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap">
+        <span data-d-icon style="display:grid;place-items:center;width:44px;height:44px;border-radius:var(--flash-radius-lg);background:var(--flash-stat-blue);color:var(--flash-primary);font-size:20px;font-weight:600;flex:none">模</span>
+        <div style="min-width:260px;flex:1">
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+            <b style="font-size:16px" data-d-name>设备台账</b>
+            <span class="mono muted" data-d-ident>md_equipment</span>
+            <span data-d-kindtag><span class="tag" style="color:var(--flash-node-sub);background:var(--flash-stat-purple);border-color:var(--flash-stat-purple)">SQL 视图</span></span>
+            <span data-d-retag hidden><span class="tag">不参与检索</span></span>
+          </div>
+          <div style="margin-top:6px;font-size:13px" data-d-desc><span class="muted">还没有业务描述，点击编辑补充。</span></div>
+          <div style="margin-top:6px;font-size:12px;display:flex;gap:6px;align-items:center" data-d-domain><span class="muted">业务域：</span><span data-d-domain-val><span class="tag info">精达传动</span></span></div>
+        </div>
+        <div class="btn-row" style="margin-left:auto">
+          <button class="btn" data-op="edit-model">编辑模型</button>
+          <button class="btn danger" data-op="del-model">删除</button>
+        </div>
+      </div>
+    </section>
+    <div data-dtabs style="margin-top:12px">
+      <div class="tabs">
+        <a href="javascript:;" data-dtab="fields" class="is-active">字段 <span data-fcount>0</span></a>
+        <a href="javascript:;" data-dtab="fks">外键 <span data-fkcount>0</span></a>
+        <a href="javascript:;" data-dtab="rel-metric">相关指标</a>
+        <a href="javascript:;" data-dtab="rel-sql">相关 SQL 片段</a>
+        <a href="javascript:;" data-dtab="rel-knowledge">相关知识</a>
+        <a href="javascript:;" data-dtab="rel-rule">相关规则</a>
+      </div>
+      <div data-dpane="fields">
+        <div class="pane-head">
+          <div style="display:flex;gap:8px;align-items:center">
+            <input style="width:220px;height:28px" placeholder="搜索字段名称或业务含义…" data-search="field">
+            <select style="height:28px" data-filter="field"><option>全部字段</option><option>分析维度</option><option>度量</option><option>时间维度</option><option>隐藏字段</option></select>
+          </div>
+          <button class="btn sm primary" data-op="add-field">添加字段</button>
+        </div>
+        <div data-list="field">
+          <div class="table-wrap"><table class="flash-table"><thead><tr><th>字段 / 业务名称</th><th>类型</th><th>业务描述</th><th>单位</th><th>字段语义角色</th><th>可见性</th><th>操作</th></tr></thead><tbody data-field-body></tbody></table></div>
+        </div>
+        <div class="empty" data-empty hidden style="min-height:130px"><div class="empty-mark">▤</div><span>没有符合条件的字段</span></div>
+      </div>
+      <div data-dpane="fks" hidden>
+        <div class="pane-head">
+          <span class="muted">外键声明本端列到对端模型列的引用；「被引用」方向由对端模型声明自动带出，入边只读。</span>
+          <button class="btn sm primary" data-op="add-fk">添加外键</button>
+        </div>
+        <div data-list="fk">
+          <div class="table-wrap"><table class="flash-table"><thead><tr><th>方向</th><th>本端列</th><th>对端模型</th><th>对端列</th><th>操作</th></tr></thead><tbody data-fk-body></tbody></table></div>
+        </div>
+        <div class="empty" hidden style="min-height:130px"><div class="empty-mark">▤</div><span>还没有外键声明</span></div>
+      </div>
+      <div data-dpane="rel-metric" hidden>
+        <div data-list="rel-metric"><div class="table-wrap"><table class="flash-table"><thead><tr><th>指标名称</th><th>类型</th><th>口径</th></tr></thead><tbody data-rel-body="rel-metric"></tbody></table></div></div>
+        <div class="empty" hidden style="min-height:130px"><div class="empty-mark">▤</div><span>暂无数据</span></div>
+      </div>
+      <div data-dpane="rel-sql" hidden>
+        <div data-list="rel-sql"><div class="table-wrap"><table class="flash-table"><thead><tr><th>片段标识</th><th>说明</th></tr></thead><tbody data-rel-body="rel-sql"></tbody></table></div></div>
+        <div class="empty" hidden style="min-height:130px"><div class="empty-mark">▤</div><span>暂无数据</span></div>
+      </div>
+      <div data-dpane="rel-knowledge" hidden>
+        <div data-list="rel-knowledge"><div class="table-wrap"><table class="flash-table"><thead><tr><th>名称</th><th>类型</th><th>内容</th></tr></thead><tbody data-rel-body="rel-knowledge"></tbody></table></div></div>
+        <div class="empty" hidden style="min-height:130px"><div class="empty-mark">▤</div><span>暂无数据</span></div>
+      </div>
+      <div data-dpane="rel-rule" hidden>
+        <div data-list="rel-rule"><div class="table-wrap"><table class="flash-table"><thead><tr><th>规则名称</th><th>内容</th></tr></thead><tbody data-rel-body="rel-rule"></tbody></table></div></div>
+        <div class="empty" hidden style="min-height:130px"><div class="empty-mark">▤</div><span>暂无数据</span></div>
+      </div>
+    </div>
+  </div>
+</template>
+</body>
+</html>

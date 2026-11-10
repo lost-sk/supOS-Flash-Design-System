@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SQL 联邦查询 · supOS Flash 产品原型</title>
+<link rel="stylesheet" href="assets/flash.css">
+
+<script src="assets/data.js" defer></script>
+<script src="assets/shell.js" defer></script>
+<script src="assets/interact.js" defer></script>
+<script src="assets/page/fedquery.js" defer></script>
+</head>
+<body data-mode="design" data-nav="design-fedquery.html" data-title="SQL 联邦查询">
+<div class="tabbar" data-component="TabBar"><span class="tab">SQL 联邦查询<span class="close">×</span></span></div><div class="sys-notice" data-component="SysNotice"><img src="assets/brand/smnIcon-CBGfisYv.png" alt=""><span>系统维护通知：平台将于本周日 22:00–23:00 进行例行维护，届时部分服务短暂不可用。</span><a class="more" href="#">查看详情 ›</a></div><div class="crumb"><span>设计期</span><span>数据平台</span><span>存储服务</span><span>SQL 联邦查询</span></div><div class="page-head"><div><h1>SQL 联邦查询</h1><p>服务与订阅管理：JS/SQL 服务与订阅任务的脚本编辑（左树 + 多标签 + 调试）</p></div><div class="btn-row"></div></div>
+  <div class="split tree-main">
+    <section class="card" data-component="FlashCard"><div class="card-head"><h3>统一树</h3></div>
+      <div style="display:flex;gap:6px;margin-bottom:8px">
+        <button class="btn sm primary" data-op="new-menu">＋ 新建 ▾</button>
+        <input data-tree-search style="flex:1;height:26px;min-width:0;border:1px solid var(--flash-border);border-radius:var(--flash-radius);padding:0 8px;font-size:12px" placeholder="搜索节点">
+      </div>
+      <div class="tree" data-component="FedTree">
+  <div class="tree-row is-active" data-op="tg">默认命名空间</div>
+  <div class="tree-children">
+    <div class="tree-row" data-op="tg" data-name="生产数据">▸ 生产数据</div>
+    <div class="tree-children" data-branch><div class="tree-row" data-node="order_sum_query" data-show="工单汇总查询" data-type="sql"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--flash-collect-doing);margin-right:7px;vertical-align:1px"></span><span title="order_sum_query">工单汇总查询</span></div><div class="tree-row" data-node="syncErpOrder" data-show="工单同步服务" data-type="js"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--flash-node-js);margin-right:7px;vertical-align:1px"></span><span title="syncErpOrder">工单同步服务</span></div></div>
+    <div class="tree-row" data-op="tg" data-name="设备数据">▸ 设备数据</div>
+    <div class="tree-children" data-branch><div class="tree-row" data-node="tempLimitSub" data-show="温度越限订阅" data-type="sub"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--flash-node-sub);margin-right:7px;vertical-align:1px"></span><span title="tempLimitSub">温度越限订阅</span></div><div class="tree-row" data-node="esScoreCalc" data-show="评分计算模块" data-type="es"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--flash-node-js);margin-right:7px;vertical-align:1px"></span><span title="esScoreCalc">评分计算模块</span></div></div>
+  </div>
+</div></section>
+    <div>
+      <div class="tabs" style="margin-bottom:10px" data-edtabs>
+        <a href="#" data-edtab="sql" class="is-active"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--flash-collect-doing);margin-right:7px;vertical-align:1px"></span>工单汇总查询</a>
+        <a href="#" data-edtab="js"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--flash-node-js);margin-right:7px;vertical-align:1px"></span>工单同步服务</a>
+      </div>
+      <div data-editor>
+        <div data-edview="sql">
+          <div class="note warn" data-ds-warn style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+            <span>当前 SQL 脚本尚未配置数据源，运行前请先点击「修改数据源」完成配置。</span>
+            <a href="#" data-op="ds-modal">去配置</a>
+          </div>
+          <div class="muted" data-ds-info style="display:none;margin-bottom:8px"></div>
+          <div class="toolbar" style="flex-wrap:wrap;margin-bottom:10px">
+  <div class="btn-row" style="gap:6px;flex-wrap:wrap"><button class="btn sm" data-op="ed" data-label="撤销">撤销</button><button class="btn sm" data-op="ed" data-label="恢复">恢复</button><button class="btn sm" data-op="ed" data-label="左缩进">左缩进</button><button class="btn sm" data-op="ed" data-label="右缩进">右缩进</button><button class="btn sm" data-op="ed" data-label="注释">注释</button><button class="btn sm" data-op="ed" data-label="格式化">格式化</button><button class="btn sm" data-op="ed" data-label="搜索">搜索</button>
+    <button class="btn sm" data-op="ed" data-label="编写说明">编写说明</button>
+    <button class="btn sm" data-op="ds-modal" style="position:relative">修改数据源<i data-ds-dot style="position:absolute;top:-2px;right:-2px;width:7px;height:7px;border-radius:50%;background:var(--flash-error)"></i></button>
+  </div>
+  <span class="spacer"></span>
+  <div class="btn-row" style="gap:8px">
+    <button class="btn sm" data-op="debug">调试</button>
+    <button class="btn sm primary" data-op="save">保存</button>
+  </div>
+</div>
+          <div class="code-editor" data-component="FedCode"><span class="cm-key">&lt;select</span> <span class="cm-str">id</span>=<span class="cm-str">"queryOrderSummary"</span> <span class="cm-str">resultType</span>=<span class="cm-str">"java.util.HashMap"</span><span class="cm-key">&gt;</span>
+<span class="cm-key">SELECT</span> w.order_no, SUM(r.qty) <span class="cm-key">AS</span> qty
+<span class="cm-key">FROM</span> mes_work_order w
+<span class="cm-key">LEFT JOIN</span> mes_order_record r <span class="cm-key">ON</span> r.order_id = w.id
+<span class="cm-key">WHERE</span> w.create_time &gt;= #{startTime}
+  <span class="cm-key">AND</span> w.dept = #{dept}
+<span class="cm-key">GROUP BY</span> w.order_no
+<span class="cm-key">&lt;/select&gt;</span></div>
+        </div>
+        <div data-edview="js" style="display:none">
+          <div class="muted" style="margin-bottom:8px">数据源：精达设备台账库（MySQL · 数据源注册）</div>
+          <div class="toolbar" style="flex-wrap:wrap;margin-bottom:10px">
+  <div class="btn-row" style="gap:6px;flex-wrap:wrap"><button class="btn sm" data-op="ed" data-label="撤销">撤销</button><button class="btn sm" data-op="ed" data-label="恢复">恢复</button><button class="btn sm" data-op="ed" data-label="左缩进">左缩进</button><button class="btn sm" data-op="ed" data-label="右缩进">右缩进</button><button class="btn sm" data-op="ed" data-label="注释">注释</button><button class="btn sm" data-op="ed" data-label="格式化">格式化</button><button class="btn sm" data-op="ed" data-label="搜索">搜索</button>
+  </div>
+  <span class="spacer"></span>
+  <div class="btn-row" style="gap:8px">
+    <button class="btn sm" data-op="debug">调试</button>
+    <button class="btn sm primary" data-op="save">保存</button>
+  </div>
+</div>
+          <div class="code-editor" data-component="FedCode"><span class="cm-com">// 工单同步：ERP 工单 → UNS 状态位</span>
+<span class="cm-key">function</span> syncErpOrder(ctx) {
+  <span class="cm-key">const</span> rows = ctx.db.query(<span class="cm-str">"SELECT order_no FROM mes_work_order WHERE synced = 0"</span>);
+  rows.forEach((r) =&gt; ctx.uns.set(<span class="cm-str">"/" + r.order_no + "/status"</span>, <span class="cm-str">"SYNCED"</span>));
+  <span class="cm-key">return</span> { synced: rows.length };
+}</div>
+        </div>
+      </div>
+      
+  <div class="card" style="margin-top:12px" data-component="FedBottom">
+    <div class="tabs"><a href="#base" data-tab="base" class="is-active">基本信息</a><a href="#in" data-tab="in" class="">入参</a><a href="#out" data-tab="out" class="">出参</a><a href="#dbg" data-tab="dbg" class="">调试信息</a></div>
+    <div data-section="base" ><dl class="kv"><dt>名称</dt><dd><span class="mono">order_sum_query</span></dd><dt>显示名</dt><dd>工单汇总查询</dd><dt>类型</dt><dd>SQL服务</dd><dt>所属命名空间/分组</dt><dd>生产数据</dd><dt>sql语法</dt><dd><span class="mono">mybatis</span></dd><dt>脚本类型</dt><dd>查询</dd><dt>描述</dt><dd>按日汇总工单数量</dd><dt>更新时间</dt><dd>2026-11-09 17:42</dd></dl></div>
+    <div data-section="in" hidden><div class="table-wrap"><table class="flash-table" data-component="FlashTable"><thead><tr><th>必填</th><th>参数名称</th><th>类型</th><th>默认值</th><th>描述</th><th>操作</th></tr></thead><tbody><tr><td>是</td><td><span class="mono">startTime</span></td><td>String</td><td>-</td><td>统计开始时间</td><td><span class="link-ops"><a href="#" data-op="p-edit">编辑</a><a href="#" class="danger" data-op="p-del">删除</a></span></td></tr><tr><td>否</td><td><span class="mono">endTime</span></td><td>String</td><td>-</td><td>统计结束时间</td><td><span class="link-ops"><a href="#" data-op="p-edit">编辑</a><a href="#" class="danger" data-op="p-del">删除</a></span></td></tr><tr><td>否</td><td><span class="mono">dept</span></td><td>String</td><td>-</td><td>车间/部门过滤</td><td><span class="link-ops"><a href="#" data-op="p-edit">编辑</a><a href="#" class="danger" data-op="p-del">删除</a></span></td></tr></tbody></table></div></div>
+    <div data-section="out" hidden><div class="table-wrap"><table class="flash-table" data-component="FlashTable"><thead><tr><th>必填</th><th>参数名称</th><th>类型</th><th>默认值</th><th>描述</th><th>操作</th></tr></thead><tbody><tr><td>是</td><td><span class="mono">order_no</span></td><td>String</td><td>-</td><td>工单编号</td><td><span class="link-ops"><a href="#" data-op="p-edit">编辑</a><a href="#" class="danger" data-op="p-del">删除</a></span></td></tr><tr><td>是</td><td><span class="mono">qty</span></td><td>Number</td><td>-</td><td>汇总数量</td><td><span class="link-ops"><a href="#" data-op="p-edit">编辑</a><a href="#" class="danger" data-op="p-del">删除</a></span></td></tr></tbody></table></div></div>
+    <div data-section="dbg" hidden><div class="empty" data-dbg-empty style="min-height:120px"><div class="empty-mark">▤</div><span>暂无数据</span></div>
+      <div class="code-editor" data-dbg-result style="display:none"></div></div>
+  </div>
+    </div>
+  </div>
+</body>
+</html>

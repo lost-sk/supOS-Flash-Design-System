@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>原型总览 · supOS Flash 产品原型</title>
+<link rel="stylesheet" href="assets/flash.css">
+<script src="assets/data.js" defer></script>
+<script src="assets/shell.js" defer></script>
+<script src="assets/interact.js" defer></script>
+</head>
+<body data-mode="design" data-nav="" data-title="原型总览">
+<div style="max-width:1080px;margin:0 auto;padding:24px 20px 100px">
+    <div class="page-head"><div><h1>示例应用产品原型</h1><p>登录页 / 运行期（桌面视图、菜单视图）/ 设计期 —— 全部页面可点击，离线可用。</p></div></div>
+    <div class="note">本原型只覆盖产品本体，不涉及官网与传播物料。所有业务数据、菜单与统计数字均为<b>示例</b>；壳层与色值来自 supOS Flash 运行期实证快照。</div>
+    <div class="section-title"><span>四种形态</span></div>
+    <div class="grid cols-3">
+      <a class="card" href="login.html" style="display:block"><div class="card-head"><h3>登录页</h3><span class="sub">↗</span></div><p style="color:var(--flash-text-tertiary);font-size:12px">工业插画背景 + 白色登录卡</p></a>
+      <a class="card" href="runtime-desktop.html" style="display:block"><div class="card-head"><h3>运行期 · 桌面视图</h3><span class="sub">↗</span></div><p style="color:var(--flash-text-tertiary);font-size:12px">应用 / 架构图 / 工作台 三个 tab</p></a>
+      <a class="card" href="runtime-menu.html" style="display:block"><div class="card-head"><h3>运行期 · 菜单视图</h3><span class="sub">↗</span></div><p style="color:var(--flash-text-tertiary);font-size:12px">左侧菜单树 + 右侧应用内容</p></a>
+      <a class="card" href="design-home.html" style="display:block"><div class="card-head"><h3>设计期</h3><span class="sub">↗</span></div><p style="color:var(--flash-text-tertiary);font-size:12px">平台配置语境（仅首页背景板）</p></a>
+      <a class="card" href="apps/demo/index.html" style="display:block"><div class="card-head"><h3>示例应用（独立）</h3><span class="sub">↗</span></div><p style="color:var(--flash-text-tertiary);font-size:12px">不套壳层直接打开应用</p></a>
+    </div>
+    <div class="section-title"><span>全部页面（5）</span></div>
+    <div class="table-wrap"><table class="flash-table"><thead><tr><th>页面</th><th>分组</th><th>说明</th></tr></thead><tbody>
+      <tr><td><a href="index.html">index.html</a></td><td>entry</td><td>全部页面与应用入口索引</td></tr><tr><td><a href="login.html">login.html</a></td><td>login</td><td>完整登录页</td></tr><tr><td><a href="runtime-desktop.html">runtime-desktop.html</a></td><td>runtime</td><td>应用 / 架构图 / 工作台 三个 tab</td></tr><tr><td><a href="runtime-menu.html">runtime-menu.html</a></td><td>runtime</td><td>左侧菜单树 + 右侧应用内容</td></tr><tr><td><a href="design-home.html">design-home.html</a></td><td>design</td><td>平台设计期入口（背景板）</td></tr>
+    </tbody></table></div>
+    <div class="section-title"><span>交付说明</span></div>
+    <div class="note">页面由 <code>scripts/new-prototype.mjs</code> 生成；改内容请修改 <code>prototype.config.json</code> 后重跑生成器，不要手改 HTML。验收用 <code>scripts/validate.mjs --target &lt;dir&gt;</code>。</div>
+  </div>
+</body>
+</html>

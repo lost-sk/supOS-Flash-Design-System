@@ -1,0 +1,60 @@
+/* supOS Flash · 运行期「桌面视图」token
+ * ─────────────────────────────────────────────────────────────
+ * 真源 1（运行期实证）：flash01 桌面壳层
+ *   /os/statics/pkg/toolkit/desktop/main/assets/index-BMEQV8cy.css
+ * 真源 2（源码实证）：poc/工业AI之旅/app/trial-journey/web/
+ *   journey-dd2fcca47ffe.css（#005FE1 出现 69 次）
+ * 真源 3：2026-11-09 桌面视图 / 架构图 / 工作台 tab 截图
+ *
+ * 桌面运行期是独立的视觉语言，不要强行用门户的 --flash-primary 覆盖。
+ * ───────────────────────────────────────────────────────────── */
+
+:root {
+  /* 桌面壳层（顶部标签栏、系统操作） */
+  --desk-shell-primary: #0f71e2;
+  --desk-shell-primary-light: #3793f0;
+  --desk-shell-text: #232426;
+  --desk-shell-border: #dee7f5;
+  --desk-shell-divider: #e4e5e6;
+  --desk-shell-muted: #a5a5a5;
+  --desk-shell-line: #d3d3d3;
+
+  /* 试用之旅 app（独立品牌色，与门户不同） */
+  --desk-journey-primary: #005fe1;       /* 69 次，主按钮/节点/路径 */
+  --desk-journey-primary-deep: #004bb4;
+  --desk-journey-primary-soft: #83b1f5;
+  --desk-journey-bg-soft: #edf4ff;
+  --desk-journey-bg-soft-2: #eff5ff;
+  --desk-journey-teal: #176d88;
+  --desk-journey-teal-deep: #12566f;
+  --desk-journey-green: #159968;
+  --desk-journey-cyan: #9adcf4;
+  --desk-journey-gold: #d3b58c;
+  --desk-journey-planet: #ee493c;        /* 右上角红色星球插画 */
+  --desk-journey-planet-deep: #d52224;
+
+  /* 桌面渐变底（截图取色） */
+  --desk-bg-gradient: linear-gradient(
+    135deg,
+    #dceaff 0%,
+    #eaf4ff 32%,
+    #f4f8ff 58%,
+    #e9e2ff 100%
+  );
+  --desk-bg-glow: rgba(0, 95, 225, .06);
+
+  /* 桌面浮层卡片 */
+  --desk-card-bg: #ffffff;
+  --desk-card-radius: 10px;
+  --desk-card-shadow: 0 8px 28px rgba(30, 74, 140, .10);
+  --desk-tab-active: var(--desk-shell-primary);
+  --desk-tab-height: 40px;
+}
+
+/* 桌面视图的容器，与门户 .flash-shell 互斥 */
+.desktop-surface {
+  background: var(--desk-bg-gradient);
+  color: var(--desk-shell-text);
+  font-family: var(--flash-font-sans);
+  font-size: var(--flash-font-size);
+}
